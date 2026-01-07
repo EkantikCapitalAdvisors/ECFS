@@ -1,0 +1,218 @@
+{
+  "company": {
+    "name": "Ekantik Capital Advisors LLC",
+    "short_name": "ECA",
+    "email": "info@ekantikcapital.com",
+    "website": "https://ekantikcapital.com"
+  },
+  
+  "strategy": {
+    "name": "Ekantik Cash Flow Strategy",
+    "short_name": "ECFS",
+    "min_investment": 20000,
+    "investment_increment": 20000,
+    "target_monthly_distribution_percent": 2,
+    "target_gross_return_percent": 5,
+    "buffer_amount": 1200,
+    "buffer_percent": 6,
+    "daily_risk_limit_percent": 2.5,
+    "weekly_risk_limit_percent": 5,
+    "success_rate_percent": 50,
+    "risk_reward_ratio": 1.5,
+    "edge_per_trade_r": 0.25,
+    "daily_edge_percent": 0.25,
+    "annual_hwm_fee_percent": 10,
+    "profit_split_percent": 50
+  },
+  
+  "hero_section": {
+    "headline": "Learn About Systematic Cash Flow",
+    "subheadline": "Trading Strategies",
+    "description": "Educational resource exploring a disciplined trading strategy framework targeting 2% monthly distributions, featuring strict risk controls, buffer-based protection, and systematic position sizing.",
+    "cta_primary": "Join Interest List",
+    "cta_secondary": "See Performance Model"
+  },
+  
+  "value_propositions": [
+    {
+      "icon": "fa-coins",
+      "title": "2% Monthly Payouts",
+      "subtitle": "(Targeted, after buffer established)",
+      "color": "gold"
+    },
+    {
+      "icon": "fa-shield-alt",
+      "title": "Capital Protection Focus",
+      "subtitle": "Strict 2.5% daily risk limits",
+      "color": "blue"
+    },
+    {
+      "icon": "fa-chart-line",
+      "title": "Upside Participation",
+      "subtitle": "Balanced fee structure with HWM",
+      "color": "green"
+    }
+  ],
+  
+  "trust_indicators": [
+    {
+      "icon": "fa-university",
+      "title": "Third-Party",
+      "subtitle": "Custody & Reporting"
+    },
+    {
+      "icon": "fa-lock",
+      "title": "Broker-Level",
+      "subtitle": "Risk Controls"
+    },
+    {
+      "icon": "fa-chart-line",
+      "title": "24/7 Dashboard",
+      "subtitle": "Real-Time Access"
+    },
+    {
+      "icon": "fa-file-contract",
+      "title": "Transparent",
+      "subtitle": "Fee Structure"
+    }
+  ],
+  
+  "how_it_works": [
+    {
+      "step": 1,
+      "title": "Initial Investment",
+      "description": "Start with a minimum investment of $20,000 to establish your account and begin the process.",
+      "details": "Funds are held at a third-party brokerage with full transparency and daily reporting access."
+    },
+    {
+      "step": 2,
+      "title": "Build Initial Buffer",
+      "description": "The first priority: accumulate a $1,200 safety buffer before any distributions begin.",
+      "details": "No management fees are charged during this buffer-building phase. This typically takes 1–2 months."
+    },
+    {
+      "step": 3,
+      "title": "Activate Distribution Phase",
+      "description": "Once the buffer threshold is met, monthly distributions begin at a targeted 2% of your initial capital.",
+      "details": "Example: On $20,000 capital, target distribution is $400/month after buffer establishment."
+    },
+    {
+      "step": 4,
+      "title": "Monthly Distribution Target",
+      "description": "Strategy targets a ~5% gross monthly return to support the 2% net distribution plus buffer retention and fees.",
+      "details": "Actual distributions fluctuate based on performance; excess profits are retained to strengthen the safety cushion."
+    },
+    {
+      "step": 5,
+      "title": "Losing Month Protocol",
+      "description": "In months with losses, distributions pause automatically and the strategy focuses on rebuilding the buffer.",
+      "details": "This disciplined approach prioritizes capital protection and sustainable long-term distributions over short-term payouts."
+    }
+  ],
+  
+  "timeline": [
+    {
+      "phase": "Day 1",
+      "title": "Setup & Allocation",
+      "description": "Complete onboarding, fund your account, and activate the strategy. All systems go live immediately."
+    },
+    {
+      "phase": "Months 1–2",
+      "title": "Buffer Accumulation",
+      "description": "Strategy focuses on building the initial $1,200 safety buffer. No distributions yet, no management fees charged."
+    },
+    {
+      "phase": "Month 3",
+      "title": "First Distribution",
+      "description": "Once buffer is met, your first targeted 2% monthly distribution is processed. Welcome to cash flow mode!"
+    },
+    {
+      "phase": "Months 4–10+",
+      "title": "Regular Monthly Payouts",
+      "description": "Consistent targeted distributions continue monthly. In losing months, distributions pause automatically to rebuild buffer—then resume."
+    }
+  ],
+  
+  "faqs": [
+    {
+      "question": "Are the returns guaranteed?",
+      "answer": "No. Returns are never guaranteed in investing—anyone who promises otherwise is being dishonest. However, what we DO guarantee is our commitment to a disciplined, first-principles-driven framework designed to protect your capital while pursuing returns. The Four First Principles of Wealth Protection: (1) Risk Management - Implement caps and limits to prevent catastrophic loss. (2) Position Sizing - Never risk too much on any single bet. (3) Expected Value (EV) - Ensure positive average return per unit of risk. (4) Positive Expectancy - Every investment needs a structural edge that tilts odds in your favor. These principles protect capital and improve odds—they do NOT guarantee profits. Target returns and distributions are goals, not promises."
+    },
+    {
+      "question": "What happens in a losing month?",
+      "answer": "In any month where the strategy experiences a net loss, distributions automatically pause. All focus shifts to rebuilding the buffer to its required threshold. No management fees are charged during losing months. Once the buffer is restored, regular distributions resume. This disciplined protocol prioritizes capital protection over maintaining distribution consistency."
+    },
+    {
+      "question": "How are fees calculated and what risk controls are in place?",
+      "answer": "Fee Structure (Performance-Based): (1) No fees during buffer-building phase (typically Months 1–2), (2) 10% annual high-water mark (HWM) fee on new profits, including buffer growth, (3) 50/50 profit split on gains exceeding the annual HWM, (4) No fees in losing months or when buffer is below threshold. Multi-Layered Risk Management System: (1) Hard Risk Limit: 2.5% daily / 5% weekly risk cap (broker-enforced), (2) Automatic Recovery Protocol: Trading size reduces automatically during drawdowns, (3) Buffer Mechanism: Months 11-12 have no distributions—built-in flexibility, (4) Year-End Rebalancing: Portfolio resets annually to maintain capital structure, (5) Transparent Governance: Third-party custodians, independent auditing, real-time fee calculations. Note: While these controls are designed to manage risk, they cannot eliminate risk entirely."
+    },
+    {
+      "question": "How does the $25 virtual demo work?",
+      "answer": "You pay a $25 refundable fee to access a real broker-based simulated trading account funded with virtual capital. This allows you to watch ECFS execute live with real market data for 30+ days—with zero capital at risk. What the $25 covers: (1) Real broker account setup (simulated capital), (2) Live market data feeds, (3) Daily reporting and performance tracking, (4) Administrative costs for demo management. What You Experience: (1) Real trading environment with live market data, (2) Risk controls in action (2.5% daily, 5% weekly limits), (3) Buffer growth and distribution tracking (2% monthly target), (4) Daily reports showing P&L, trades, and risk metrics, (5) 30+ day trial period to validate strategy. 100% Refundable: If you become a client within 90 days of your demo, the $25 fee is fully refunded. Effectively free for serious investors. Note: Simulated results may differ from live trading with actual capital due to factors like slippage, liquidity, and emotional decision-making."
+    },
+    {
+      "question": "How do distributions work?",
+      "answer": "Once the initial $1,200 buffer is established, distributions begin on a monthly basis. The target distribution is 2% of your initial capital (e.g., $400 on a $20,000 account). Actual distributions may vary based on monthly performance. In profitable months, you receive your distribution plus any excess retained to strengthen the buffer. Distributions are typically processed within the first 5 business days of each month and can be sent via ACH, wire, or reinvested."
+    },
+    {
+      "question": "What is the minimum investment?",
+      "answer": "The minimum investment to participate in ECFS is $20,000. This threshold ensures the strategy can effectively implement its risk controls and generate meaningful monthly distributions while maintaining proper buffer levels. Investments must be made in increments of $20,000 (e.g., $20k, $40k, $60k, $100k). Larger account sizes may receive preferential fee structures—please inquire during your consultation."
+    },
+    {
+      "question": "Can I access my capital if needed?",
+      "answer": "Yes, but understanding the structure and trade-offs is important for optimal performance. Profit Withdrawal Options: (1) Monthly basis: Withdraw accumulated profits monthly (most common), (2) Quarterly basis: Allows more compounding between withdrawals, (3) Annual basis (Recommended): Optimal for hitting target yields—profits compound throughout the year. Important Trade-Off: More frequent withdrawals = lower annual yields. The strategy targets 2% monthly distributions (after fees) through disciplined position sizing and compounding. This target can only be achieved if profits remain in the account to compound and scale position sizing. Recommended Approach: Keep profits compounding throughout the year for optimal performance. Partial or full withdrawals may be requested with 30 days' written notice. Withdrawals are processed at month-end. No withdrawal penalties apply, but premature withdrawals may impact buffer status and future distribution eligibility. Specific terms are outlined in your client agreement."
+    },
+    {
+      "question": "Where is my capital held and custodied?",
+      "answer": "Your capital is held at a third-party brokerage firm in an account under your name. Ekantik Capital Advisors has limited trading authorization only—we cannot withdraw funds or transfer assets. You maintain full visibility and ultimate control. All account statements, trade confirmations, and performance reports are accessible 24/7 through your brokerage portal and the ECFS dashboard."
+    },
+    {
+      "question": "How do I monitor my performance?",
+      "answer": "Every ECFS client receives access to a secure 24/7 online dashboard showing real-time account value, buffer status, distribution history, and risk metrics. You also receive monthly performance reports with detailed trade summaries, P&L breakdowns, and fee calculations. Additionally, you can access your brokerage account directly for complete trade-level transparency and statements."
+    },
+    {
+      "question": "What is your liquidity and withdrawal policy?",
+      "answer": "ECFS is designed for investors seeking monthly cash flow, not rapid capital withdrawal. That said, you may request partial or full withdrawals with 30 days' written notice. Withdrawals are processed at month-end after all open positions are closed and final accounting is completed. There are no withdrawal penalties, but premature withdrawals may impact your buffer status and future distribution eligibility. Please discuss your liquidity needs during your consultation."
+    },
+    {
+      "question": "How are taxes handled?",
+      "answer": "All trading activity occurs in your brokerage account, and you will receive standard IRS Form 1099 reporting from your broker at year-end. Cash Flow Strategy Tax Efficiency: The effective federal tax rate for the Cash Flow Strategy typically ranges from 18.2% to 26.8% depending on your income bracket and holding periods. This is achieved through: (1) 60/40 tax treatment for certain trading instruments (60% long-term capital gains, 40% short-term), (2) Strategic holding periods to maximize long-term capital gains treatment where possible, (3) Tax-loss harvesting opportunities to offset gains, (4) Section 1256 contracts preferential treatment (when applicable). Tax Advantage: The 60/40 tax treatment means that 60% of gains are taxed at the lower long-term capital gains rate (typically 15-20%), while only 40% are taxed at short-term rates. This results in a significantly lower effective tax rate compared to ordinary income taxation. Tax-Advantaged Implementation: ECFS can be implemented in tax-deferred accounts (IRA, 401k rollover) to defer taxes on gains and distributions, or in taxable accounts with the tax-efficient structure described above. Important: Distributions are considered taxable income in the year received. We strongly recommend consulting with a qualified tax advisor to understand your specific tax situation and optimal account structure. Tax treatment depends on individual circumstances. Ekantik Capital Advisors does not provide tax or legal advice. Consult with your tax advisor and estate attorney."
+    },
+    {
+      "question": "Who is ECFS right for?",
+      "answer": "ECFS may be suitable for: (1) High-income professionals seeking supplemental monthly cash flow, (2) Business owners with liquidity looking for income-generating strategies, (3) Retirees wanting active income beyond traditional dividends/bonds, (4) Self-directed investors who value transparency and risk controls, (5) Individuals comfortable with active trading strategies and associated risks. ECFS is NOT suitable for: (1) Investors who cannot afford to lose capital, (2) Those requiring guaranteed income or principal protection, (3) Individuals unfamiliar with trading risks or volatility, (4) Anyone needing immediate liquidity or short-term access to funds, (5) Risk-averse investors seeking capital preservation above all else."
+    },
+    {
+      "question": "What markets and instruments does ECFS trade?",
+      "answer": "The strategy primarily trades liquid U.S. equity index futures and options, focusing on instruments with tight spreads and high daily volume. Specific instruments and allocation details are provided during onboarding and in your monthly reports. The strategy does not use excessive leverage and maintains strict position sizing relative to account equity."
+    },
+    {
+      "question": "How do I get started?",
+      "answer": "Getting started is simple: (1) Schedule a consultation using the form below or by contacting us directly, (2) Discuss your goals and confirm ECFS is suitable for your situation, (3) Complete onboarding documents and open your brokerage account, (4) Fund your account with a minimum of $20,000, (5) Strategy activates within 1 business day—buffer building begins immediately. Most clients complete the onboarding process within 5–7 business days."
+    },
+    {
+      "question": "What is your track record? Why should I trust this approach?",
+      "answer": "Full transparency: This is a rigorously engineered strategy transitioning from extensive development to live deployment. For 15+ years, we've been modeling market conditions across time horizons—running simulations, documenting failure modes, refining risk controls—so the system behaves predictably across market regimes. The $25 virtual demo lets you watch the system execute in real market conditions before you commit—you're validating that it works as designed, not betting on unproven speculation. Why ECFS Exists Now: We're ready to prove it works with real capital alongside a select group of clients. This isn't a long-established fund with decades of live track record—it's a rigorously tested, engineered system transitioning from R&D to live deployment. The performance-based fee structure aligns our interests completely. We succeed only when you succeed. Bottom Line: If you're looking for a 20-year audited track record, this isn't the right fit. But if you see the value in joining a rigorously engineered strategy at launch—with transparent modeling, downside protection, real-time monitoring, and performance-based fees—then ECFS could be exactly what you're looking for. We encourage you to try the $25 virtual demo for 30+ days before making any decision."
+    },
+    {
+      "question": "Are you licensed? Is this compliant?",
+      "answer": "Full transparency: We are in the pre-launch phase. CTA (Commodity Trading Advisor) registration and licensing will be completed BEFORE any capital deployment. Current Phase: Building founding member interest list • Running $25 virtual demos (risk-free, no capital required) • Finalizing CTA registration with NFA • No contracts or capital commitments accepted yet. Before Capital Deployment: (1) Complete CTA registration with the National Futures Association (NFA), (2) Establish legal entity and compliance infrastructure, (3) Arrange third-party custody with reputable futures brokers, (4) Have all client agreements reviewed by securities and commodities counsel. Your Protection: You will NOT be asked to commit capital or sign contracts until all licensing and compliance requirements are satisfied. Expressing interest today locks in founding member terms for when we launch under full compliance with CFTC and NFA regulations. All commodity trading advisory activities will be conducted in full compliance with applicable CFTC and NFA regulations. No advisory services will be provided until appropriate CTA registration and licensing are complete."
+    }
+  ],
+  
+  "disclaimers": {
+    "hero_disclaimer": "Educational content only. All performance figures are hypothetical based on backtested models. No investment services are being offered. Trading involves substantial risk of loss.",
+    "illustrative_disclaimer": "These figures represent hypothetical outcomes based on backtested strategy models. This is educational content only. No advisory services are being offered. Hypothetical performance results have inherent limitations.",
+    "calculator_disclaimer": "All figures shown are hypothetical projections for educational purposes only. Based on backtested models, not actual trading results. No investment advice or services are being provided.",
+    "house_edge_disclaimer": "The 'edge' concept is based on hypothetical modeling and historical backtesting for educational purposes. This does not constitute investment advice. No services are being offered.",
+    "main_risk_disclosure": "EDUCATIONAL CONTENT ONLY: This website provides educational information about hypothetical trading strategies. No investment advisory services, trading services, or capital management services are being offered. All performance figures are hypothetical, based on backtested models, and do not represent actual trading results. Hypothetical or simulated performance results have inherent limitations. No offer to sell securities or investment advice is being made. This website does not create any advisory relationship. Trading involves substantial risk of loss. Past performance (whether actual or hypothetical) is not indicative of future results. Market conditions and execution factors can result in outcomes significantly different from backtested projections. If services are offered in the future, they will only be provided after obtaining all required regulatory licenses and approvals."
+  },
+  
+  "meta_tags": {
+    "title": "ECFS Trading Strategy Framework - Educational Resource | Ekantik Capital",
+    "description": "Educational resource about systematic trading strategies targeting monthly cash flow. Learn about risk management, buffer protection models, and disciplined position sizing frameworks.",
+    "keywords": "trading education, cash flow strategies, risk management, systematic trading, trading frameworks, position sizing, buffer protection",
+    "og_image": "https://ekantik-ecfs.com/og-image.jpg",
+    "og_url": "https://ekantik-ecfs.com"
+  }
+}
