@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Disallow admin or private pages (none currently)
+# Disallow: /admin/
+
+# Sitemap location
+Sitemap: https://ekantik-ecfs.com/sitemap.xml
