@@ -200,22 +200,23 @@ function initCalculator() {
             investmentInput.value = amount;
         }
         
-        // Calculate values
-        const monthly = amount * CONFIG.strategy.targetMonthlyDistribution;
+        // Calculate values - QUARTERLY MODEL
+        const quarterly = amount * CONFIG.strategy.targetQuarterlyDistribution;
         const bufferPercent = CONFIG.strategy.bufferPercent || 0.06;
         const buffer = Math.max(CONFIG.strategy.bufferAmount, amount * bufferPercent);
-        const annual = monthly * 12;
-        const returnPercent = (annual / amount) * 100;
+        const annual = quarterly * 4; // 4 quarters per year
+        const quarterlyReturnPercent = CONFIG.strategy.targetQuarterlyDistribution * 100; // 6% per quarter
         
         // Update display with animation
-        animateValue(monthlyDistribution, monthly, '$');
+        animateValue(monthlyDistribution, quarterly, '$'); // ID still "monthly-distribution" but shows quarterly
         animateValue(bufferTarget, buffer, '$');
         animateValue(annualDistribution, annual, '$');
-        animateValue(annualReturn, returnPercent, '', '%');
+        animateValue(annualReturn, quarterlyReturnPercent, '', '%'); // Now shows 6% per quarter
         
         trackEvent('calculator_interaction', { 
             investment_amount: amount,
-            monthly_distribution: monthly 
+            quarterly_distribution: quarterly,
+            annual_distribution: annual
         });
     }
     
