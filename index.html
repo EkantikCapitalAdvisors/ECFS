@@ -181,7 +181,7 @@
                 
                 <!-- Subheadline -->
                 <p class="text-xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
-                    Rules-based trade alerts designed to target ~2% average monthly yield over time. Signals delivered in real time via Discord. Execute manually or automate with copy trading (execution/results vary).
+                    <strong class="text-white">Structural edge based on market inefficiencies</strong>, tested and refined over years. Rules-based trade alerts designed to target ~2% average monthly yield. Signals delivered in real time via Discord.
                 </p>
                 
                 <!-- BIG RETURNS CALLOUT - EARNINGS FIRST -->
@@ -321,9 +321,15 @@
                     <h2 class="font-playfair text-4xl font-bold text-white mb-4">
                         Two Ways to <span class="text-[#d4af37]">Execute Trades</span>
                     </h2>
-                    <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                    <p class="text-xl text-gray-400 max-w-3xl mx-auto mb-4">
                         Choose your execution method and pricing: $99/month (manual) or $149/month (automatic)
                     </p>
+                    <div class="bg-purple-900/20 border border-purple-400/40 rounded-lg px-6 py-3 inline-block">
+                        <p class="text-purple-200 text-sm">
+                            <i class="fas fa-chart-line mr-2"></i>
+                            <strong class="text-white">Same structural edge</strong> • Years of testing • Based on repeating market inefficiencies
+                        </p>
+                    </div>
                 </div>
 
                 <!-- Two Options Grid - Simplified -->
@@ -711,14 +717,14 @@
                 <div class="text-center mb-12">
                     <div class="inline-block bg-purple-500/10 border border-purple-400 rounded-full px-6 py-2 mb-6">
                         <span class="text-purple-400 font-semibold text-sm">
-                            <i class="fas fa-calculator mr-2"></i>BACKTESTED EDGE
+                            <i class="fas fa-calculator mr-2"></i>STRUCTURAL EDGE • YEARS OF TESTING
                         </span>
                     </div>
                     <h2 class="font-playfair text-4xl font-bold text-white mb-4">
-                        The Power of <span class="text-[#d4af37]">Frequency + Edge</span>
+                        The Power of <span class="text-[#d4af37]">Frequency + Market Structure Edge</span>
                     </h2>
                     <p class="text-xl text-gray-400 max-w-3xl mx-auto">
-                        How different risk levels generate consistent returns with 202 trading days
+                        <strong class="text-white">Structural edge based on repeating market inefficiencies</strong>, tested and refined over years of live trading and backtesting
                     </p>
                 </div>
 
@@ -727,7 +733,7 @@
                     <!-- Intro -->
                     <div class="text-center mb-8">
                         <h3 class="text-2xl font-bold text-white mb-3">Backtested Performance (Annual Comparison)</h3>
-                        <p class="text-gray-400">Based on historical data with real risk parameters</p>
+                        <p class="text-gray-400">Based on <strong class="text-white">structural market inefficiencies</strong> identified and tested over years of live trading</p>
                     </div>
 
                     <!-- Comparison Table -->
@@ -1584,17 +1590,42 @@
                     <h2 class="font-playfair text-4xl font-bold text-white mb-4">
                         Frequently Asked Questions
                     </h2>
-                    <p class="text-xl text-gray-400">
+                    <p class="text-xl text-gray-400 mb-8">
                         Everything you need to know about our trade alerts subscription
                     </p>
+                    
+                    <!-- Category Pills -->
+                    <div class="flex flex-wrap justify-center gap-3">
+                        <button onclick="filterFAQ('all')" class="faq-filter-btn active px-4 py-2 bg-[#d4af37] text-[#0a1628] rounded-full text-sm font-semibold hover:bg-[#f4c430] transition-colors">
+                            <i class="fas fa-th-large mr-1"></i>All Questions
+                        </button>
+                        <button onclick="filterFAQ('performance')" class="faq-filter-btn px-4 py-2 bg-[#0d1d35] border border-green-500/50 text-green-400 rounded-full text-sm font-semibold hover:bg-green-900/30 transition-colors">
+                            <i class="fas fa-chart-line mr-1"></i>Performance & Strategy
+                        </button>
+                        <button onclick="filterFAQ('execution')" class="faq-filter-btn px-4 py-2 bg-[#0d1d35] border border-blue-500/50 text-blue-400 rounded-full text-sm font-semibold hover:bg-blue-900/30 transition-colors">
+                            <i class="fas fa-play-circle mr-1"></i>Execution & Setup
+                        </button>
+                        <button onclick="filterFAQ('contracts')" class="faq-filter-btn px-4 py-2 bg-[#0d1d35] border border-purple-500/50 text-purple-400 rounded-full text-sm font-semibold hover:bg-purple-900/30 transition-colors">
+                            <i class="fas fa-coins mr-1"></i>Contracts & Capital
+                        </button>
+                        <button onclick="filterFAQ('risk')" class="faq-filter-btn px-4 py-2 bg-[#0d1d35] border border-orange-500/50 text-orange-400 rounded-full text-sm font-semibold hover:bg-orange-900/30 transition-colors">
+                            <i class="fas fa-shield-alt mr-1"></i>Risk & Account
+                        </button>
+                        <button onclick="filterFAQ('subscription')" class="faq-filter-btn px-4 py-2 bg-[#0d1d35] border border-cyan-500/50 text-cyan-400 rounded-full text-sm font-semibold hover:bg-cyan-900/30 transition-colors">
+                            <i class="fas fa-credit-card mr-1"></i>Subscription & Pricing
+                        </button>
+                    </div>
                 </div>
                 
                 <!-- FAQ Items -->
                 <div class="space-y-4">
-                    <!-- FAQ 1 -->
-                    <div class="faq-item bg-[#0a1628]/50 border border-[#d4af37]/30 rounded-xl overflow-hidden">
+                    <!-- FAQ 1: Performance & Strategy -->
+                    <div class="faq-item bg-[#0a1628]/50 border border-[#d4af37]/30 rounded-xl overflow-hidden" data-category="performance">
                         <button class="faq-question w-full text-left p-6 flex items-center justify-between hover:bg-[#0d1d35]/70 transition-colors">
-                            <span class="text-lg font-semibold text-white pr-4">Is the 2% average yield guaranteed?</span>
+                            <span class="text-lg font-semibold text-white pr-4">
+                                <span class="inline-block bg-green-500/20 text-green-400 text-xs px-2 py-1 rounded mr-2">PERFORMANCE</span>
+                                Is the 2% average yield guaranteed?
+                            </span>
                             <i class="fas fa-chevron-down text-[#d4af37] text-xl transition-transform"></i>
                         </button>
                         <div class="faq-answer px-6 pb-6">
@@ -1646,10 +1677,10 @@
                                         <!-- Principle 4 -->
                                         <div class="bg-[#0a1628]/50 rounded-lg p-4 border border-blue-500/20">
                                             <p class="text-blue-400 font-semibold mb-2">
-                                                <i class="fas fa-chart-line mr-2"></i>4. Positive Expectancy
+                                                <i class="fas fa-chart-line mr-2"></i>4. Structural Market Edge
                                             </p>
                                             <p class="text-gray-300 text-sm">
-                                                Structural edge that tilts odds in your favor. Only trade when you can prove mathematical advantage.
+                                                <strong class="text-white">Repeating market inefficiencies</strong> based on market structure. Only trade when you can prove mathematical advantage through years of testing.
                                             </p>
                                         </div>
                                     </div>
@@ -1666,13 +1697,13 @@
                                 <!-- Years of Testing -->
                                 <div class="bg-[#d4af37]/10 border border-[#d4af37]/30 rounded-lg p-5">
                                     <p class="text-[#d4af37] font-semibold mb-3">
-                                        <i class="fas fa-flask mr-2"></i>Built on Years of Testing & Refinement
+                                        <i class="fas fa-flask mr-2"></i>Built on Years of Testing & Market Structure Research
                                     </p>
                                     <p class="text-gray-300 text-sm mb-3">
-                                        ECFS has been developed through <strong class="text-white">years of research, backtesting, and live trading validation</strong>. Every rule, every entry condition, every exit criteria has been tested extensively to ensure the strategy adheres to these first principles.
+                                        ECFS is built on <strong class="text-white">structural market inefficiencies</strong> that persist due to the way markets are organized. Through <strong class="text-white">years of research, backtesting, and live trading validation</strong>, we've identified repeating patterns in market structure that create consistent edge.
                                     </p>
                                     <p class="text-gray-300 text-sm">
-                                        The 2% average yield target is not arbitrary—it's the <strong class="text-white">mathematical result</strong> of applying these principles consistently over time.
+                                        Every rule, every entry condition, every exit criteria has been tested extensively. The 2% average yield target is not arbitrary—it's the <strong class="text-white">mathematical result</strong> of exploiting these structural inefficiencies consistently over time.
                                     </p>
                                 </div>
                                 
@@ -1731,10 +1762,13 @@
                         </div>
                     </div>
                     
-                    <!-- FAQ 2 -->
-                    <div class="faq-item bg-[#0a1628]/50 border border-[#d4af37]/30 rounded-xl overflow-hidden">
+                    <!-- FAQ 2: Execution & Setup -->
+                    <div class="faq-item bg-[#0a1628]/50 border border-[#d4af37]/30 rounded-xl overflow-hidden" data-category="execution">
                         <button class="faq-question w-full text-left p-6 flex items-center justify-between hover:bg-[#0d1d35]/70 transition-colors">
-                            <span class="text-lg font-semibold text-white pr-4">How do I execute the trades?</span>
+                            <span class="text-lg font-semibold text-white pr-4">
+                                <span class="inline-block bg-blue-500/20 text-blue-400 text-xs px-2 py-1 rounded mr-2">EXECUTION</span>
+                                How do I execute the trades?
+                            </span>
                             <i class="fas fa-chevron-down text-[#d4af37] text-xl transition-transform"></i>
                         </button>
                         <div class="faq-answer px-6 pb-6">
@@ -1783,10 +1817,13 @@
                         </div>
                     </div>
                     
-                    <!-- FAQ 3 -->
-                    <div class="faq-item bg-[#0a1628]/50 border border-[#d4af37]/30 rounded-xl overflow-hidden">
+                    <!-- FAQ 3: Risk & Account -->
+                    <div class="faq-item bg-[#0a1628]/50 border border-[#d4af37]/30 rounded-xl overflow-hidden" data-category="risk">
                         <button class="faq-question w-full text-left p-6 flex items-center justify-between hover:bg-[#0d1d35]/70 transition-colors">
-                            <span class="text-lg font-semibold text-white pr-4">What are the risk controls?</span>
+                            <span class="text-lg font-semibold text-white pr-4">
+                                <span class="inline-block bg-orange-500/20 text-orange-400 text-xs px-2 py-1 rounded mr-2">RISK</span>
+                                What are the risk controls?
+                            </span>
                             <i class="fas fa-chevron-down text-[#d4af37] text-xl transition-transform"></i>
                         </button>
                         <div class="faq-answer px-6 pb-6">
@@ -1817,10 +1854,13 @@
                         </div>
                     </div>
                     
-                    <!-- FAQ 4 -->
-                    <div class="faq-item bg-[#0a1628]/50 border border-[#d4af37]/30 rounded-xl overflow-hidden">
+                    <!-- FAQ 4: Subscription & Pricing -->
+                    <div class="faq-item bg-[#0a1628]/50 border border-[#d4af37]/30 rounded-xl overflow-hidden" data-category="subscription">
                         <button class="faq-question w-full text-left p-6 flex items-center justify-between hover:bg-[#0d1d35]/70 transition-colors">
-                            <span class="text-lg font-semibold text-white pr-4">Can I cancel my subscription?</span>
+                            <span class="text-lg font-semibold text-white pr-4">
+                                <span class="inline-block bg-cyan-500/20 text-cyan-400 text-xs px-2 py-1 rounded mr-2">SUBSCRIPTION</span>
+                                Can I cancel my subscription?
+                            </span>
                             <i class="fas fa-chevron-down text-[#d4af37] text-xl transition-transform"></i>
                         </button>
                         <div class="faq-answer px-6 pb-6">
@@ -1839,10 +1879,13 @@
                         </div>
                     </div>
                     
-                    <!-- FAQ 5 -->
-                    <div class="faq-item bg-[#0a1628]/50 border border-[#d4af37]/30 rounded-xl overflow-hidden">
+                    <!-- FAQ 5: Risk & Account -->
+                    <div class="faq-item bg-[#0a1628]/50 border border-[#d4af37]/30 rounded-xl overflow-hidden" data-category="risk">
                         <button class="faq-question w-full text-left p-6 flex items-center justify-between hover:bg-[#0d1d35]/70 transition-colors">
-                            <span class="text-lg font-semibold text-white pr-4">What's the minimum account size needed?</span>
+                            <span class="text-lg font-semibold text-white pr-4">
+                                <span class="inline-block bg-orange-500/20 text-orange-400 text-xs px-2 py-1 rounded mr-2">ACCOUNT</span>
+                                What's the minimum account size needed?
+                            </span>
                             <i class="fas fa-chevron-down text-[#d4af37] text-xl transition-transform"></i>
                         </button>
                         <div class="faq-answer px-6 pb-6">
@@ -1866,10 +1909,13 @@
                         </div>
                     </div>
                     
-                    <!-- FAQ 6 -->
-                    <div class="faq-item bg-[#0a1628]/50 border border-[#d4af37]/30 rounded-xl overflow-hidden">
+                    <!-- FAQ 6: Performance & Strategy -->
+                    <div class="faq-item bg-[#0a1628]/50 border border-[#d4af37]/30 rounded-xl overflow-hidden" data-category="performance">
                         <button class="faq-question w-full text-left p-6 flex items-center justify-between hover:bg-[#0d1d35]/70 transition-colors">
-                            <span class="text-lg font-semibold text-white pr-4">Will my results match your advertised performance?</span>
+                            <span class="text-lg font-semibold text-white pr-4">
+                                <span class="inline-block bg-green-500/20 text-green-400 text-xs px-2 py-1 rounded mr-2">PERFORMANCE</span>
+                                Will my results match your advertised performance?
+                            </span>
                             <i class="fas fa-chevron-down text-[#d4af37] text-xl transition-transform"></i>
                         </button>
                         <div class="faq-answer px-6 pb-6">
@@ -1910,10 +1956,13 @@
                         </div>
                     </div>
                     
-                    <!-- FAQ 7 -->
-                    <div class="faq-item bg-[#0a1628]/50 border border-[#d4af37]/30 rounded-xl overflow-hidden">
+                    <!-- FAQ 7: Performance & Strategy -->
+                    <div class="faq-item bg-[#0a1628]/50 border border-[#d4af37]/30 rounded-xl overflow-hidden" data-category="performance">
                         <button class="faq-question w-full text-left p-6 flex items-center justify-between hover:bg-[#0d1d35]/70 transition-colors">
-                            <span class="text-lg font-semibold text-white pr-4">How often are trades executed?</span>
+                            <span class="text-lg font-semibold text-white pr-4">
+                                <span class="inline-block bg-green-500/20 text-green-400 text-xs px-2 py-1 rounded mr-2">STRATEGY</span>
+                                How often are trades executed?
+                            </span>
                             <i class="fas fa-chevron-down text-[#d4af37] text-xl transition-transform"></i>
                         </button>
                         <div class="faq-answer px-6 pb-6">
@@ -1935,10 +1984,13 @@
                         </div>
                     </div>
                     
-                    <!-- FAQ 8: MES vs ES Contracts -->
-                    <div class="faq-item bg-[#0a1628]/50 border border-[#d4af37]/30 rounded-xl overflow-hidden">
+                    <!-- FAQ 8: Contracts & Capital -->
+                    <div class="faq-item bg-[#0a1628]/50 border border-[#d4af37]/30 rounded-xl overflow-hidden" data-category="contracts">
                         <button class="faq-question w-full text-left p-6 flex items-center justify-between hover:bg-[#0d1d35]/70 transition-colors">
-                            <span class="text-lg font-semibold text-white pr-4">What's the difference between MES and ES contracts?</span>
+                            <span class="text-lg font-semibold text-white pr-4">
+                                <span class="inline-block bg-purple-500/20 text-purple-400 text-xs px-2 py-1 rounded mr-2">CONTRACTS</span>
+                                What's the difference between MES and ES contracts?
+                            </span>
                             <i class="fas fa-chevron-down text-[#d4af37] text-xl transition-transform"></i>
                         </button>
                         <div class="faq-answer px-6 pb-6">
@@ -2029,10 +2081,13 @@
                         </div>
                     </div>
                     
-                    <!-- FAQ 9: Capital Requirements -->
-                    <div class="faq-item bg-[#0a1628]/50 border border-[#d4af37]/30 rounded-xl overflow-hidden">
+                    <!-- FAQ 9: Contracts & Capital -->
+                    <div class="faq-item bg-[#0a1628]/50 border border-[#d4af37]/30 rounded-xl overflow-hidden" data-category="contracts">
                         <button class="faq-question w-full text-left p-6 flex items-center justify-between hover:bg-[#0d1d35]/70 transition-colors">
-                            <span class="text-lg font-semibold text-white pr-4">Why does Discord Selective require more capital than ECFS Active?</span>
+                            <span class="text-lg font-semibold text-white pr-4">
+                                <span class="inline-block bg-purple-500/20 text-purple-400 text-xs px-2 py-1 rounded mr-2">CAPITAL</span>
+                                Why does Discord Selective require more capital than ECFS Active?
+                            </span>
                             <i class="fas fa-chevron-down text-[#d4af37] text-xl transition-transform"></i>
                         </button>
                         <div class="faq-answer px-6 pb-6">
@@ -2114,10 +2169,13 @@
                         </div>
                     </div>
                     
-                    <!-- FAQ 10: Choosing Between Manual and Automatic -->
-                    <div class="faq-item bg-[#0a1628]/50 border border-[#d4af37]/30 rounded-xl overflow-hidden">
+                    <!-- FAQ 10: Execution & Setup -->
+                    <div class="faq-item bg-[#0a1628]/50 border border-[#d4af37]/30 rounded-xl overflow-hidden" data-category="execution">
                         <button class="faq-question w-full text-left p-6 flex items-center justify-between hover:bg-[#0d1d35]/70 transition-colors">
-                            <span class="text-lg font-semibold text-white pr-4">How do I choose between Manual (Discord) and Automatic (ECFS) execution?</span>
+                            <span class="text-lg font-semibold text-white pr-4">
+                                <span class="inline-block bg-blue-500/20 text-blue-400 text-xs px-2 py-1 rounded mr-2">SETUP</span>
+                                How do I choose between Manual (Discord) and Automatic (ECFS) execution?
+                            </span>
                             <i class="fas fa-chevron-down text-[#d4af37] text-xl transition-transform"></i>
                         </button>
                         <div class="faq-answer px-6 pb-6">
@@ -2218,15 +2276,29 @@
                         </div>
                     </div>
                     
-                    <!-- FAQ 11: Why Not Just Trade Discord Selective? -->
-                    <div class="faq-item bg-[#0a1628]/50 border border-[#d4af37]/30 rounded-xl overflow-hidden">
+                    <!-- FAQ 11: Performance & Strategy -->
+                    <div class="faq-item bg-[#0a1628]/50 border border-[#d4af37]/30 rounded-xl overflow-hidden" data-category="performance">
                         <button class="faq-question w-full text-left p-6 flex items-center justify-between hover:bg-[#0d1d35]/70 transition-colors">
-                            <span class="text-lg font-semibold text-white pr-4">Discord Selective makes $47K/year vs ECFS Active's $12K/year. Why not just trade Discord Selective?</span>
+                            <span class="text-lg font-semibold text-white pr-4">
+                                <span class="inline-block bg-green-500/20 text-green-400 text-xs px-2 py-1 rounded mr-2">STRATEGY</span>
+                                Discord Selective makes $47K/year vs ECFS Active's $12K/year. Why not just trade Discord Selective?
+                            </span>
                             <i class="fas fa-chevron-down text-[#d4af37] text-xl transition-transform"></i>
                         </button>
                         <div class="faq-answer px-6 pb-6">
                             <div class="text-gray-300 leading-relaxed space-y-4">
                                 <p><strong class="text-white">Great question! This is a common confusion when comparing the two approaches.</strong> The answer comes down to <strong class="text-[#d4af37]">risk-adjusted returns</strong> and investor objectives.</p>
+                                
+                                <!-- Important Note: Same Structural Edge -->
+                                <div class="bg-purple-900/20 border-2 border-purple-400/40 rounded-lg p-5 my-4">
+                                    <p class="text-purple-200 font-semibold mb-2 flex items-center">
+                                        <i class="fas fa-chart-line text-purple-400 mr-2"></i>
+                                        Important: Both Use the SAME Structural Edge
+                                    </p>
+                                    <p class="text-gray-300 text-sm">
+                                        ECFS Active and Discord Selective are both built on the <strong class="text-white">same market structure edge</strong>—repeating inefficiencies tested and refined over years. The difference is <strong class="text-white">NOT in the edge quality</strong>, but in <strong class="text-white">execution frequency</strong>, <strong class="text-white">contract size</strong>, and <strong class="text-white">risk management approach</strong>.
+                                    </p>
+                                </div>
                                 
                                 <!-- Key Point 1: Risk Comparison -->
                                 <div class="bg-orange-900/20 border-2 border-orange-500/40 rounded-xl p-6 my-6">
@@ -2518,6 +2590,34 @@
                 }
             });
         });
+        
+        // FAQ Category Filter
+        function filterFAQ(category) {
+            const faqItems = document.querySelectorAll('.faq-item');
+            const filterButtons = document.querySelectorAll('.faq-filter-btn');
+            
+            // Update active button
+            filterButtons.forEach(btn => {
+                btn.classList.remove('active', 'bg-[#d4af37]', 'text-[#0a1628]');
+                btn.classList.add('bg-[#0d1d35]');
+            });
+            
+            event.target.classList.add('active', 'bg-[#d4af37]', 'text-[#0a1628]');
+            event.target.classList.remove('bg-[#0d1d35]');
+            
+            // Filter FAQ items
+            faqItems.forEach(item => {
+                if (category === 'all') {
+                    item.style.display = 'block';
+                } else {
+                    if (item.dataset.category === category) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                }
+            });
+        }
         
         // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
