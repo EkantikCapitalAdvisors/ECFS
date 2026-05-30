@@ -1,0 +1,77 @@
+{
+  "meta": {
+    "lastUpdated": "2026-05-30",
+    "operatingTier": "T0",
+    "operatingTierLabel": "Normal Operations",
+    "dataType": "live",
+    "docRef": "FP-V2-2026-05",
+    "deployedCapital": 5000,
+    "blendedCapital": 25000,
+    "note": "Generated from Discord trade alerts (imo-futures-trades) via admin.html. Per-trade size honored (default 1 ES @ $50/pt; half = $25/pt; Nes/Nmes explicit). Engine yield is on deployed capital ($5K); blended is the same realized dollars over total risk capital ($25K). No annualized figures are presented."
+  },
+  "kpis": {
+    "blendedMonthlyYieldAvg": 8.06,
+    "engineYieldAvg": 40.31,
+    "rolling100Expectancy": 71,
+    "coverageRatio": "5 : 1",
+    "reserveBalance": 7563,
+    "winRate": 65,
+    "tradesRolling100": 100,
+    "phase": "Distribution"
+  },
+  "thresholds": {
+    "blendedTarget": 2,
+    "gateAExpectancy": 0,
+    "redeployExpectancy": 50
+  },
+  "months": [
+    {
+      "label": "Feb 2026",
+      "phase": "Accumulation",
+      "engineYield": 39.5,
+      "blendedYield": 7.9,
+      "expectancy": 104,
+      "winRate": 67,
+      "trades": 19,
+      "reserve": 0,
+      "distribution": 0,
+      "tier": "T0"
+    },
+    {
+      "label": "Mar 2026",
+      "phase": "Accumulation",
+      "engineYield": 58,
+      "blendedYield": 11.6,
+      "expectancy": 193,
+      "winRate": 80,
+      "trades": 15,
+      "reserve": 0,
+      "distribution": 0,
+      "tier": "T0"
+    },
+    {
+      "label": "Apr 2026",
+      "phase": "Doubling",
+      "engineYield": 3.6,
+      "blendedYield": 0.72,
+      "expectancy": 8,
+      "winRate": 45,
+      "trades": 22,
+      "reserve": 5055,
+      "distribution": 0,
+      "tier": "T0"
+    },
+    {
+      "label": "May 2026",
+      "phase": "Distribution",
+      "engineYield": 60.15,
+      "blendedYield": 12.03,
+      "expectancy": 64,
+      "winRate": 68,
+      "trades": 47,
+      "reserve": 7563,
+      "distribution": 500,
+      "tier": "T0"
+    }
+  ]
+}
