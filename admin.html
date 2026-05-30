@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECFS — Trade Parser / Dashboard Admin | Ekantik Capital Advisors</title>
+    <meta name="robots" content="noindex, nofollow">
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+    <script>
+        tailwind.config = {
+            theme: { extend: {
+                fontFamily: { 'heading': ['"DM Serif Display"','Georgia','serif'], 'body': ['Inter','system-ui','sans-serif'] },
+                colors: { 'navy': { 900:'#060c18',800:'#0a1628',700:'#0d1d35',600:'#12264a' }, 'gold': { DEFAULT:'#d4af37',light:'#e8cc6e',dark:'#b8962e' } }
+            } }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        .font-heading { font-family:'DM Serif Display',Georgia,serif; }
+        body { font-family:'Inter',system-ui,sans-serif; }
+        .gradient-gold { background:linear-gradient(135deg,#d4af37,#e8cc6e 50%,#d4af37); }
+        .card { background:rgba(13,29,53,.4); border:1px solid rgba(212,175,55,.12); }
+        input,select,textarea { background:#0a1628; border:1px solid rgba(148,163,184,.2); color:#e2e8f0; border-radius:.5rem; }
+        input:focus,select:focus,textarea:focus { outline:none; border-color:rgba(212,175,55,.5); }
+        table input { padding:2px 6px; width:5rem; }
+    </style>
+</head>
+<body class="bg-navy-900 text-gray-100 antialiased">
+
+<header class="border-b border-slate-700/40 bg-navy-900/95">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+            <div class="w-9 h-9 gradient-gold rounded-lg flex items-center justify-center"><span class="text-navy-900 font-bold text-sm">ECA</span></div>
+            <span class="text-gold font-heading text-lg">Trade Parser · Dashboard Admin</span>
+        </div>
+        <div class="flex items-center gap-4 text-sm">
+            <a href="dashboard.html" target="_blank" class="text-slate-400 hover:text-white"><i class="fas fa-chart-line mr-1.5"></i>Dashboard</a>
+            <a href="index.html" class="text-slate-400 hover:text-white"><i class="fas fa-arrow-left mr-1.5"></i>ECFS</a>
+        </div>
+    </div>
+</header>
+
+<main class="max-w-7xl mx-auto px-4 sm:px-6 py-8">
+
+    <div class="card rounded-xl p-5 mb-6 border-amber-500/20 bg-amber-900/10">
+        <p class="text-amber-200/80 text-sm leading-relaxed">
+            <i class="fas fa-circle-info mr-1.5"></i><strong class="text-white/80">Internal tool.</strong> Paste a Discord chat export (the <code class="text-gold">.html</code> file) below and click <strong>Parse</strong>. Review the trades, tune the model settings, then copy or download <code class="text-gold">performance.json</code> and commit it to the repo — the public <a href="dashboard.html" class="text-gold underline">dashboard</a> reads that file on load. Everything runs in your browser; nothing is uploaded.
+        </p>
+    </div>
+
+    <!-- STEP 1: paste -->
+    <div class="card rounded-xl p-6 mb-6">
+        <h2 class="font-heading text-xl text-white mb-1">1 · Paste Discord export</h2>
+        <p class="text-slate-500 text-sm mb-4">Open the exported <code>.html</code>, select all (Ctrl/Cmd-A), copy, and paste here. Plain message text works too if it keeps the per-message timestamps.</p>
+        <textarea id="input" rows="8" class="w-full text-xs font-mono p-3" placeholder="Paste the Discord chat export HTML here…"></textarea>
+        <div class="flex flex-wrap items-center gap-3 mt-3">
+            <button id="parseBtn" class="px-5 py-2.5 gradient-gold text-navy-900 font-bold rounded-lg text-sm"><i class="fas fa-gears mr-2"></i>Parse</button>
+            <button id="sampleBtn" class="px-4 py-2.5 border border-slate-600 text-slate-300 rounded-lg text-sm hover:border-slate-400">Load tiny sample</button>
+            <span id="parseStatus" class="text-sm text-slate-400"></span>
+        </div>
+    </div>
+
+    <!-- STEP 2: settings -->
+    <div class="card rounded-xl p-6 mb-6">
+        <h2 class="font-heading text-xl text-white mb-4">2 · Model settings</h2>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
+            <label class="block">Working unit ($)<input id="cfgUnit" type="number" value="5000" class="w-full mt-1 p-2"></label>
+            <label class="block">Point value ($/pt)<input id="cfgPV" type="number" value="5" step="0.01" class="w-full mt-1 p-2"><span class="text-slate-600 text-xs">MES = $5 · ES = $50</span></label>
+            <label class="block">Coverage divisor<input id="cfgDiv" type="number" value="6" class="w-full mt-1 p-2"></label>
+            <label class="block">Doubling target ($)<input id="cfgDouble" type="number" value="10000" class="w-full mt-1 p-2"></label>
+            <label class="block">Monthly distribution / unit ($)<input id="cfgDist" type="number" value="500" class="w-full mt-1 p-2"></label>
+            <label class="block">Starting reserve ($)<input id="cfgReserve" type="number" value="0" class="w-full mt-1 p-2"></label>
+            <label class="block">Max daily drawdown (%)<input id="cfgDD" type="number" value="" step="0.1" placeholder="manual" class="w-full mt-1 p-2"></label>
+            <label class="block">Current operating tier
+                <select id="cfgTier" class="w-full mt-1 p-2">
+                    <option value="T0" selected>T0 — Normal Operations</option>
+                    <option value="T1">T1 — Logged Breach</option>
+                    <option value="T2">T2 — Conditions Reduced</option>
+                    <option value="T3">T3 — Full Cessation</option>
+                </select>
+            </label>
+            <label class="block">Data type
+                <select id="cfgDataType" class="w-full mt-1 p-2">
+                    <option value="live" selected>Live (real data)</option>
+                    <option value="illustrative">Illustrative / hypothetical</option>
+                </select>
+            </label>
+            <label class="block">Last updated<input id="cfgUpdated" type="date" class="w-full mt-1 p-2"></label>
+        </div>
+        <p class="text-slate-500 text-xs mt-3"><i class="fas fa-triangle-exclamation text-amber-400/70 mr-1"></i>Assumptions: every result line counts as one trade outcome (re-entries on the same label count separately); the first number on a result line is the realized points; per-trade size tags (<code>2es</code>, <code>5mes</code>) are captured but P&L uses the single point value above unless you edit a row. Verify outliers in step 3.</p>
+    </div>
+
+    <!-- STEP 3: trades -->
+    <div id="tradesWrap" class="card rounded-xl p-6 mb-6 hidden">
+        <div class="flex items-center justify-between mb-4">
+            <h2 class="font-heading text-xl text-white">3 · Parsed trades <span id="tradeCount" class="text-slate-500 text-sm font-body"></span></h2>
+            <button id="toggleTrades" class="text-gold text-sm hover:text-gold-light">Show/hide</button>
+        </div>
+        <div id="unparsed" class="text-amber-300/70 text-xs mb-3"></div>
+        <div id="tradeTableWrap" class="overflow-auto max-h-96">
+            <table class="w-full text-xs">
+                <thead class="text-slate-400 sticky top-0 bg-navy-800">
+                    <tr class="border-b border-slate-700/40">
+                        <th class="text-left py-2 pr-3">Incl.</th>
+                        <th class="text-left py-2 pr-3">Month</th>
+                        <th class="text-left py-2 pr-3">Label</th>
+                        <th class="text-left py-2 pr-3">Side</th>
+                        <th class="text-right py-2 pr-3">Entry</th>
+                        <th class="text-right py-2 pr-3">Points</th>
+                        <th class="text-center py-2 pr-3">Attr.</th>
+                        <th class="text-left py-2">Raw</th>
+                    </tr>
+                </thead>
+                <tbody id="tradeRows" class="divide-y divide-slate-700/20"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- STEP 4: monthly preview -->
+    <div id="monthlyWrap" class="card rounded-xl p-6 mb-6 hidden">
+        <h2 class="font-heading text-xl text-white mb-4">4 · Monthly KPIs (preview)</h2>
+        <div class="overflow-auto">
+            <table class="w-full text-sm min-w-[700px]">
+                <thead class="text-slate-400"><tr class="border-b border-slate-700/40">
+                    <th class="text-left py-2 pr-3">Month</th><th class="text-left py-2 px-3">Phase</th>
+                    <th class="text-right py-2 px-3">Engine %</th><th class="text-right py-2 px-3">Blended %</th>
+                    <th class="text-right py-2 px-3">Win %</th><th class="text-right py-2 px-3">Trades</th>
+                    <th class="text-right py-2 px-3">Exp $</th><th class="text-right py-2 px-3">Reserve</th>
+                    <th class="text-right py-2 px-3">Distrib.</th><th class="text-center py-2 pl-3">Tier</th>
+                </tr></thead>
+                <tbody id="monthRows" class="divide-y divide-slate-700/20"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- STEP 5: output -->
+    <div id="outputWrap" class="card rounded-xl p-6 mb-6 hidden">
+        <div class="flex items-center justify-between mb-3">
+            <h2 class="font-heading text-xl text-white">5 · performance.json</h2>
+            <div class="flex gap-2">
+                <button id="copyBtn" class="px-4 py-2 border border-slate-600 text-slate-300 rounded-lg text-sm hover:border-slate-400"><i class="fas fa-copy mr-1.5"></i>Copy</button>
+                <button id="downloadBtn" class="px-4 py-2 gradient-gold text-navy-900 font-bold rounded-lg text-sm"><i class="fas fa-download mr-1.5"></i>Download</button>
+            </div>
+        </div>
+        <textarea id="output" rows="16" class="w-full text-xs font-mono p-3" readonly></textarea>
+        <p class="text-slate-500 text-xs mt-2">Commit this as <code class="text-gold">performance.json</code> at the repo root. The dashboard fetches it with <code>cache:'no-store'</code>, so a refresh shows the new data.</p>
+    </div>
+
+</main>
+
+<script>
+const TIER_LABELS = { T0:'Normal Operations', T1:'Logged Breach', T2:'Conditions Reduced', T3:'Full Cessation' };
+let TRADES = [];   // {date, monthKey, monthLabel, label, side, entry, pts, h, include, raw}
+
+// ---------- parsing ----------
+const labelRe = /^([FfSs])\s*0*(\d+)\s*[:.]?\s*(.*)$/;
+
+function classify(rest){
+    const r = (rest||'').trim();
+    if(/no\s*trade/i.test(r)) return {type:'notrade'};
+    if(/^wash/i.test(r))      return {type:'wash'};
+    if(/^exit$/i.test(r))     return {type:'exit'};
+    if(/^[+-]?\s*\.?\d/.test(r)){
+        const numMatch = r.match(/^[+-]?\s*\d*\.?\d+/);
+        const pts = parseFloat(numMatch[0].replace(/\s+/g,''));
+        const h = (r.match(/\bH\s*([123])\b/i)||[])[1];
+        return {type:'result', pts, h: h?('H'+h):null};
+    }
+    if(/^tp/i.test(r))                       return {type:'target'};
+    if(/^(sl|stop|stp)\b|^sl\d/i.test(r))    return {type:'stop'};
+    if(/^(s|b)\b|^sell|^buy/i.test(r)){
+        const side = /^b|^buy/i.test(r) ? 'B' : 'S';
+        const price = (r.match(/-?\d+\.?\d*/)||[])[0];
+        return {type:'entry', side, price};
+    }
+    return {type:'other', raw:r};
+}
+
+function extractMessages(text){
+    const msgs = [];
+    if(/<li/i.test(text)){
+        const doc = new DOMParser().parseFromString(text, 'text/html');
+        doc.querySelectorAll('li').forEach(li => {
+            const timeEl = li.querySelector('.time');
+            const ps = li.querySelectorAll('.titleInfo > p');
+            let bodyEl = null;
+            ps.forEach(p => { if(!p.classList.contains('timeInfo')) bodyEl = p; });
+            if(!bodyEl) return;
+            const time = timeEl ? timeEl.textContent.trim() : null;
+            const date = time ? new Date(time.replace(/\s*\(.*\)$/,'')) : null;
+            bodyEl.textContent.split('\n').forEach(line => {
+                line = line.trim();
+                if(line) msgs.push({date, line});
+            });
+        });
+    } else {
+        // plain-text fallback: "<timestamp> ... <message>" — best effort, no robust timestamps
+        text.split('\n').forEach(line => { line=line.trim(); if(line) msgs.push({date:null, line}); });
+    }
+    return msgs;
+}
+
+function parse(text){
+    const msgs = extractMessages(text);
+    const trades = [];
+    const unparsed = [];
+    const lastEntry = {};   // label -> {side, price}
+    for(const m of msgs){
+        const mm = m.line.match(labelRe);
+        if(!mm){
+            if(/^exit$/i.test(m.line)) continue;          // global exit marker
+            unparsed.push(m.line);
+            continue;
+        }
+        const label = mm[1].toUpperCase() + mm[2];
+        const c = classify(mm[3]);
+        if(c.type === 'entry'){
+            lastEntry[label] = { side:c.side, price:c.price };
+        } else if(c.type === 'result' || c.type === 'wash'){
+            const e = lastEntry[label] || {};
+            const d = m.date && !isNaN(m.date) ? m.date : null;
+            trades.push({
+                date: d,
+                monthKey: d ? `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}` : 'unknown',
+                monthLabel: d ? d.toLocaleString('en-US',{month:'short',year:'numeric'}) : 'Unknown',
+                label, side: e.side||'', entry: e.price||'',
+                pts: c.type==='wash' ? 0 : c.pts,
+                h: c.h || (c.type==='wash'?null:null),
+                include: true,
+                raw: m.line
+            });
+        } else if(c.type === 'other'){
+            unparsed.push(m.line);
+        }
+        // stop/target/exit lines: context only, ignored for P&L
+    }
+    return { trades, unparsed };
+}
+
+// ---------- aggregation ----------
+function compute(){
+    const cfg = {
+        unit: +document.getElementById('cfgUnit').value || 5000,
+        pv:   +document.getElementById('cfgPV').value || 5,
+        div:  +document.getElementById('cfgDiv').value || 6,
+        dbl:  +document.getElementById('cfgDouble').value || 10000,
+        dist: +document.getElementById('cfgDist').value || 0,
+        res0: +document.getElementById('cfgReserve').value || 0,
+        dd:   document.getElementById('cfgDD').value,
+        tier: document.getElementById('cfgTier').value,
+        dtype:document.getElementById('cfgDataType').value,
+        updated: document.getElementById('cfgUpdated').value
+    };
+    const used = TRADES.filter(t => t.include && t.monthKey !== 'unknown');
+    const byMonth = {};
+    used.forEach(t => { (byMonth[t.monthKey] = byMonth[t.monthKey] || []).push(t); });
+    const keys = Object.keys(byMonth).sort();
+
+    let unit = cfg.unit, reserve = cfg.res0, doubled = false;
+    const months = [];
+    keys.forEach((k, idx) => {
+        const arr = byMonth[k];
+        const wins = arr.filter(t=>t.pts>0).length;
+        const losses = arr.filter(t=>t.pts<0).length;
+        const sumPts = arr.reduce((s,t)=>s+t.pts,0);
+        const usd = sumPts * cfg.pv;
+        const engine = usd / cfg.unit * 100;
+        const blended = engine / cfg.div;
+        let phase, distribution = 0;
+        if(!doubled){
+            unit += usd;
+            if(unit >= cfg.dbl){ reserve += (unit - cfg.unit); unit = cfg.unit; doubled = true; phase='Doubling'; }
+            else phase = 'Accumulation';
+        } else {
+            phase = 'Distribution';
+            distribution = cfg.dist;
+            reserve += (usd - distribution);
+        }
+        months.push({
+            label: arr[0].monthLabel, phase,
+            engineYield: +engine.toFixed(2), blendedYield: +blended.toFixed(2),
+            expectancy: Math.round(usd / arr.length),
+            winRate: (wins+losses) ? Math.round(wins/(wins+losses)*100) : 0,
+            trades: arr.length,
+            reserve: Math.round(reserve),
+            distribution,
+            tier: idx === keys.length-1 ? cfg.tier : 'T0',
+            _h2: arr.filter(t=>t.h==='H2').length,
+            _h3: arr.filter(t=>t.h==='H3').length
+        });
+    });
+
+    // overall KPIs (rolling last 100)
+    const last100 = used.slice(-100);
+    const sumPts100 = last100.reduce((s,t)=>s+t.pts,0);
+    const wins = used.filter(t=>t.pts>0).length, losses = used.filter(t=>t.pts<0).length;
+    const avgB = months.length ? months.reduce((s,m)=>s+m.blendedYield,0)/months.length : 0;
+    const avgE = months.length ? months.reduce((s,m)=>s+m.engineYield,0)/months.length : 0;
+
+    const kpis = {
+        blendedMonthlyYieldAvg: +avgB.toFixed(2),
+        engineYieldAvg: +avgE.toFixed(2),
+        rolling100Expectancy: last100.length ? Math.round(sumPts100*cfg.pv/last100.length) : 0,
+        coverageRatio: `${cfg.div} : 1`,
+        reserveBalance: Math.round(reserve),
+        winRate: (wins+losses) ? Math.round(wins/(wins+losses)*100) : 0,
+        tradesRolling100: Math.min(100, used.length),
+        maxDailyDrawdown: cfg.dd === '' ? null : +cfg.dd,
+        phase: months.length ? months[months.length-1].phase : '—'
+    };
+    if(kpis.maxDailyDrawdown === null) delete kpis.maxDailyDrawdown;
+
+    const out = {
+        meta: {
+            lastUpdated: cfg.updated || new Date().toISOString().slice(0,10),
+            operatingTier: cfg.tier,
+            operatingTierLabel: TIER_LABELS[cfg.tier],
+            dataType: cfg.dtype,
+            docRef: 'FP-V2-2026-05',
+            note: 'Generated from Discord trade alerts via admin.html. Engine yield is shown only with its 1/6 -> blended translation and is never an account-level return. No annualized figures are presented.'
+        },
+        kpis,
+        thresholds: { blendedTarget: 2.0, gateAExpectancy: 0, redeployExpectancy: 50 },
+        months: months.map(({_h2,_h3,...m})=>m)
+    };
+    return { out, months };
+}
+
+// ---------- rendering ----------
+function renderTrades(unparsed){
+    document.getElementById('tradesWrap').classList.remove('hidden');
+    document.getElementById('tradeCount').textContent = `· ${TRADES.length} outcomes`;
+    const up = document.getElementById('unparsed');
+    up.innerHTML = unparsed.length
+        ? `<i class="fas fa-triangle-exclamation mr-1"></i>${unparsed.length} unrecognized line(s) skipped: ` + unparsed.slice(0,8).map(x=>`<code>${x.replace(/</g,'&lt;')}</code>`).join(', ')
+        : '';
+    const rows = TRADES.map((t,i)=>`<tr>
+        <td class="py-1 pr-3"><input type="checkbox" data-i="${i}" class="incl" ${t.include?'checked':''}></td>
+        <td class="py-1 pr-3 text-slate-400">${t.monthLabel}</td>
+        <td class="py-1 pr-3 text-white">${t.label}</td>
+        <td class="py-1 pr-3 ${t.side==='B'?'text-emerald-400':'text-red-300'}">${t.side||'—'}</td>
+        <td class="py-1 pr-3 text-right text-slate-400">${t.entry||'—'}</td>
+        <td class="py-1 pr-3 text-right"><input type="number" step="0.25" data-i="${i}" class="pts text-right ${t.pts>0?'text-emerald-400':t.pts<0?'text-red-300':'text-slate-400'}" value="${t.pts}"></td>
+        <td class="py-1 pr-3 text-center text-slate-500">${t.h||''}</td>
+        <td class="py-1 text-slate-600">${t.raw.replace(/</g,'&lt;')}</td>
+    </tr>`).join('');
+    document.getElementById('tradeRows').innerHTML = rows;
+    document.querySelectorAll('.incl').forEach(el=>el.addEventListener('change',e=>{ TRADES[+e.target.dataset.i].include=e.target.checked; refresh(); }));
+    document.querySelectorAll('.pts').forEach(el=>el.addEventListener('input',e=>{ TRADES[+e.target.dataset.i].pts=parseFloat(e.target.value)||0; refresh(); }));
+}
+
+function renderMonths(months){
+    document.getElementById('monthlyWrap').classList.remove('hidden');
+    document.getElementById('monthRows').innerHTML = months.map(m=>`<tr>
+        <td class="py-2 pr-3 text-white">${m.label}</td>
+        <td class="py-2 px-3 text-slate-400">${m.phase}</td>
+        <td class="py-2 px-3 text-right text-slate-300">${m.engineYield}%</td>
+        <td class="py-2 px-3 text-right text-gold">${m.blendedYield}%</td>
+        <td class="py-2 px-3 text-right text-slate-300">${m.winRate}%</td>
+        <td class="py-2 px-3 text-right text-slate-400">${m.trades}</td>
+        <td class="py-2 px-3 text-right ${m.expectancy>=0?'text-emerald-400':'text-red-300'}">${m.expectancy>=0?'+':''}$${m.expectancy}</td>
+        <td class="py-2 px-3 text-right text-slate-300">$${m.reserve.toLocaleString()}</td>
+        <td class="py-2 px-3 text-right text-slate-300">${m.distribution?('$'+m.distribution.toLocaleString()):'—'}</td>
+        <td class="py-2 pl-3 text-center">${m.tier}</td>
+    </tr>`).join('');
+}
+
+function refresh(){
+    if(!TRADES.length) return;
+    const { out, months } = compute();
+    renderMonths(months);
+    document.getElementById('outputWrap').classList.remove('hidden');
+    document.getElementById('output').value = JSON.stringify(out, null, 2);
+}
+
+// ---------- wiring ----------
+document.getElementById('parseBtn').addEventListener('click', ()=>{
+    const text = document.getElementById('input').value;
+    if(!text.trim()){ document.getElementById('parseStatus').textContent='Paste an export first.'; return; }
+    const { trades, unparsed } = parse(text);
+    TRADES = trades;
+    document.getElementById('parseStatus').innerHTML = `<span class="text-emerald-400"><i class="fas fa-check mr-1"></i>${trades.length} trade outcomes parsed</span>`;
+    if(!trades.length){ document.getElementById('parseStatus').innerHTML += ' — no recognizable trades found.'; return; }
+    renderTrades(unparsed);
+    refresh();
+});
+
+['cfgUnit','cfgPV','cfgDiv','cfgDouble','cfgDist','cfgReserve','cfgDD','cfgTier','cfgDataType','cfgUpdated']
+    .forEach(id => document.getElementById(id).addEventListener('input', refresh));
+
+document.getElementById('toggleTrades').addEventListener('click', ()=>document.getElementById('tradeTableWrap').classList.toggle('hidden'));
+document.getElementById('copyBtn').addEventListener('click', ()=>{ navigator.clipboard.writeText(document.getElementById('output').value); });
+document.getElementById('downloadBtn').addEventListener('click', ()=>{
+    const blob = new Blob([document.getElementById('output').value], {type:'application/json'});
+    const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download='performance.json'; a.click();
+});
+document.getElementById('sampleBtn').addEventListener('click', ()=>{
+    document.getElementById('input').value =
+`<li><div class="titleInfo"><p class="timeInfo"><span class="chatName">x</span><span class="time">Wed Feb 04 2026 09:40:15 GMT-0600 (Central Standard Time)</span></p><p><span style="color: skyblue;"></span> F1: s 6940 (half)</p></div></li>
+<li><div class="titleInfo"><p class="timeInfo"><span class="time">Wed Feb 04 2026 10:09:31 GMT-0600 (Central Standard Time)</span></p><p><span style="color: skyblue;"></span> F1: +25</p></div></li>
+<li><div class="titleInfo"><p class="timeInfo"><span class="time">Wed Mar 04 2026 10:09:31 GMT-0600 (Central Standard Time)</span></p><p><span style="color: skyblue;"></span> F2: b 6800 sl 6790</p></div></li>
+<li><div class="titleInfo"><p class="timeInfo"><span class="time">Wed Mar 04 2026 11:09:31 GMT-0600 (Central Standard Time)</span></p><p><span style="color: skyblue;"></span> F2: -10 H2</p></div></li>`;
+});
+
+// default last-updated = today
+document.getElementById('cfgUpdated').value = new Date().toISOString().slice(0,10);
+</script>
+</body>
+</html>
