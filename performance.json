@@ -1,0 +1,39 @@
+{
+  "meta": {
+    "lastUpdated": "2026-05-30",
+    "operatingTier": "T0",
+    "operatingTierLabel": "Normal Operations",
+    "dataType": "illustrative",
+    "docRef": "FP-V2-2026-05",
+    "note": "Illustrative / hypothetical sample data. Replace the values in this file with live results to update the dashboard — the page reads from this file on load. No annualized figures are presented."
+  },
+  "kpis": {
+    "blendedMonthlyYieldAvg": 1.71,
+    "engineYieldAvg": 10.1,
+    "rolling100Expectancy": 118,
+    "coverageRatio": "6 : 1",
+    "reserveBalance": 4430,
+    "winRate": 61,
+    "tradesRolling100": 100,
+    "maxDailyDrawdown": 1.8,
+    "phase": "Distribution"
+  },
+  "thresholds": {
+    "blendedTarget": 2.0,
+    "gateAExpectancy": 0,
+    "redeployExpectancy": 50
+  },
+  "months": [
+    { "label": "Jul 2025", "phase": "Accumulation", "engineYield": 10.4, "blendedYield": 1.73, "expectancy": 96,  "winRate": 57, "trades": 32, "reserve": 0,    "distribution": 0,   "tier": "T0" },
+    { "label": "Aug 2025", "phase": "Accumulation", "engineYield": 9.6,  "blendedYield": 1.60, "expectancy": 104, "winRate": 59, "trades": 30, "reserve": 0,    "distribution": 0,   "tier": "T0" },
+    { "label": "Sep 2025", "phase": "Accumulation", "engineYield": 10.7, "blendedYield": 1.78, "expectancy": 121, "winRate": 62, "trades": 35, "reserve": 0,    "distribution": 0,   "tier": "T0" },
+    { "label": "Oct 2025", "phase": "Accumulation", "engineYield": 9.7,  "blendedYield": 1.62, "expectancy": 99,  "winRate": 56, "trades": 33, "reserve": 0,    "distribution": 0,   "tier": "T0" },
+    { "label": "Nov 2025", "phase": "Accumulation", "engineYield": 10.2, "blendedYield": 1.70, "expectancy": 112, "winRate": 60, "trades": 31, "reserve": 0,    "distribution": 0,   "tier": "T0" },
+    { "label": "Dec 2025", "phase": "Accumulation", "engineYield": 10.5, "blendedYield": 1.75, "expectancy": 125, "winRate": 63, "trades": 29, "reserve": 0,    "distribution": 0,   "tier": "T0" },
+    { "label": "Jan 2026", "phase": "Accumulation", "engineYield": 9.5,  "blendedYield": 1.58, "expectancy": 92,  "winRate": 55, "trades": 36, "reserve": 0,    "distribution": 0,   "tier": "T0" },
+    { "label": "Feb 2026", "phase": "Doubling",     "engineYield": 10.6, "blendedYield": 1.77, "expectancy": 119, "winRate": 61, "trades": 34, "reserve": 5000, "distribution": 0,   "tier": "T0" },
+    { "label": "Mar 2026", "phase": "Distribution", "engineYield": 10.6, "blendedYield": 1.77, "expectancy": 123, "winRate": 62, "trades": 33, "reserve": 5030, "distribution": 500, "tier": "T0" },
+    { "label": "Apr 2026", "phase": "Distribution", "engineYield": 14.0, "blendedYield": 2.33, "expectancy": 131, "winRate": 64, "trades": 30, "reserve": 5230, "distribution": 500, "tier": "T0" },
+    { "label": "May 2026", "phase": "Distribution", "engineYield": 4.0,  "blendedYield": 0.67, "expectancy": 88,  "winRate": 54, "trades": 28, "reserve": 4430, "distribution": 500, "tier": "T0" }
+  ]
+}
