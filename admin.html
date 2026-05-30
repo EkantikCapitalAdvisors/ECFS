@@ -67,9 +67,10 @@
     <div class="card rounded-xl p-6 mb-6">
         <h2 class="font-heading text-xl text-white mb-4">2 · Model settings</h2>
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
-            <label class="block">Working unit ($)<input id="cfgUnit" type="number" value="5000" class="w-full mt-1 p-2"></label>
-            <label class="block">Point value ($/pt)<input id="cfgPV" type="number" value="5" step="0.01" class="w-full mt-1 p-2"><span class="text-slate-600 text-xs">MES = $5 · ES = $50</span></label>
-            <label class="block">Coverage divisor<input id="cfgDiv" type="number" value="6" class="w-full mt-1 p-2"></label>
+            <label class="block">Deployed capital ($)<input id="cfgUnit" type="number" value="5000" class="w-full mt-1 p-2"><span class="text-slate-600 text-xs">engine-yield base</span></label>
+            <label class="block">Blended capital ($)<input id="cfgBlend" type="number" value="25000" class="w-full mt-1 p-2"><span class="text-slate-600 text-xs">blended-yield base</span></label>
+            <label class="block">ES $/point<input id="cfgES" type="number" value="50" step="0.01" class="w-full mt-1 p-2"></label>
+            <label class="block">MES $/point<input id="cfgMES" type="number" value="5" step="0.01" class="w-full mt-1 p-2"></label>
             <label class="block">Doubling target ($)<input id="cfgDouble" type="number" value="10000" class="w-full mt-1 p-2"></label>
             <label class="block">Monthly distribution / unit ($)<input id="cfgDist" type="number" value="500" class="w-full mt-1 p-2"></label>
             <label class="block">Starting reserve ($)<input id="cfgReserve" type="number" value="0" class="w-full mt-1 p-2"></label>
@@ -90,7 +91,7 @@
             </label>
             <label class="block">Last updated<input id="cfgUpdated" type="date" class="w-full mt-1 p-2"></label>
         </div>
-        <p class="text-slate-500 text-xs mt-3"><i class="fas fa-triangle-exclamation text-amber-400/70 mr-1"></i>Assumptions: every result line counts as one trade outcome (re-entries on the same label count separately); the first number on a result line is the realized points; per-trade size tags (<code>2es</code>, <code>5mes</code>) are captured but P&L uses the single point value above unless you edit a row. Verify outliers in step 3.</p>
+        <p class="text-slate-500 text-xs mt-3"><i class="fas fa-triangle-exclamation text-amber-400/70 mr-1"></i>Assumptions: every result line counts as one trade outcome (re-entries on the same label count separately); the first number on a result line is the realized points; per-trade size is honored — default <strong>1 ES</strong> (\$50/pt), <code>half</code> = 0.5 ES (\$25/pt), <code>2es</code> = \$100/pt, <code>5mes</code> = 5×\$5 = \$25/pt. Engine yield = realized \$ ÷ deployed capital; blended = realized \$ ÷ blended capital. Verify outliers in step 3.</p>
     </div>
 
     <!-- STEP 3: trades -->
@@ -109,7 +110,9 @@
                         <th class="text-left py-2 pr-3">Label</th>
                         <th class="text-left py-2 pr-3">Side</th>
                         <th class="text-right py-2 pr-3">Entry</th>
+                        <th class="text-left py-2 pr-3">Size</th>
                         <th class="text-right py-2 pr-3">Points</th>
+                        <th class="text-right py-2 pr-3">$/pt</th>
                         <th class="text-center py-2 pr-3">Attr.</th>
                         <th class="text-left py-2">Raw</th>
                     </tr>
@@ -158,6 +161,15 @@ let TRADES = [];   // {date, monthKey, monthLabel, label, side, entry, pts, h, i
 // ---------- parsing ----------
 const labelRe = /^([FfSs])\s*0*(\d+)\s*[:.]?\s*(.*)$/;
 
+// per-trade contract size from an entry line → {contracts, ctype:'es'|'mes', desc}
+function sizeOf(r){
+    r = r.toLowerCase(); let m;
+    if((m = r.match(/(\d+)\s*mes/))) return { contracts:+m[1], ctype:'mes', desc:m[1]+' MES' };
+    if((m = r.match(/(\d+)\s*es/)))  return { contracts:+m[1], ctype:'es',  desc:m[1]+' ES' };
+    if(/half/.test(r))               return { contracts:0.5,   ctype:'es',  desc:'half ES' };
+    return { contracts:1, ctype:'es', desc:'1 ES' };
+}
+
 function classify(rest){
     const r = (rest||'').trim();
     if(/no\s*trade/i.test(r)) return {type:'notrade'};
@@ -174,7 +186,7 @@ function classify(rest){
     if(/^(s|b)\b|^sell|^buy/i.test(r)){
         const side = /^b|^buy/i.test(r) ? 'B' : 'S';
         const price = (r.match(/-?\d+\.?\d*/)||[])[0];
-        return {type:'entry', side, price};
+        return {type:'entry', side, price, size:sizeOf(r)};
     }
     return {type:'other', raw:r};
 }
@@ -218,15 +230,17 @@ function parse(text){
         const label = mm[1].toUpperCase() + mm[2];
         const c = classify(mm[3]);
         if(c.type === 'entry'){
-            lastEntry[label] = { side:c.side, price:c.price };
+            lastEntry[label] = { side:c.side, price:c.price, size:c.size };
         } else if(c.type === 'result' || c.type === 'wash'){
             const e = lastEntry[label] || {};
+            const sz = e.size || { contracts:1, ctype:'es', desc:'1 ES' };
             const d = m.date && !isNaN(m.date) ? m.date : null;
             trades.push({
                 date: d,
                 monthKey: d ? `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}` : 'unknown',
                 monthLabel: d ? d.toLocaleString('en-US',{month:'short',year:'numeric'}) : 'Unknown',
                 label, side: e.side||'', entry: e.price||'',
+                contracts: sz.contracts, ctype: sz.ctype, sizeDesc: sz.desc,
                 pts: c.type==='wash' ? 0 : c.pts,
                 h: c.h || (c.type==='wash'?null:null),
                 include: true,
@@ -243,9 +257,10 @@ function parse(text){
 // ---------- aggregation ----------
 function compute(){
     const cfg = {
-        unit: +document.getElementById('cfgUnit').value || 5000,
-        pv:   +document.getElementById('cfgPV').value || 5,
-        div:  +document.getElementById('cfgDiv').value || 6,
+        unit:  +document.getElementById('cfgUnit').value || 5000,
+        blend: +document.getElementById('cfgBlend').value || 25000,
+        es:    +document.getElementById('cfgES').value || 50,
+        mes:   +document.getElementById('cfgMES').value || 5,
         dbl:  +document.getElementById('cfgDouble').value || 10000,
         dist: +document.getElementById('cfgDist').value || 0,
         res0: +document.getElementById('cfgReserve').value || 0,
@@ -254,6 +269,7 @@ function compute(){
         dtype:document.getElementById('cfgDataType').value,
         updated: document.getElementById('cfgUpdated').value
     };
+    const dpp = t => (t.contracts||1) * (t.ctype==='mes' ? cfg.mes : cfg.es);   // dollars per point
     const used = TRADES.filter(t => t.include && t.monthKey !== 'unknown');
     const byMonth = {};
     used.forEach(t => { (byMonth[t.monthKey] = byMonth[t.monthKey] || []).push(t); });
@@ -265,10 +281,9 @@ function compute(){
         const arr = byMonth[k];
         const wins = arr.filter(t=>t.pts>0).length;
         const losses = arr.filter(t=>t.pts<0).length;
-        const sumPts = arr.reduce((s,t)=>s+t.pts,0);
-        const usd = sumPts * cfg.pv;
+        const usd = arr.reduce((s,t)=>s + t.pts*dpp(t), 0);
         const engine = usd / cfg.unit * 100;
-        const blended = engine / cfg.div;
+        const blended = usd / cfg.blend * 100;
         let phase, distribution = 0;
         if(!doubled){
             unit += usd;
@@ -295,7 +310,7 @@ function compute(){
 
     // overall KPIs (rolling last 100)
     const last100 = used.slice(-100);
-    const sumPts100 = last100.reduce((s,t)=>s+t.pts,0);
+    const usd100 = last100.reduce((s,t)=>s + t.pts*dpp(t), 0);
     const wins = used.filter(t=>t.pts>0).length, losses = used.filter(t=>t.pts<0).length;
     const avgB = months.length ? months.reduce((s,m)=>s+m.blendedYield,0)/months.length : 0;
     const avgE = months.length ? months.reduce((s,m)=>s+m.engineYield,0)/months.length : 0;
@@ -303,8 +318,8 @@ function compute(){
     const kpis = {
         blendedMonthlyYieldAvg: +avgB.toFixed(2),
         engineYieldAvg: +avgE.toFixed(2),
-        rolling100Expectancy: last100.length ? Math.round(sumPts100*cfg.pv/last100.length) : 0,
-        coverageRatio: `${cfg.div} : 1`,
+        rolling100Expectancy: last100.length ? Math.round(usd100/last100.length) : 0,
+        coverageRatio: `${Math.round(cfg.blend/cfg.unit)} : 1`,
         reserveBalance: Math.round(reserve),
         winRate: (wins+losses) ? Math.round(wins/(wins+losses)*100) : 0,
         tradesRolling100: Math.min(100, used.length),
@@ -320,7 +335,9 @@ function compute(){
             operatingTierLabel: TIER_LABELS[cfg.tier],
             dataType: cfg.dtype,
             docRef: 'FP-V2-2026-05',
-            note: 'Generated from Discord trade alerts via admin.html. Engine yield is shown only with its 1/6 -> blended translation and is never an account-level return. No annualized figures are presented.'
+            deployedCapital: cfg.unit,
+            blendedCapital: cfg.blend,
+            note: 'Generated from Discord trade alerts via admin.html. Per-trade size honored (default 1 ES; half/Nes/Nmes parsed). Engine yield is the return on deployed capital; blended is the same realized dollars over total risk capital. No annualized figures are presented.'
         },
         kpis,
         thresholds: { blendedTarget: 2.0, gateAExpectancy: 0, redeployExpectancy: 50 },
@@ -337,16 +354,21 @@ function renderTrades(unparsed){
     up.innerHTML = unparsed.length
         ? `<i class="fas fa-triangle-exclamation mr-1"></i>${unparsed.length} unrecognized line(s) skipped: ` + unparsed.slice(0,8).map(x=>`<code>${x.replace(/</g,'&lt;')}</code>`).join(', ')
         : '';
-    const rows = TRADES.map((t,i)=>`<tr>
+    const es = +document.getElementById('cfgES').value || 50, mes = +document.getElementById('cfgMES').value || 5;
+    const rows = TRADES.map((t,i)=>{
+        const ppt = (t.contracts||1) * (t.ctype==='mes' ? mes : es);
+        return `<tr>
         <td class="py-1 pr-3"><input type="checkbox" data-i="${i}" class="incl" ${t.include?'checked':''}></td>
         <td class="py-1 pr-3 text-slate-400">${t.monthLabel}</td>
         <td class="py-1 pr-3 text-white">${t.label}</td>
         <td class="py-1 pr-3 ${t.side==='B'?'text-emerald-400':'text-red-300'}">${t.side||'—'}</td>
         <td class="py-1 pr-3 text-right text-slate-400">${t.entry||'—'}</td>
+        <td class="py-1 pr-3 text-slate-400">${t.sizeDesc||'1 ES'}</td>
         <td class="py-1 pr-3 text-right"><input type="number" step="0.25" data-i="${i}" class="pts text-right ${t.pts>0?'text-emerald-400':t.pts<0?'text-red-300':'text-slate-400'}" value="${t.pts}"></td>
+        <td class="py-1 pr-3 text-right text-slate-500">$${ppt}</td>
         <td class="py-1 pr-3 text-center text-slate-500">${t.h||''}</td>
         <td class="py-1 text-slate-600">${t.raw.replace(/</g,'&lt;')}</td>
-    </tr>`).join('');
+    </tr>`;}).join('');
     document.getElementById('tradeRows').innerHTML = rows;
     document.querySelectorAll('.incl').forEach(el=>el.addEventListener('change',e=>{ TRADES[+e.target.dataset.i].include=e.target.checked; refresh(); }));
     document.querySelectorAll('.pts').forEach(el=>el.addEventListener('input',e=>{ TRADES[+e.target.dataset.i].pts=parseFloat(e.target.value)||0; refresh(); }));
@@ -388,7 +410,7 @@ document.getElementById('parseBtn').addEventListener('click', ()=>{
     refresh();
 });
 
-['cfgUnit','cfgPV','cfgDiv','cfgDouble','cfgDist','cfgReserve','cfgDD','cfgTier','cfgDataType','cfgUpdated']
+['cfgUnit','cfgBlend','cfgES','cfgMES','cfgDouble','cfgDist','cfgReserve','cfgDD','cfgTier','cfgDataType','cfgUpdated']
     .forEach(id => document.getElementById(id).addEventListener('input', refresh));
 
 document.getElementById('toggleTrades').addEventListener('click', ()=>document.getElementById('tradeTableWrap').classList.toggle('hidden'));

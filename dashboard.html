@@ -137,12 +137,12 @@
                 <div class="card rounded-xl p-5">
                     <p class="text-slate-500 text-xs uppercase tracking-wider mb-2">Avg Blended Monthly Yield</p>
                     <p id="kpi-blended" class="text-gold font-heading text-3xl">—</p>
-                    <p class="text-slate-600 text-xs mt-1">On total risk capital · target ~2%</p>
+                    <p class="text-slate-600 text-xs mt-1">On total risk capital ($25K)</p>
                 </div>
                 <div class="card rounded-xl p-5">
                     <p class="text-slate-500 text-xs uppercase tracking-wider mb-2">Avg Engine Yield*</p>
                     <p id="kpi-engine" class="text-white font-heading text-3xl">—</p>
-                    <p class="text-slate-600 text-xs mt-1">On the deployed $5K (1/6)</p>
+                    <p class="text-slate-600 text-xs mt-1">On deployed capital ($5K)</p>
                 </div>
                 <div class="card rounded-xl p-5">
                     <p class="text-slate-500 text-xs uppercase tracking-wider mb-2">Rolling-100 Expectancy</p>
@@ -157,7 +157,7 @@
                 <div class="card rounded-xl p-5">
                     <p class="text-slate-500 text-xs uppercase tracking-wider mb-2">Coverage Ratio</p>
                     <p id="kpi-coverage" class="text-white font-heading text-3xl">—</p>
-                    <p class="text-slate-600 text-xs mt-1">$1 deployed per $6 held</p>
+                    <p class="text-slate-600 text-xs mt-1">$5K deployed / $25K blended</p>
                 </div>
                 <div class="card rounded-xl p-5">
                     <p class="text-slate-500 text-xs uppercase tracking-wider mb-2">Win Rate</p>
@@ -226,7 +226,7 @@
             <div class="bg-amber-900/15 border border-amber-500/20 rounded-xl p-6 mb-6">
                 <p class="text-amber-200/80 text-sm leading-relaxed">
                     <i class="fas fa-exclamation-triangle text-amber-500/70 mr-2"></i>
-                    <strong class="text-white/80">*Engine yield is shown only with its 1/6 → ~2% translation</strong> and is never an account-level return. The headline figure is the conservative <strong class="text-white">~2% average monthly yield on total risk capital</strong>. All figures on this dashboard are <strong class="text-white">hypothetical and illustrative</strong>, governed by the live edge and stand-down architecture, not promised. The reserve is funded by realized profits and may be partially or fully depleted; distributions are a target, not a guarantee, and may be reduced or suspended — including if a falsifiability gate fires and the strategy goes research-only. <strong class="text-white">Past performance is not indicative of future results.</strong> No annualized figures are presented.
+                    <strong class="text-white/80">*Engine yield is the return on deployed capital ($5K)</strong> and is never a total-account return; <strong class="text-white">blended yield</strong> expresses the same realized dollars over total risk capital ($25K). All figures on this dashboard are derived from posted trade alerts and are subject to revision. The reserve is funded by realized profits and may be partially or fully depleted; distributions are a target, not a guarantee, and may be reduced or suspended — including if a falsifiability gate fires and the strategy goes research-only. <strong class="text-white">Past performance is not indicative of future results.</strong> No annualized figures are presented.
                 </p>
             </div>
 
@@ -314,7 +314,7 @@
             document.getElementById('kpi-engine').textContent = '~' + (k.engineYieldAvg ?? '—') + '%';
             document.getElementById('kpi-expectancy').textContent = '+' + fmtUSD(k.rolling100Expectancy ?? 0);
             document.getElementById('kpi-reserve').textContent = fmtUSD(k.reserveBalance ?? 0);
-            document.getElementById('kpi-coverage').textContent = k.coverageRatio || '6 : 1';
+            document.getElementById('kpi-coverage').textContent = k.coverageRatio || '5 : 1';
             document.getElementById('kpi-winrate').textContent = (k.winRate ?? last.winRate ?? '—') + '%';
             document.getElementById('kpi-drawdown').textContent = (k.maxDailyDrawdown ?? '—') + '%';
             document.getElementById('kpi-phase').textContent = k.phase || last.phase || '—';
