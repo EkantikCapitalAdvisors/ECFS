@@ -14,7 +14,7 @@
     "engineYieldAvg": 40.31,
     "rolling100Expectancy": 71,
     "coverageRatio": "4 : 1",
-    "reserveBalance": 7563,
+    "reserveBalance": 7463,
     "winRate": 65,
     "tradesRolling100": 100,
     "phase": "Distribution"
@@ -69,8 +69,8 @@
       "expectancy": 64,
       "winRate": 68,
       "trades": 47,
-      "reserve": 7563,
-      "distribution": 500,
+      "reserve": 7463,
+      "distribution": 600,
       "tier": "T0"
     }
   ]
