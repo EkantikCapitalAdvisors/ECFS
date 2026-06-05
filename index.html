@@ -463,8 +463,40 @@
                     See It Working — <span class="text-gradient-gold">in Real Time</span>
                 </h2>
                 <p class="text-lg text-slate-400 max-w-2xl mx-auto mb-10">
-                    Every KPI by month, the reserve balance, the live operating state — on a public dashboard. No login, nothing hidden.
+                    Here's the model running on real trade alerts right now — what you'd have drawn, and what would be banking behind it. Every KPI by month is on the public dashboard. No login, nothing hidden.
                 </p>
+
+                <!-- LIVE NUMBERS (from performance.json) -->
+                <div id="live-feel" class="mb-12">
+                    <div class="flex items-center justify-center gap-2 mb-6">
+                        <span class="relative flex h-2.5 w-2.5">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-60"></span>
+                            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+                        </span>
+                        <span class="text-slate-400 text-sm">Live · latest month <strong id="live-month" class="text-white">—</strong> · $20,000 base</span>
+                    </div>
+                    <div class="grid sm:grid-cols-3 gap-5 text-left max-w-4xl mx-auto">
+                        <div class="card rounded-2xl p-6 border-emerald-500/20">
+                            <p class="text-slate-500 text-xs uppercase tracking-wider mb-2"><i class="fas fa-hand-holding-dollar text-emerald-400 mr-1.5"></i>Distributed to you</p>
+                            <p class="font-heading text-3xl text-emerald-400" id="live-dist">—</p>
+                            <p class="text-slate-500 text-xs mt-1">A fixed 3% of your $20,000, this month</p>
+                        </div>
+                        <div class="card rounded-2xl p-6 border-gold/20">
+                            <p class="text-slate-500 text-xs uppercase tracking-wider mb-2"><i class="fas fa-arrow-trend-up text-gold mr-1.5"></i>Added to your reserve</p>
+                            <p class="font-heading text-3xl text-gold" id="live-surplus">—</p>
+                            <p class="text-slate-500 text-xs mt-1">All profit above your $600, banked this month</p>
+                        </div>
+                        <div class="card rounded-2xl p-6 border-slate-700/30">
+                            <p class="text-slate-500 text-xs uppercase tracking-wider mb-2"><i class="fas fa-vault text-gold mr-1.5"></i>Reserve balance</p>
+                            <p class="font-heading text-3xl text-white" id="live-reserve">—</p>
+                            <p class="text-slate-500 text-xs mt-1">Your shock absorber, to date</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-500 text-sm mt-6 max-w-2xl mx-auto">
+                        <i class="fas fa-circle-info text-gold/60 mr-1.5"></i>That's the whole mechanism in one month: a <strong class="text-slate-300">fixed $600 to you</strong>, everything above it <strong class="text-slate-300">building your reserve</strong> so the check stays level. <span id="live-updated" class="text-slate-600"></span>
+                    </p>
+                </div>
+
                 <a href="https://founding.ekantikcapital.com/dashboard.html" target="_blank" class="inline-flex items-center gap-3 gradient-gold text-navy-900 font-bold text-lg px-10 py-4 rounded-xl hover:shadow-2xl hover:shadow-gold/20 transition-all">
                     <i class="fas fa-chart-line text-xl"></i>View the Live Dashboard<i class="fas fa-external-link-alt text-sm"></i>
                 </a>
@@ -742,6 +774,29 @@
                 item.classList.toggle('active', !isActive);
             });
         });
+
+        // Live numbers from performance.json — gives investors the real feel
+        (function () {
+            const fmtUSD = n => '$' + Number(n || 0).toLocaleString('en-US');
+            fetch('performance.json', { cache: 'no-store' })
+                .then(r => { if (!r.ok) throw new Error('no data'); return r.json(); })
+                .then(data => {
+                    const m = (data.months || []).filter(x => x);
+                    if (!m.length) return;
+                    const last = m[m.length - 1];
+                    const prev = m.length > 1 ? m[m.length - 2] : null;
+                    const reserve = (data.kpis && data.kpis.reserveBalance != null) ? data.kpis.reserveBalance : last.reserve;
+                    // surplus added this month = change in reserve over the prior month
+                    const surplusAdded = prev != null ? Math.max(0, (last.reserve || 0) - (prev.reserve || 0)) : (last.reserve || 0);
+                    const set = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+                    set('live-month', last.label || '—');
+                    set('live-dist', last.distribution ? fmtUSD(last.distribution) : '$0');
+                    set('live-surplus', '+' + fmtUSD(surplusAdded));
+                    set('live-reserve', fmtUSD(reserve));
+                    if (data.meta && data.meta.lastUpdated) set('live-updated', 'Updated ' + data.meta.lastUpdated + '. Hypothetical/illustrative — not a guarantee.');
+                })
+                .catch(() => { const el = document.getElementById('live-feel'); if (el) el.style.display = 'none'; });
+        })();
 
         // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
