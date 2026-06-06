@@ -373,77 +373,73 @@
                     </div>
                 </div>
 
-                <!-- IMAGE-INSPIRED PROJECTION -->
-                <div class="grid lg:grid-cols-2 gap-6">
-                    <!-- left: structure + monthly schedule -->
-                    <div class="card rounded-2xl p-6 sm:p-7 border-gold/15">
-                        <h3 class="font-heading text-2xl text-white mb-1">Targeted Distribution Schedule</h3>
-                        <p class="text-slate-500 text-sm mb-5">$20,000 base · $1,800 buffer first · 3% monthly + year-end surplus · no fees</p>
+                <!-- IMAGE-INSPIRED PROJECTION — concrete dollars, no fees -->
+                <div class="card rounded-2xl p-6 sm:p-8 border-gold/15 mb-6">
+                    <h3 class="font-heading text-2xl text-white mb-1">Projected Outcome — $20,000</h3>
+                    <p class="text-slate-500 text-sm mb-5">Illustrative, conservative assumptions · no fees for founding members</p>
 
-                        <div class="bg-navy-900/40 border border-slate-700/30 rounded-lg p-4 mb-5 text-sm text-slate-400 leading-relaxed">
-                            <i class="fas fa-circle-info text-gold/60 mr-1.5"></i><strong class="text-slate-200">Structure:</strong> as soon as <strong class="text-white">$1,800 in profit</strong> is banked (≈ three months of distributions), your fixed <strong class="text-white">$600/month (3%)</strong> begins. The $1,800 buffer is kept as your cushion, and <strong class="text-white">all profit above it is distributed to you at year-end.</strong>
-                        </div>
+                    <ul class="grid sm:grid-cols-2 gap-x-8 gap-y-2 text-sm mb-7">
+                        <li class="flex items-start gap-2.5"><i class="fas fa-check text-emerald-500/70 mt-0.5"></i><span class="text-slate-400">Conservative <strong class="text-slate-200">~5% monthly</strong> target on your base (<strong class="text-slate-200">$1,000/mo</strong>) — the live blended average has run higher.</span></li>
+                        <li class="flex items-start gap-2.5"><i class="fas fa-check text-emerald-500/70 mt-0.5"></i><span class="text-slate-400">First <strong class="text-slate-200">~2 months</strong>: build the <strong class="text-slate-200">$1,800 buffer</strong>, no distributions.</span></li>
+                        <li class="flex items-start gap-2.5"><i class="fas fa-check text-emerald-500/70 mt-0.5"></i><span class="text-slate-400">Month 3 on: fixed <strong class="text-slate-200">$600/month (3%)</strong> to you.</span></li>
+                        <li class="flex items-start gap-2.5"><i class="fas fa-check text-emerald-500/70 mt-0.5"></i><span class="text-slate-400">Surplus above the buffer is <strong class="text-slate-200">paid out at year-end</strong>.</span></li>
+                    </ul>
 
-                        <div class="overflow-x-auto">
-                            <table class="w-full text-sm">
-                                <thead>
-                                    <tr class="text-slate-400 border-b border-slate-700/40">
-                                        <th class="text-left py-2 pr-3 font-semibold">Stage</th>
-                                        <th class="text-left py-2 px-3 font-semibold">What triggers it</th>
-                                        <th class="text-right py-2 pl-3 font-semibold">To you</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="divide-y divide-slate-700/30 align-top">
-                                    <tr><td class="py-2.5 pr-3 text-white">1 · Build buffer</td><td class="py-2.5 px-3 text-slate-400">Profit reaches <strong class="text-slate-300">$1,800</strong> (≈ 3 distributions)</td><td class="py-2.5 pl-3 text-right text-amber-300">$0</td></tr>
-                                    <tr><td class="py-2.5 pr-3 text-white">2 · Income begins</td><td class="py-2.5 px-3 text-emerald-300/90">The month $1,800 is banked</td><td class="py-2.5 pl-3 text-right text-emerald-400 font-semibold">$600 / mo</td></tr>
-                                    <tr><td class="py-2.5 pr-3 text-white">3 · Stays level</td><td class="py-2.5 px-3 text-slate-400">Every month after</td><td class="py-2.5 pl-3 text-right text-emerald-400 font-semibold">$600 / mo</td></tr>
-                                    <tr><td class="py-2.5 pr-3 text-white">4 · Year-end surplus</td><td class="py-2.5 px-3 text-slate-400">All profit above the $1,800 buffer</td><td class="py-2.5 pl-3 text-right text-gold font-semibold">+ surplus</td></tr>
-                                    <tr class="border-t-2 border-slate-700/50"><td class="py-2.5 pr-3 text-white font-bold">Year 1 cash to you</td><td class="py-2.5 px-3 text-slate-400">monthly + year-end</td><td class="py-2.5 pl-3 text-right text-gold font-bold">$600/mo + surplus</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <p class="text-slate-600 text-xs mt-4">The $1,800 buffer ≈ three $600 distributions. Once banked, $600/month begins and surplus above the buffer is paid at year-end. Hypothetical and illustrative; targets are objectives, not guarantees.</p>
+                    <p class="text-slate-400 text-xs uppercase tracking-wider mb-3 font-semibold">Monthly breakdown</p>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm whitespace-nowrap">
+                            <thead>
+                                <tr class="text-slate-400 border-b border-slate-700/40">
+                                    <th class="text-left py-2 pr-3 font-semibold">Month</th>
+                                    <th class="text-right py-2 px-3 font-semibold">Gross profit (~5%)</th>
+                                    <th class="text-right py-2 px-3 font-semibold">To you</th>
+                                    <th class="text-right py-2 px-3 font-semibold">To reserve</th>
+                                    <th class="text-right py-2 pl-3 font-semibold">Reserve balance</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-700/30">
+                                <tr><td class="py-2.5 pr-3 text-white">1</td><td class="py-2.5 px-3 text-right text-slate-300">$1,000</td><td class="py-2.5 px-3 text-right text-amber-300">$0</td><td class="py-2.5 px-3 text-right text-gold">$1,000</td><td class="py-2.5 pl-3 text-right text-slate-300">$1,000</td></tr>
+                                <tr><td class="py-2.5 pr-3 text-white">2</td><td class="py-2.5 px-3 text-right text-slate-300">$1,000</td><td class="py-2.5 px-3 text-right text-amber-300">$0</td><td class="py-2.5 px-3 text-right text-gold">$1,000</td><td class="py-2.5 pl-3 text-right text-slate-300">$2,000 <span class="text-emerald-400/70 text-xs">· buffer met</span></td></tr>
+                                <tr><td class="py-2.5 pr-3 text-white">3 <span class="text-emerald-400/70 text-xs">· income begins</span></td><td class="py-2.5 px-3 text-right text-slate-300">$1,000</td><td class="py-2.5 px-3 text-right text-emerald-400 font-semibold">$600</td><td class="py-2.5 px-3 text-right text-gold">$400</td><td class="py-2.5 pl-3 text-right text-slate-300">$2,400</td></tr>
+                                <tr><td class="py-2.5 pr-3 text-white">4–12</td><td class="py-2.5 px-3 text-right text-slate-300">$9,000</td><td class="py-2.5 px-3 text-right text-emerald-400 font-semibold">$5,400</td><td class="py-2.5 px-3 text-right text-gold">$3,600</td><td class="py-2.5 pl-3 text-right text-slate-300">$6,000</td></tr>
+                                <tr class="border-t-2 border-slate-700/50 font-bold"><td class="py-2.5 pr-3 text-white">Total</td><td class="py-2.5 px-3 text-right text-white">$12,000</td><td class="py-2.5 px-3 text-right text-emerald-400">$6,000</td><td class="py-2.5 px-3 text-right text-gold">$6,000</td><td class="py-2.5 pl-3 text-right text-white">$6,000</td></tr>
+                            </tbody>
+                        </table>
                     </div>
+                    <p class="text-slate-500 text-xs mt-4"><i class="fas fa-circle-info text-gold/60 mr-1.5"></i>Of the <strong class="text-slate-300">$6,000</strong> in reserve at year-end, <strong class="text-slate-300">$1,800</strong> stays as your buffer and the remaining <strong class="text-slate-300">$4,200 surplus is distributed to you.</strong> Your $20,000 base is never drawn.</p>
+                </div>
 
-                    <!-- right: year-end summary + benefits -->
-                    <div class="card rounded-2xl p-6 sm:p-7 border-gold/15">
-                        <h3 class="font-heading text-2xl text-white mb-1">Year-End Targeted Summary</h3>
-                        <p class="text-slate-500 text-sm mb-5">$20,000 investment · founding member</p>
-
-                        <div class="overflow-x-auto mb-6">
-                            <table class="w-full text-sm">
-                                <thead>
-                                    <tr class="text-slate-400 border-b border-slate-700/40">
-                                        <th class="text-left py-2 pr-3 font-semibold">Bucket</th>
-                                        <th class="text-left py-2 px-3 font-semibold">Status</th>
-                                        <th class="text-right py-2 pl-3 font-semibold">Value</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="divide-y divide-slate-700/30 align-top">
-                                    <tr><td class="py-2.5 pr-3 text-white">Monthly distributions</td><td class="py-2.5 px-3 text-emerald-300/80">Realized — in your bank</td><td class="py-2.5 pl-3 text-right text-emerald-400 font-bold">$600 / mo</td></tr>
-                                    <tr><td class="py-2.5 pr-3 text-white">Year-end surplus payout</td><td class="py-2.5 px-3 text-slate-400">Realized at year-end</td><td class="py-2.5 pl-3 text-right text-gold font-semibold">above $1,800*</td></tr>
-                                    <tr><td class="py-2.5 pr-3 text-white">Buffer held in reserve</td><td class="py-2.5 px-3 text-slate-400">Your 3-month cushion</td><td class="py-2.5 pl-3 text-right text-white font-semibold">$1,800</td></tr>
-                                    <tr><td class="py-2.5 pr-3 text-white">Your capital base</td><td class="py-2.5 px-3 text-slate-400">Intact — never drawn for income</td><td class="py-2.5 pl-3 text-right text-white font-semibold">$20,000</td></tr>
-                                    <tr class="border-t-2 border-slate-700/50"><td class="py-2.5 pr-3 text-white font-bold">Targeted cash to you</td><td class="py-2.5 px-3 text-slate-400">monthly + year-end</td><td class="py-2.5 pl-3 text-right text-gold font-bold">$600/mo + surplus</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <ul class="space-y-2.5 text-sm">
-                            <li class="flex items-start gap-2.5"><i class="fas fa-check text-emerald-500/70 mt-0.5"></i><span class="text-slate-400">Distributions start the moment a <strong class="text-slate-200">$1,800 buffer</strong> (≈ 3 months) is banked.</span></li>
-                            <li class="flex items-start gap-2.5"><i class="fas fa-check text-emerald-500/70 mt-0.5"></i><span class="text-slate-400">Fixed <strong class="text-slate-200">$600/month (3%)</strong> from then on — income you can plan around.</span></li>
-                            <li class="flex items-start gap-2.5"><i class="fas fa-check text-emerald-500/70 mt-0.5"></i><span class="text-slate-400"><strong class="text-slate-200">Surplus above the buffer is paid out to you at year-end</strong> — on top of the monthly check.</span></li>
-                            <li class="flex items-start gap-2.5"><i class="fas fa-check text-emerald-500/70 mt-0.5"></i><span class="text-slate-400">Principal <strong class="text-slate-200">never drawn</strong>, and <strong class="text-slate-200">no fees</strong> — founding members keep 100%.</span></li>
-                        </ul>
-                        <p class="text-slate-600 text-xs mt-4">*Year-end surplus is all realized profit above your $600/mo and the $1,800 buffer. <a href="https://founding.ekantikcapital.com/dashboard.html" target="_blank" class="text-gold hover:text-gold-light underline underline-offset-2">See the live reserve balance on the dashboard</a>.</p>
+                <!-- year-end summary -->
+                <div class="card rounded-2xl p-6 sm:p-8 border-gold/15">
+                    <h3 class="font-heading text-2xl text-white mb-1">Year-End Summary — $20,000</h3>
+                    <p class="text-slate-500 text-sm mb-5">After 12 months · founding member · no fees</p>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm">
+                            <thead>
+                                <tr class="text-slate-400 border-b border-slate-700/40">
+                                    <th class="text-left py-2 pr-3 font-semibold">Bucket</th>
+                                    <th class="text-left py-2 px-3 font-semibold">Cash-flow status</th>
+                                    <th class="text-right py-2 px-3 font-semibold">$ after 12 mo</th>
+                                    <th class="text-right py-2 pl-3 font-semibold">% of $20,000</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-700/30 align-top">
+                                <tr><td class="py-2.5 pr-3 text-white">Monthly distributions</td><td class="py-2.5 px-3 text-emerald-300/80">Realized — in your bank</td><td class="py-2.5 px-3 text-right text-emerald-400 font-semibold">$6,000</td><td class="py-2.5 pl-3 text-right text-emerald-400">+30%</td></tr>
+                                <tr><td class="py-2.5 pr-3 text-white">Year-end surplus payout</td><td class="py-2.5 px-3 text-slate-400">Realized at year-end</td><td class="py-2.5 px-3 text-right text-gold font-semibold">$4,200</td><td class="py-2.5 pl-3 text-right text-gold">+21%</td></tr>
+                                <tr><td class="py-2.5 pr-3 text-white">Safety buffer (kept)</td><td class="py-2.5 px-3 text-slate-400">Held in reserve as your shield</td><td class="py-2.5 px-3 text-right text-white font-semibold">$1,800</td><td class="py-2.5 pl-3 text-right text-slate-300">+9%</td></tr>
+                                <tr><td class="py-2.5 pr-3 text-white">Your capital base</td><td class="py-2.5 px-3 text-slate-400">Intact — never drawn</td><td class="py-2.5 px-3 text-right text-white font-semibold">$20,000</td><td class="py-2.5 pl-3 text-right text-slate-500">—</td></tr>
+                                <tr class="border-t-2 border-slate-700/50 font-bold"><td class="py-2.5 pr-3 text-white">Total to you (cash + buffer)</td><td class="py-2.5 px-3 text-slate-400">year 1</td><td class="py-2.5 px-3 text-right text-gold">$12,000</td><td class="py-2.5 pl-3 text-right text-gold">+60%</td></tr>
+                            </tbody>
+                        </table>
                     </div>
+                    <p class="text-slate-600 text-xs mt-4"><i class="fas fa-lock-open text-gold/60 mr-1.5"></i>No fees — founding members keep 100% of every figure above. <a href="https://founding.ekantikcapital.com/dashboard.html" target="_blank" class="text-gold hover:text-gold-light underline underline-offset-2">See the live numbers on the dashboard</a>.</p>
                 </div>
 
                 <!-- reserve disclaimer -->
                 <div class="bg-amber-900/15 border border-amber-500/20 rounded-xl p-6 mt-8">
                     <p class="text-amber-200/80 text-sm leading-relaxed">
                         <i class="fas fa-exclamation-triangle text-amber-500/70 mr-2"></i>
-                        <strong class="text-white/80">These are targets, not guarantees.</strong> The $1,800 buffer threshold, the 3% monthly distribution, and the year-end surplus payout are objectives, not promises, and may be reduced, delayed, or suspended — including if a safeguard fires and the strategy goes research-only. The buffer and any surplus are funded by realized profits and may be partially or fully depleted; once depleted there may be no distribution. Figures are hypothetical and illustrative. Distributions are gross to the member. Past performance is not indicative of future results.
+                        <strong class="text-white/80">These are targets, not guarantees.</strong> The ~5% monthly figure is a conservative illustrative assumption — actual results vary and may be lower or negative. The $1,800 buffer threshold, the 3% monthly distribution, and the year-end surplus payout are objectives, not promises, and may be reduced, delayed, or suspended — including if a safeguard fires and the strategy goes research-only. The buffer and any surplus are funded by realized profits and may be partially or fully depleted; once depleted there may be no distribution. Figures are hypothetical and illustrative. Distributions are gross to the member. Past performance is not indicative of future results.
                     </p>
                 </div>
             </div>
