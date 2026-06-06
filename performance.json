@@ -14,7 +14,7 @@
     "engineYieldAvg": 40.31,
     "rolling100Expectancy": 71,
     "coverageRatio": "4 : 1",
-    "reserveBalance": 7463,
+    "reserveBalance": 6263,
     "winRate": 65,
     "tradesRolling100": 100,
     "phase": "Distribution"
@@ -27,38 +27,38 @@
   "months": [
     {
       "label": "Feb 2026",
-      "phase": "Accumulation",
+      "phase": "Buffer set",
       "engineYield": 39.5,
       "blendedYield": 9.88,
       "expectancy": 104,
       "winRate": 67,
       "trades": 19,
-      "reserve": 0,
+      "reserve": 1975,
       "distribution": 0,
       "tier": "T0"
     },
     {
       "label": "Mar 2026",
-      "phase": "Accumulation",
+      "phase": "Distribution",
       "engineYield": 58,
       "blendedYield": 14.5,
       "expectancy": 193,
       "winRate": 80,
       "trades": 15,
-      "reserve": 0,
-      "distribution": 0,
+      "reserve": 4275,
+      "distribution": 600,
       "tier": "T0"
     },
     {
       "label": "Apr 2026",
-      "phase": "Doubling",
+      "phase": "Distribution",
       "engineYield": 3.6,
       "blendedYield": 0.9,
       "expectancy": 8,
       "winRate": 45,
       "trades": 22,
-      "reserve": 5055,
-      "distribution": 0,
+      "reserve": 3855,
+      "distribution": 600,
       "tier": "T0"
     },
     {
@@ -69,7 +69,7 @@
       "expectancy": 64,
       "winRate": 68,
       "trades": 47,
-      "reserve": 7463,
+      "reserve": 6263,
       "distribution": 600,
       "tier": "T0"
     }
