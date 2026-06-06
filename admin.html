@@ -71,7 +71,7 @@
             <label class="block">Base capital ($)<input id="cfgBlend" type="number" value="20000" class="w-full mt-1 p-2"><span class="text-slate-600 text-xs">blended-yield base</span></label>
             <label class="block">ES $/point<input id="cfgES" type="number" value="50" step="0.01" class="w-full mt-1 p-2"></label>
             <label class="block">MES $/point<input id="cfgMES" type="number" value="5" step="0.01" class="w-full mt-1 p-2"></label>
-            <label class="block">Doubling target ($)<input id="cfgDouble" type="number" value="10000" class="w-full mt-1 p-2"></label>
+            <label class="block">Buffer target ($)<input id="cfgBuffer" type="number" value="1800" class="w-full mt-1 p-2"></label>
             <label class="block">Monthly distribution (3%, $)<input id="cfgDist" type="number" value="600" class="w-full mt-1 p-2"></label>
             <label class="block">Starting reserve ($)<input id="cfgReserve" type="number" value="0" class="w-full mt-1 p-2"></label>
             <label class="block">Max daily drawdown (%)<input id="cfgDD" type="number" value="" step="0.1" placeholder="manual" class="w-full mt-1 p-2"></label>
@@ -261,7 +261,7 @@ function compute(){
         blend: +document.getElementById('cfgBlend').value || 25000,
         es:    +document.getElementById('cfgES').value || 50,
         mes:   +document.getElementById('cfgMES').value || 5,
-        dbl:  +document.getElementById('cfgDouble').value || 10000,
+        buffer: +document.getElementById('cfgBuffer').value || 1800,
         dist: +document.getElementById('cfgDist').value || 0,
         res0: +document.getElementById('cfgReserve').value || 0,
         dd:   document.getElementById('cfgDD').value,
@@ -275,7 +275,7 @@ function compute(){
     used.forEach(t => { (byMonth[t.monthKey] = byMonth[t.monthKey] || []).push(t); });
     const keys = Object.keys(byMonth).sort();
 
-    let unit = cfg.unit, reserve = cfg.res0, doubled = false;
+    let reserve = cfg.res0, buffered = (cfg.res0 >= cfg.buffer);
     const months = [];
     keys.forEach((k, idx) => {
         const arr = byMonth[k];
@@ -284,15 +284,19 @@ function compute(){
         const usd = arr.reduce((s,t)=>s + t.pts*dpp(t), 0);
         const engine = usd / cfg.unit * 100;
         const blended = usd / cfg.blend * 100;
+        // All realized profit accrues to the reserve; once it crosses the buffer
+        // target ($1,800), a fixed $600 monthly distribution begins the next month.
+        reserve += usd;
         let phase, distribution = 0;
-        if(!doubled){
-            unit += usd;
-            if(unit >= cfg.dbl){ reserve += (unit - cfg.unit); unit = cfg.unit; doubled = true; phase='Doubling'; }
-            else phase = 'Accumulation';
-        } else {
+        if(buffered){
             phase = 'Distribution';
             distribution = cfg.dist;
-            reserve += (usd - distribution);
+            reserve -= distribution;
+        } else if(reserve >= cfg.buffer){
+            buffered = true;          // buffer built this month; distributions start next month
+            phase = 'Buffer set';
+        } else {
+            phase = 'Accumulation';
         }
         months.push({
             label: arr[0].monthLabel, phase,
@@ -410,7 +414,7 @@ document.getElementById('parseBtn').addEventListener('click', ()=>{
     refresh();
 });
 
-['cfgUnit','cfgBlend','cfgES','cfgMES','cfgDouble','cfgDist','cfgReserve','cfgDD','cfgTier','cfgDataType','cfgUpdated']
+['cfgUnit','cfgBlend','cfgES','cfgMES','cfgBuffer','cfgDist','cfgReserve','cfgDD','cfgTier','cfgDataType','cfgUpdated']
     .forEach(id => document.getElementById(id).addEventListener('input', refresh));
 
 document.getElementById('toggleTrades').addEventListener('click', ()=>document.getElementById('tradeTableWrap').classList.toggle('hidden'));
