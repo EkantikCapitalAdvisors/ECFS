@@ -155,9 +155,9 @@
                     <p class="text-slate-600 text-xs mt-1">Shock absorber · not guaranteed</p>
                 </div>
                 <div class="card rounded-xl p-5">
-                    <p class="text-slate-500 text-xs uppercase tracking-wider mb-2">Coverage Ratio</p>
-                    <p id="kpi-coverage" class="text-white font-heading text-3xl">—</p>
-                    <p class="text-slate-600 text-xs mt-1">$5K deployed / $20K base</p>
+                    <p class="text-slate-500 text-xs uppercase tracking-wider mb-2">Monthly Distribution</p>
+                    <p id="kpi-distribution" class="text-white font-heading text-3xl">—</p>
+                    <p class="text-slate-600 text-xs mt-1">Latest month · 3% of $20K base</p>
                 </div>
                 <div class="card rounded-xl p-5">
                     <p class="text-slate-500 text-xs uppercase tracking-wider mb-2">Win Rate</p>
@@ -314,7 +314,7 @@
             document.getElementById('kpi-engine').textContent = '~' + (k.engineYieldAvg ?? '—') + '%';
             document.getElementById('kpi-expectancy').textContent = '+' + fmtUSD(k.rolling100Expectancy ?? 0);
             document.getElementById('kpi-reserve').textContent = fmtUSD(k.reserveBalance ?? 0);
-            document.getElementById('kpi-coverage').textContent = k.coverageRatio || '4 : 1';
+            document.getElementById('kpi-distribution').textContent = last.distribution ? fmtUSD(last.distribution) : '$0';
             document.getElementById('kpi-winrate').textContent = (k.winRate ?? last.winRate ?? '—') + '%';
             document.getElementById('kpi-drawdown').textContent = (k.maxDailyDrawdown ?? '—') + '%';
             document.getElementById('kpi-phase').textContent = k.phase || last.phase || '—';

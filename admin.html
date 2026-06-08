@@ -323,7 +323,6 @@ function compute(){
         blendedMonthlyYieldAvg: +avgB.toFixed(2),
         engineYieldAvg: +avgE.toFixed(2),
         rolling100Expectancy: last100.length ? Math.round(usd100/last100.length) : 0,
-        coverageRatio: `${Math.round(cfg.blend/cfg.unit)} : 1`,
         reserveBalance: Math.round(reserve),
         winRate: (wins+losses) ? Math.round(wins/(wins+losses)*100) : 0,
         tradesRolling100: Math.min(100, used.length),
