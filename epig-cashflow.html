@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ekantik Cash Flow — 1% a Month, and the Rule That Stops It</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="An educational model: the EPIG 500 architecture with a 1%-of-NAV monthly withdrawal discipline, a 10% buffer, and a published suspension rule. Not open for investment.">
+<script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+<script>
+tailwind.config={theme:{extend:{
+ fontFamily:{heading:['"Playfair Display"','Georgia','serif'],body:['"DM Sans"','system-ui','sans-serif'],mono:['"DM Mono"','ui-monospace','monospace']},
+ colors:{navy:{900:'#10182B',800:'#131F38',700:'#1B2A4A',600:'#24365C'},
+ gold:{DEFAULT:'#C8A951',light:'#E3D3A0'},teal:{DEFAULT:'#0D9488',light:'#14B8A6'},danger:'#DC2626',amber:'#D97706'}}}}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+<style>
+ .font-heading{font-family:'Playfair Display',Georgia,serif}
+ .card{background:rgba(27,42,74,.38);border:1px solid rgba(200,169,81,.14)}
+ .rule-gold{border-left:4px solid #C8A951}
+ body{background:#10182B}
+ input[type=range]{accent-color:#C8A951}
+ .num{font-family:'DM Mono',ui-monospace,monospace;font-variant-numeric:tabular-nums}
+</style>
+</head>
+<body class="font-body antialiased text-slate-200">
+
+<!-- NOT-YET-OPEN BANNER (§8.1) -->
+<div class="bg-amber/15 border-b border-amber/40 text-amber-200 text-sm">
+  <div class="container mx-auto px-4 py-3 text-center">
+    <i class="fas fa-circle-info mr-1.5"></i><strong class="text-white">Ekantik 500 is not currently open for investment.</strong>
+    This page is an <strong>educational model of an architecture</strong> — not an offer, not a solicitation, and not a personalised recommendation.
+  </div>
+</div>
+
+<header class="border-b border-slate-700/40 sticky top-0 z-50 bg-navy-900/95 backdrop-blur">
+ <div class="container mx-auto px-4 sm:px-6">
+  <div class="flex items-center justify-between h-16">
+   <a href="#top" class="flex items-center gap-3">
+    <div class="w-10 h-10 rounded flex items-center justify-center" style="background:linear-gradient(135deg,#C8A951,#E3D3A0)"><span class="text-navy-900 font-bold">ECA</span></div>
+    <div class="hidden sm:block"><div class="text-gold font-heading text-base leading-tight">Ekantik Capital</div>
+    <div class="text-slate-500 text-[10px] tracking-[.2em] uppercase">Advisors LLC</div></div>
+   </a>
+   <nav class="hidden lg:flex items-center gap-6 text-sm">
+    <a href="#problem" class="text-slate-400 hover:text-white">The Problem</a>
+    <a href="#architecture" class="text-slate-400 hover:text-white">Architecture</a>
+    <a href="#engine" class="text-slate-400 hover:text-white">The Model</a>
+    <a href="#costs" class="text-slate-400 hover:text-white">What It Costs You</a>
+    <a href="#fee" class="text-slate-400 hover:text-white">The Fee</a>
+    <a href="#faq" class="text-slate-400 hover:text-white">FAQ</a>
+   </nav>
+   <span class="num text-xs px-3 py-1.5 rounded-full border border-teal/40 text-teal-light whitespace-nowrap">
+     <span class="inline-block w-2 h-2 rounded-full bg-teal-light mr-1.5 animate-pulse"></span>T0 — Normal
+   </span>
+  </div>
+ </div>
+</header>
+
+<!-- HERO -->
+<section id="top" class="py-20 sm:py-24">
+ <div class="container mx-auto px-4 sm:px-6">
+  <div class="max-w-4xl mx-auto text-center">
+   <p class="text-gold text-xs tracking-[.18em] uppercase mb-6">Founding subscriber access · An income architecture</p>
+   <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl text-white leading-[1.12] mb-8">
+     Take 100% of the market's good years.<br>
+     Take half of its bad ones.<br>
+     <span class="text-gold">Then draw 1% a month from the difference.</span>
+   </h1>
+   <div class="text-lg text-slate-300 leading-relaxed space-y-4 max-w-2xl mx-auto text-left">
+     <p>Ekantik Cash Flow is the EPIG 500 architecture with a withdrawal discipline on top: an <strong class="text-white">80% S&amp;P foundation</strong> engineered to participate in only part of the market's declines, a <strong class="text-white">20% cash sleeve</strong>, and a <strong class="text-white">buffer that funds the monthly draw</strong> — so the portfolio is never sold into weakness.</p>
+     <p>The withdrawal rule is <strong class="text-white">1.00% of NAV per month.</strong> Everything the architecture earns above that stays in the account and compounds, measured against the S&amp;P.</p>
+     <p class="text-gold font-medium">The asymmetry is design intent, not a record. The buffer rule is arithmetic — and we publish the month it stops paying.</p>
+   </div>
+
+   <div class="grid sm:grid-cols-3 gap-4 mt-12 max-w-3xl mx-auto">
+    <div class="card rounded-lg p-5"><p class="num text-3xl text-gold">80 / 40</p><p class="text-slate-400 text-xs uppercase tracking-wider mt-2">Blended upside / downside capture vs the index</p></div>
+    <div class="card rounded-lg p-5"><p class="num text-3xl text-teal-light">10.0%</p><p class="text-slate-400 text-xs uppercase tracking-wider mt-2">Buffer funded before the first dollar is drawn</p></div>
+    <div class="card rounded-lg p-5"><p class="num text-3xl text-white">Published</p><p class="text-slate-400 text-xs uppercase tracking-wider mt-2">The month the withdrawal suspends, disclosed in advance</p></div>
+   </div>
+
+   <div class="mt-10 flex flex-col sm:flex-row gap-3 justify-center">
+     <a href="#engine" class="px-8 py-3.5 bg-gold text-navy-900 font-bold text-sm uppercase tracking-wider hover:bg-gold-light transition">Run the model</a>
+     <a href="#fee" class="px-8 py-3.5 border border-gold text-gold font-bold text-sm uppercase tracking-wider hover:bg-gold/10 transition">How the fee works</a>
+   </div>
+   <p class="text-slate-500 text-sm mt-8 max-w-2xl mx-auto leading-relaxed border-t border-slate-700/40 pt-6">
+     Educational model only. Figures are modelled from real S&amp;P total returns with <strong>hypothetical capture inputs</strong> — they are not a record of overlay performance. Withdrawals suspend automatically below the buffer floor. Trading and investing involve substantial risk of loss. Past performance does not indicate future results.
+   </p>
+  </div>
+ </div>
+</section>
+
+<!-- THE PROBLEM (preserved) -->
+<section id="problem" class="py-20 bg-navy-800">
+ <div class="container mx-auto px-4 sm:px-6"><div class="max-w-4xl mx-auto">
+  <h2 class="font-heading text-3xl sm:text-4xl text-white mb-6 text-center">Income from Capital Comes in Two Flavors. Both Are Broken.</h2>
+  <div class="text-slate-300 leading-relaxed space-y-4 max-w-2xl mx-auto">
+   <p><strong class="text-white">Safe and slow.</strong> Dividends, bonds, a 4% withdrawal rule. Predictable to the dollar, and so small that the freedom it buys arrives decades late — if it arrives.</p>
+   <p><strong class="text-white">Fast and lumpy.</strong> An edge that actually produces returns, paid out exactly as erratically as it earns them. Two strong months, one flat, one you'd rather not discuss. Real returns you cannot plan a single fixed expense around.</p>
+   <p>Almost everyone accepts one of these and quietly gives up the other. The assumption underneath — that you must choose between size and steadiness — is not a law of markets. <strong class="text-white">It's an architecture problem.</strong> And architecture problems have solutions.</p>
+  </div>
+  <div class="card rounded-lg overflow-hidden mt-10">
+   <table class="w-full text-sm">
+    <thead><tr class="bg-navy-900/60 text-slate-400">
+     <th class="text-left py-3 px-4"></th><th class="text-left py-3 px-4">The Conventional Path</th>
+     <th class="text-left py-3 px-4 text-gold border-l border-gold/30">This Architecture</th></tr></thead>
+    <tbody class="divide-y divide-slate-700/30 align-top">
+     <tr><td class="py-3 px-4 text-slate-400 font-medium">Income shape</td><td class="py-3 px-4">A 4% annual rule</td><td class="py-3 px-4 text-white border-l border-gold/20">1% of NAV monthly, from a funded buffer</td></tr>
+     <tr><td class="py-3 px-4 text-slate-400 font-medium">In a drawdown</td><td class="py-3 px-4">You sell shares at the bottom to fund the draw</td><td class="py-3 px-4 text-white border-l border-gold/20">The buffer pays. The foundation is never sold into weakness.</td></tr>
+     <tr><td class="py-3 px-4 text-slate-400 font-medium">When it breaks</td><td class="py-3 px-4">You find out at the quarterly review</td><td class="py-3 px-4 text-white border-l border-gold/20">Published within 24 hours, in public</td></tr>
+     <tr><td class="py-3 px-4 text-slate-400 font-medium">Who verifies</td><td class="py-3 px-4">The firm that manages it</td><td class="py-3 px-4 text-white border-l border-gold/20">A named independent witness with binding authority</td></tr>
+     <tr><td class="py-3 px-4 text-slate-400 font-medium">If the target is missed</td><td class="py-3 px-4">You pay the fee anyway</td><td class="py-3 px-4 text-white border-l border-gold/20">No fee is charged for that month. None.</td></tr>
+    </tbody></table>
+  </div>
+  <p class="font-heading text-2xl sm:text-3xl text-gold text-center max-w-3xl mx-auto leading-snug mt-10">We are the rare firm that has published a reason to stop taking money.</p>
+ </div></div>
+</section>
+
+<!-- ARCHITECTURE / % of NAV -->
+<section id="architecture" class="py-20">
+ <div class="container mx-auto px-4 sm:px-6"><div class="max-w-4xl mx-auto">
+  <h2 class="font-heading text-3xl sm:text-4xl text-white mb-4 text-center">Everything Here Is a Percentage of Your Own NAV</h2>
+  <p class="text-slate-400 text-center max-w-2xl mx-auto mb-10">No dollar figure on this page is a promise. Every rule is expressed as a share of net asset value, which means it reads the same at $250,000 as at $2.5&nbsp;million.</p>
+  <div class="card rounded-lg overflow-hidden">
+   <table class="w-full text-sm num">
+    <thead><tr class="bg-navy-900/60 text-slate-400 font-body">
+     <th class="text-left py-3 px-4">Rule</th><th class="text-right py-3 px-4">Rate</th>
+     <th class="text-right py-3 px-4">On $250K</th><th class="text-right py-3 px-4">On $1M</th></tr></thead>
+    <tbody class="divide-y divide-slate-700/30">
+     <tr><td class="py-3 px-4 font-body text-white">Monthly withdrawal</td><td class="py-3 px-4 text-right text-gold">1.00%</td><td class="py-3 px-4 text-right">$2,500</td><td class="py-3 px-4 text-right">$10,000</td></tr>
+     <tr><td class="py-3 px-4 font-body text-white">Buffer target</td><td class="py-3 px-4 text-right text-teal-light">10.00%</td><td class="py-3 px-4 text-right">$25,000</td><td class="py-3 px-4 text-right">$100,000</td></tr>
+     <tr><td class="py-3 px-4 font-body text-white">Buffer floor — suspends</td><td class="py-3 px-4 text-right text-danger">5.00%</td><td class="py-3 px-4 text-right">$12,500</td><td class="py-3 px-4 text-right">$50,000</td></tr>
+     <tr><td class="py-3 px-4 font-body text-white">Engine per-trade risk</td><td class="py-3 px-4 text-right">0.50%</td><td class="py-3 px-4 text-right">$1,250</td><td class="py-3 px-4 text-right">$5,000</td></tr>
+     <tr><td class="py-3 px-4 font-body text-white">Hard kill (ED-05b)</td><td class="py-3 px-4 text-right text-danger">5.00%</td><td class="py-3 px-4 text-right">$12,500</td><td class="py-3 px-4 text-right">$50,000</td></tr>
+    </tbody></table>
+  </div>
+  <p class="text-slate-400 text-sm mt-5 leading-relaxed"><strong class="text-white">These are sizing and order-entry rules, not a floor under capital.</strong> Gaps do not ask permission. A position open when a limit trips can lose more than the limit.</p>
+
+  <div class="grid md:grid-cols-3 gap-5 mt-10">
+   <div class="card rounded-lg p-6"><p class="text-gold text-xs uppercase tracking-wider mb-2">Stage 1 · Seasoning</p>
+     <p class="num text-2xl text-white mb-2">3 months</p>
+     <p class="text-slate-400 text-sm">The 10% buffer is funded at inception from the cash sleeve and held. <strong class="text-white">Nothing is withdrawn</strong> for three months. Deterministic, not regime-dependent.</p></div>
+   <div class="card rounded-lg p-6"><p class="text-gold text-xs uppercase tracking-wider mb-2">Stage 2 · Paying</p>
+     <p class="num text-2xl text-white mb-2">1.00% / mo</p>
+     <p class="text-slate-400 text-sm">Paid <strong class="text-white">from the buffer only</strong> — never by selling the foundation. Gains in up months refill the buffer, capped so it never drains the sleeve faster than it earns.</p></div>
+   <div class="card rounded-lg p-6 rule-gold"><p class="text-danger text-xs uppercase tracking-wider mb-2">Stage 3 · Suspension</p>
+     <p class="num text-2xl text-white mb-2">Below 5%</p>
+     <p class="text-slate-400 text-sm">If the buffer falls under 5% of NAV the withdrawal <strong class="text-white">suspends automatically</strong>, and resumes only once it rebuilds to the full 10%. The rule protects the rule.</p></div>
+  </div>
+ </div></div>
+</section>
+
+<!-- THE MODEL / CALCULATOR -->
+<section id="engine" class="py-20 bg-navy-800">
+ <div class="container mx-auto px-4 sm:px-6"><div class="max-w-5xl mx-auto">
+  <h2 class="font-heading text-3xl sm:text-4xl text-white mb-4 text-center">The Model, Run Against 50 Years of Real Markets</h2>
+  <p class="text-slate-400 text-center max-w-2xl mx-auto mb-10">Real S&amp;P 500 total returns, 1975–2024, with the capture asymmetry and the withdrawal rule applied month by month. Change the inputs and watch the rule succeed or fail. <strong class="text-slate-300">Nothing leaves your browser.</strong></p>
+
+  <div class="grid lg:grid-cols-3 gap-6">
+   <!-- controls -->
+   <div class="card rounded-lg p-6 space-y-5">
+    <div><label class="text-slate-400 text-xs uppercase tracking-wider">Illustrative portfolio</label>
+     <input id="c-nav" type="number" value="250000" min="100000" step="50000" class="w-full mt-1 bg-navy-900 border-slate-700 text-white num rounded"></div>
+    <div><label class="text-slate-400 text-xs uppercase tracking-wider flex justify-between"><span>Withdrawal / month</span><span id="l-wd" class="num text-gold">1.00%</span></label>
+     <input id="c-wd" type="range" min="0.10" max="1.50" step="0.05" value="1.00" class="w-full mt-2"></div>
+    <div><label class="text-slate-400 text-xs uppercase tracking-wider flex justify-between"><span>Buffer target</span><span id="l-bt" class="num text-teal-light">10%</span></label>
+     <input id="c-bt" type="range" min="5" max="20" step="1" value="10" class="w-full mt-2"></div>
+    <div><label class="text-slate-400 text-xs uppercase tracking-wider flex justify-between"><span>Downside participation</span><span id="l-dn" class="num text-white">50%</span></label>
+     <input id="c-dn" type="range" min="25" max="100" step="5" value="50" class="w-full mt-2"></div>
+    <div><label class="text-slate-400 text-xs uppercase tracking-wider">Booster engine</label>
+     <select id="c-eng" class="w-full mt-1 bg-navy-900 border-slate-700 text-white text-sm rounded">
+      <option value="0">Off — foundation only</option>
+      <option value="0.045">/MES baseline · +4.5%/yr</option>
+      <option value="0.08">Solvency threshold · +8%/yr</option>
+      <option value="0.11" selected>30R modelled · +11%/yr</option></select></div>
+    <div><label class="text-slate-400 text-xs uppercase tracking-wider flex justify-between"><span>Annual fee (paid months only)</span><span id="l-fee" class="num text-white">0.00%</span></label>
+     <input id="c-fee" type="range" min="0" max="2.5" step="0.25" value="0" class="w-full mt-2"></div>
+    <div><label class="text-slate-400 text-xs uppercase tracking-wider">Window</label>
+     <select id="c-win" class="w-full mt-1 bg-navy-900 border-slate-700 text-white text-sm rounded">
+      <option value="1975">Full · 1975–2024</option>
+      <option value="2000" selected>Lost decade · 2000–2024</option>
+      <option value="2008">Crash start · 2008–2024</option>
+      <option value="2013">Calm start · 2013–2024</option></select></div>
+   </div>
+
+   <!-- output -->
+   <div class="lg:col-span-2 space-y-5">
+    <div id="verdict" class="rounded-lg p-6 border"></div>
+    <div class="card rounded-lg p-6">
+     <p class="text-slate-400 text-xs uppercase tracking-wider mb-3">Monthly payments — <span class="text-gold">paid</span> / <span class="text-danger">suspended</span></p>
+     <svg id="chart-pay" viewBox="0 0 600 90" class="w-full" preserveAspectRatio="none" style="height:90px"></svg>
+     <p class="text-slate-400 text-xs uppercase tracking-wider mt-6 mb-3">NAV <span class="text-gold">(this architecture)</span> vs <span class="text-slate-300">100% S&amp;P</span> — log scale</p>
+     <svg id="chart-nav" viewBox="0 0 600 150" class="w-full" preserveAspectRatio="none" style="height:150px"></svg>
+    </div>
+    <div id="metrics" class="grid grid-cols-2 sm:grid-cols-3 gap-4"></div>
+   </div>
+  </div>
+  <p class="text-slate-500 text-xs mt-6 leading-relaxed">Intra-year monthly paths are <strong>synthetic</strong> — generated at realistic volatility and rescaled so each year compounds exactly to that year's captured annual return. This preserves drawdown shape for buffer testing without inflating the capture claim. The real monthly series is a pending data deliverable; figures will be restated when it lands.</p>
+ </div></div>
+</section>
+
+<!-- WHAT THIS COSTS YOU -->
+<section id="costs" class="py-20">
+ <div class="container mx-auto px-4 sm:px-6"><div class="max-w-3xl mx-auto">
+  <h2 class="font-heading text-3xl sm:text-4xl text-white mb-8 text-center">What This Costs You</h2>
+  <div class="space-y-5">
+   <div class="card rounded-lg p-6 rule-gold"><h3 class="text-white font-bold mb-2">1 · The withdrawal can suspend, and one day it will</h3>
+    <p class="text-slate-400 text-sm leading-relaxed">A 10% buffer at 1% a month is <strong class="text-white">ten months of coverage</strong> — not a guarantee. When it falls below 5% the payment stops until it rebuilds to 10%. In the 2000–2024 window with the engine off, the model suspends roughly a quarter of all eligible months. Suspension is designed behaviour, not a malfunction.</p></div>
+   <div class="card rounded-lg p-6 rule-gold"><h3 class="text-white font-bold mb-2">2 · 1% a month is a 11.4%/yr drag, and it needs the engine</h3>
+    <p class="text-slate-400 text-sm leading-relaxed">Withdrawing 1% of NAV monthly compounds to an <strong class="text-white">11.4% annual withdrawal</strong>. The 80/40 foundation alone has historically produced roughly 9–10%/yr. <strong class="text-white">The foundation alone does not fund this rate</strong> — the model shows capital eroding in real terms. On our runs the withdrawal only preserves inflation-adjusted capital once the engine clears about <strong class="text-white">+8%/yr</strong>. Below that you may keep receiving every payment while your real capital shrinks. That is the failure mode you should watch for, and the model above will show it to you.</p></div>
+   <div class="card rounded-lg p-6 rule-gold"><h3 class="text-white font-bold mb-2">3 · The capture asymmetry has no verdict yet</h3>
+    <p class="text-slate-400 text-sm leading-relaxed">80/40 blended capture is <strong class="text-white">design intent under armed-but-unfired gates.</strong> The overlay has not completed a full market cycle. Its beat-or-protect gate is measured over a cycle and published when it resolves. Every capture figure on this page is an input to a model, not an observed result.</p></div>
+   <div class="card rounded-lg p-6 rule-gold"><h3 class="text-white font-bold mb-2">4 · The 20% cash sleeve is a real drag</h3>
+    <p class="text-slate-400 text-sm leading-relaxed">Holding a fifth of the portfolio out of the market costs roughly <strong class="text-white">17% over a 20-year window</strong> versus 100% S&amp;P, by EPIG's own disclosure. The overlay and the engine have to overcome that before they add anything. We publish the drag rather than net it away quietly.</p></div>
+   <div class="card rounded-lg p-6 rule-gold"><h3 class="text-white font-bold mb-2">5 · This is an income product, so it trades terminal wealth for cash now</h3>
+    <p class="text-slate-400 text-sm leading-relaxed">Money withdrawn stops compounding. Over long windows a pure S&amp;P holding ends with dramatically more capital than this architecture — because it never paid you anything along the way. <strong class="text-white">If you do not need the monthly income, you should not buy an income product.</strong> Compare the NAV line to the S&amp;P line in the model above and decide honestly.</p></div>
+  </div>
+ </div></div>
+</section>
+
+<!-- THE FEE -->
+<section id="fee" class="py-20 bg-navy-800">
+ <div class="container mx-auto px-4 sm:px-6"><div class="max-w-3xl mx-auto text-center">
+  <h2 class="font-heading text-3xl sm:text-4xl text-white mb-6">If the 1% Isn't Paid, There Is No Fee</h2>
+  <p class="text-lg text-slate-300 leading-relaxed mb-8">Not reduced. Not deferred. Not accrued and collected later. In any month the full 1% withdrawal does not reach you, <strong class="text-white">no fee is charged for that month.</strong></p>
+  <div class="card rounded-lg p-8 text-left space-y-4">
+   <p class="text-slate-300 leading-relaxed"><strong class="text-gold">Why this is a real commitment, not a slogan.</strong> The suspension rule is mechanical and public — the buffer either cleared the floor that month or it did not. There is no discretion for us to exercise and no definition for us to renegotiate afterwards. The condition is observable by you, in the same month, from the same numbers.</p>
+   <p class="text-slate-300 leading-relaxed">In the model above, switching the fee on charges it <strong class="text-white">only in paid months.</strong> Run a configuration that suspends often and watch the fee revenue collapse alongside the modelled withdrawals. That symmetry is the entire point: <strong class="text-white">we are paid when the rule works, and not when it doesn't.</strong></p>
+   <div class="border-t border-slate-700/40 pt-4">
+    <p class="text-slate-400 text-sm leading-relaxed"><strong class="text-white">And today the fee is zero.</strong> Phase 1 carries no management fee at all — gross and net are identical, which is why the fee input defaults to 0.00%. When a schedule is published, this model deducts it and every figure updates. The field is live so you can stress-test our future pricing before we have set it.</p>
+   </div>
+  </div>
+ </div></div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="py-20">
+ <div class="container mx-auto px-4 sm:px-6"><div class="max-w-3xl mx-auto">
+  <h2 class="font-heading text-3xl sm:text-4xl text-white mb-10 text-center">The Hard Questions First</h2>
+  <div class="space-y-4" id="faqlist">
+   <div class="card rounded-lg p-6"><h3 class="text-white font-bold mb-2">1% a month is 12% a year. Is that realistic?</h3>
+    <p class="text-slate-400 text-sm leading-relaxed">Withdrawing 1% of NAV monthly is an 11.4%/yr drag once compounded. The 80/40 foundation on its own has historically returned about 9–10%/yr, so <strong class="text-white">the foundation alone does not fund it</strong> — and the model will show you capital eroding if you turn the engine off. The rate is supportable in the model once the booster engine contributes roughly +8%/yr or better. That engine rate is a modelled haircut, not a promise, which is precisely why the model lets you set it to zero and see the consequence.</p></div>
+   <div class="card rounded-lg p-6"><h3 class="text-white font-bold mb-2">What happens the month the buffer runs out?</h3>
+    <p class="text-slate-400 text-sm leading-relaxed">The withdrawal suspends automatically — no payment that month — and stays suspended until the buffer rebuilds to the full 10% of NAV, not merely back over the 5% floor. That hysteresis is deliberate: without it the model would oscillate pay/suspend/pay every month and produce a dishonest sawtooth. You are not charged a fee for any suspended month.</p></div>
+   <div class="card rounded-lg p-6"><h3 class="text-white font-bold mb-2">Why pay from a buffer instead of just selling shares?</h3>
+    <p class="text-slate-400 text-sm leading-relaxed">Because selling shares to fund a withdrawal in a drawdown is the mechanism that turns a temporary decline into a permanent loss. The buffer exists so the foundation is <strong class="text-white">never sold into weakness.</strong> The cost of that discipline is that the payment stops when the buffer is exhausted. We chose a visible interruption over invisible capital destruction.</p></div>
+   <div class="card rounded-lg p-6"><h3 class="text-white font-bold mb-2">Is the 80/40 capture asymmetry proven?</h3>
+    <p class="text-slate-400 text-sm leading-relaxed"><strong class="text-white">No.</strong> It is design intent with no verdict. The overlay has not completed a market cycle, and its beat-or-protect gate is measured across a full cycle and published when it resolves. The capture figures are model inputs. The historical S&amp;P returns underneath them are real; what the overlay does to them is the untested part.</p></div>
+   <div class="card rounded-lg p-6"><h3 class="text-white font-bold mb-2">How is this different from the 4% rule?</h3>
+    <p class="text-slate-400 text-sm leading-relaxed">The 4% rule draws from the portfolio itself, including in drawdowns, and is calibrated to survive rather than to pay well. This architecture targets roughly three times that rate, funds it from a dedicated buffer instead of by selling, dampens the drawdown it is exposed to — and, unlike the 4% rule, <strong class="text-white">will visibly stop paying</strong> rather than quietly increase your odds of ruin.</p></div>
+   <div class="card rounded-lg p-6"><h3 class="text-white font-bold mb-2">Who executes this, and where does the money sit?</h3>
+    <p class="text-slate-400 text-sm leading-relaxed">Ekantik 500 is <strong class="text-white">not currently open for investment</strong>, and nothing on this page is an offer or a solicitation. This is a published model of an architecture, for education. When the managed programme launches it will do so under the appropriate registration, with its custody arrangements, fee schedule and disclosures published at that time. Until then there is nothing to subscribe to and no capital is accepted.</p></div>
+  </div>
+ </div></div>
+</section>
+
+<!-- DISCLOSURE -->
+<footer class="py-14 bg-navy-800 border-t border-slate-700/40">
+ <div class="container mx-auto px-4 sm:px-6"><div class="max-w-3xl mx-auto">
+  <h3 class="text-white font-bold mb-4 text-sm uppercase tracking-wider">Risk Disclosure</h3>
+  <div class="text-slate-400 text-xs leading-relaxed space-y-3">
+   <p><strong class="text-white">INVESTING AND TRADING INVOLVE SUBSTANTIAL RISK OF LOSS.</strong> You can lose money, including amounts greater than your initial capital where leveraged instruments are used. Past performance is not indicative of future results.</p>
+   <p>The 80/40 capture asymmetry is <strong>design intent under armed-but-unfired gates.</strong> The overlay has not completed a market cycle and carries no verdict. The withdrawal model uses <strong>real historical index returns combined with hypothetical capture inputs</strong> — it is not a record of overlay performance. Intra-year monthly paths are synthetic pending delivery of the verified monthly series.</p>
+   <p>Withdrawals <strong>suspend automatically</strong> below the buffer floor; suspension is expected behaviour, not failure. The buffer is finite and can be fully depleted, after which no withdrawal is paid. The 20% cash allocation carries a quantified drag of roughly 17% over a 20-year window versus 100% S&amp;P per EPIG's own disclosure. A 1%-of-NAV monthly withdrawal is an 11.4% annual drag and is not supported by the foundation sleeve alone.</p>
+   <p><strong class="text-white">Ekantik 500 is not open for investment.</strong> This page is educational and is not an offer, a solicitation, or a personalised recommendation. Ekantik Capital Advisors LLC is not currently a registered investment adviser and does not provide investment advice. Figures are modelled and illustrative; they assume the architecture is followed without deviation, and actual results would vary with execution, timing, slippage and adherence. Consult a licensed financial adviser before making any investment decision.</p>
+  </div>
+  <div class="text-center text-slate-500 text-xs mt-10 pt-6 border-t border-slate-700/40">
+   <p class="mb-2"><strong class="text-slate-300">Ekantik Capital Advisors LLC</strong></p>
+   <p class="mb-3"><a href="https://ekantikcapital.com" class="text-gold hover:text-gold-light">ekantikcapital.com</a></p>
+   <p>&copy; 2026 Ekantik Capital Advisors LLC. Doc ref SPEC-CF-EPIG-V1.0-2026-08.</p>
+  </div>
+ </div></div>
+</footer>
+
+<script>
+const SPY={1975:.3720,1976:.2384,1977:-.0718,1978:.0656,1979:.1844,1980:.3242,1981:-.0491,1982:.2155,1983:.2256,1984:.0627,1985:.3173,1986:.1867,1987:.0525,1988:.1661,1989:.3169,1990:-.0310,1991:.3047,1992:.0762,1993:.1008,1994:.0132,1995:.3758,1996:.2296,1997:.3336,1998:.2858,1999:.2104,2000:-.0910,2001:-.1189,2002:-.2210,2003:.2868,2004:.1088,2005:.0491,2006:.1579,2007:.0549,2008:-.3700,2009:.2646,2010:.1506,2011:.0211,2012:.1600,2013:.3239,2014:.1369,2015:.0138,2016:.1196,2017:.2183,2018:-.0438,2019:.3149,2020:.1840,2021:.2871,2022:-.1811,2023:.2629,2024:.2502};
+function mul32(a){return function(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+function path(annual,seed,vol){const r=mul32(seed),z=[],mv=(vol||.15)/Math.sqrt(12);
+ while(z.length<12){const u=Math.max(r(),1e-12),v=r();z.push(Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v));}
+ let g=z.map(x=>x*mv),P=g.reduce((a,x)=>a*(1+x),1),f=Math.pow((1+annual)/P,1/12);
+ return g.map(x=>(1+x)*f-1);}
+const cap=(r,up,dn)=>r>=0?up*r:dn*r;
+
+function run(c){
+ let F=c.nav0*.80,B=c.nav0*c.bt,C=c.nav0*.20-B; if(C<0){B+=C;C=0;}
+ let m=0,paid=0,susp=0,rs=0,maxS=0,wd=0,fees=0,peak=c.nav0,mdd=0,susFlag=false,spy=c.nav0;
+ const navSeries=[],spySeries=[],payFlags=[];
+ for(let y=c.y0;y<=2024;y++){
+  const rspy=SPY[y],fr=cap(rspy,1.00,c.dn),p=path(fr,y*7919+11),ps=path(rspy,y*7919+11);
+  for(let i=0;i<12;i++){
+   m++; spy*=(1+ps[i]);
+   const F0=F; F*=(1+p[i]);
+   if(c.eng>0){const N=F+C+B,E=N*c.eng/12,need=Math.max(0,N*c.bt-B),t=Math.min(E,need);B+=t;C+=E-t;}
+   const gain=F-F0;
+   if(gain>0){const N=F+C+B,need=Math.max(0,N*c.bt-B),t=Math.min(need,gain*.5);B+=t;F-=t;}
+   let NAV=F+C+B; const due=NAV*c.wd; let st=0;
+   if(m>3){
+    const fl=NAV*(c.bt/2), blocked = susFlag ? (B<NAV*c.bt) : (B<fl||B<due);
+    if(blocked){susFlag=true;susp++;rs++;maxS=Math.max(maxS,rs);st=-1;}
+    else{susFlag=false;rs=0;B-=due;wd+=due;paid++;st=1;
+     if(c.fee>0){const fe=(F+C+B)*c.fee/12,tot=F+C;F-=fe*(F/tot);C-=fe*(C/tot);fees+=fe;}}
+   }
+   NAV=F+C+B; peak=Math.max(peak,NAV); mdd=Math.max(mdd,(peak-NAV)/peak);
+   navSeries.push(NAV); spySeries.push(spy); payFlags.push(st);
+  }
+ }
+ const n=2024-c.y0+1,NAV=F+C+B;
+ return{cont:paid/Math.max(1,paid+susp),paid,susp,maxS,mult:NAV/c.nav0,
+  real:(NAV/c.nav0)/Math.pow(1.03,n),spyMult:spy/c.nav0,wd:wd,fees:fees,mdd,navSeries,spySeries,payFlags,years:n,nav0:c.nav0};
+}
+const $=id=>document.getElementById(id);
+const usd=v=>'$'+Math.round(v).toLocaleString('en-US');
+
+function verdict(r){
+ if(r.cont<.80||r.real<.90)return{k:'DEPLETING',c:'#DC2626',
+  t:'This configuration does not support the withdrawal.',
+  d:'The model pays only '+(100*r.cont).toFixed(0)+'% of eligible months and real capital ends at '+r.real.toFixed(2)+'× its starting value. At this setting the rule is drawing down the portfolio faster than the architecture replaces it. Lower the rate, or raise the engine contribution.'};
+ if(r.cont<.95||r.real<1.00)return{k:'ERODING',c:'#D97706',
+  t:'The payments mostly arrive — but real capital is shrinking.',
+  d:'Payment continuity is '+(100*r.cont).toFixed(0)+'%, yet inflation-adjusted capital ends at '+r.real.toFixed(2)+'× its starting value. This is the failure mode that hides: the cheque keeps coming while the capital behind it erodes. Raising the buffer would smooth the payments without fixing this.'};
+ return{k:'SUSTAINABLE',c:'#C8A951',
+  t:'The rule holds across this window.',
+  d:'Payment continuity '+(100*r.cont).toFixed(0)+'% and real capital ends at '+r.real.toFixed(2)+'× its starting value — the architecture funded every payment and preserved inflation-adjusted capital.'};
+}
+
+function spark(el,vals,flags){
+ const w=600,h=90,n=vals.length,bw=w/n;let s='';
+ for(let i=0;i<n;i++){const f=flags[i];if(f===0)continue;
+  const col=f===1?'#C8A951':'#DC2626',bh=f===1?h*.8:h*.35;
+  s+='<rect x="'+(i*bw).toFixed(2)+'" y="'+(h-bh)+'" width="'+Math.max(bw*.9,.5).toFixed(2)+'" height="'+bh+'" fill="'+col+'"/>';}
+ el.innerHTML=s;
+}
+function lines(el,a,b){
+ const w=600,h=150,n=a.length;
+ const all=a.concat(b).filter(v=>v>0);const lo=Math.log(Math.min.apply(null,all)),hi=Math.log(Math.max.apply(null,all));
+ const Y=v=>h-((Math.log(Math.max(v,1e-9))-lo)/(hi-lo||1))*(h-8)-4;
+ const P=arr=>arr.map((v,i)=>(i?'L':'M')+(i*w/(n-1)).toFixed(2)+','+Y(v).toFixed(2)).join(' ');
+ el.innerHTML='<path d="'+P(b)+'" fill="none" stroke="#94A3B8" stroke-width="1.5" stroke-dasharray="4 3"/>'+
+              '<path d="'+P(a)+'" fill="none" stroke="#C8A951" stroke-width="2"/>';
+}
+
+function render(){
+ const c={nav0:+$('c-nav').value||250000,wd:+$('c-wd').value/100,bt:+$('c-bt').value/100,
+  dn:+$('c-dn').value/100,eng:+$('c-eng').value,fee:+$('c-fee').value/100,y0:+$('c-win').value};
+ $('l-wd').textContent=(+$('c-wd').value).toFixed(2)+'%';
+ $('l-bt').textContent=$('c-bt').value+'%';
+ $('l-dn').textContent=$('c-dn').value+'%';
+ $('l-fee').textContent=(+$('c-fee').value).toFixed(2)+'%';
+ const r=run(c),v=verdict(r);
+ $('verdict').style.borderColor=v.c; $('verdict').style.background=v.c+'14';
+ $('verdict').innerHTML='<p class="num text-xs tracking-widest mb-2" style="color:'+v.c+'">'+v.k+'</p>'+
+  '<p class="font-heading text-xl text-white mb-2">'+v.t+'</p><p class="text-slate-300 text-sm leading-relaxed">'+v.d+'</p>'+
+  '<p class="text-slate-400 text-sm mt-3 border-t border-slate-700/40 pt-3">Modelled monthly withdrawal at this setting: <strong class="num" style="color:'+v.c+'">'+usd(c.nav0*c.wd)+'</strong> on an illustrative '+usd(c.nav0)+' portfolio.</p>';
+ spark($('chart-pay'),r.navSeries,r.payFlags);
+ lines($('chart-nav'),r.navSeries,r.spySeries);
+ const M=[['Payment continuity',(100*r.cont).toFixed(0)+'%',r.cont>=.95?'#C8A951':'#DC2626'],
+  ['Longest suspension',r.maxS+' mo',r.maxS<=2?'#C8A951':'#D97706'],
+  ['Total withdrawn',usd(r.wd),'#E2E8F0'],
+  ['Capital multiple',r.mult.toFixed(2)+'×','#E2E8F0'],
+  ['Real capital (3% infl.)',r.real.toFixed(2)+'×',r.real>=1?'#C8A951':'#DC2626'],
+  ['Fees paid',usd(r.fees),'#E2E8F0']];
+ $('metrics').innerHTML=M.map(function(m){return '<div class="card rounded-lg p-4"><p class="text-slate-400 text-[10px] uppercase tracking-wider mb-1">'+m[0]+'</p><p class="num text-lg" style="color:'+m[2]+'">'+m[1]+'</p></div>';}).join('');
+}
+['c-nav','c-wd','c-bt','c-dn','c-eng','c-fee','c-win'].forEach(function(id){
+ $(id).addEventListener('input',render); $(id).addEventListener('change',render);});
+render();
+</script>
+</body></html>
