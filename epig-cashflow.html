@@ -23,6 +23,7 @@ tailwind.config={theme:{extend:{
  body{background:#10182B}
  input[type=range]{accent-color:#C8A951}
  .num{font-family:'DM Mono',ui-monospace,monospace;font-variant-numeric:tabular-nums}
+ .data-req{border:1px dashed #DC2626;color:#FCA5A5;font-family:'DM Mono',ui-monospace,monospace;font-size:12px;padding:12px 14px;border-radius:6px;background:rgba(220,38,38,.06)}
 </style>
 </head>
 <body class="font-body antialiased text-slate-200">
@@ -49,6 +50,7 @@ tailwind.config={theme:{extend:{
     <a href="#engine" class="text-slate-400 hover:text-white">The Model</a>
     <a href="#costs" class="text-slate-400 hover:text-white">What It Costs You</a>
     <a href="#fee" class="text-slate-400 hover:text-white">The Fee</a>
+    <a href="#founding" class="text-slate-400 hover:text-white">Why a Cohort</a>
     <a href="#faq" class="text-slate-400 hover:text-white">FAQ</a>
    </nav>
    <span class="num text-xs px-3 py-1.5 rounded-full border border-teal/40 text-teal-light whitespace-nowrap">
@@ -227,9 +229,48 @@ tailwind.config={theme:{extend:{
   <div class="card rounded-lg p-8 text-left space-y-4">
    <p class="text-slate-300 leading-relaxed"><strong class="text-gold">Why this is a real commitment, not a slogan.</strong> The suspension rule is mechanical and public — the buffer either cleared the floor that month or it did not. There is no discretion for us to exercise and no definition for us to renegotiate afterwards. The condition is observable by you, in the same month, from the same numbers.</p>
    <p class="text-slate-300 leading-relaxed">In the model above, switching the fee on charges it <strong class="text-white">only in paid months.</strong> Run a configuration that suspends often and watch the fee revenue collapse alongside the modelled withdrawals. That symmetry is the entire point: <strong class="text-white">we are paid when the rule works, and not when it doesn't.</strong></p>
-   <div class="border-t border-slate-700/40 pt-4">
+   <div class="border-t border-slate-700/40 pt-4 space-y-3">
     <p class="text-slate-400 text-sm leading-relaxed"><strong class="text-white">And today the fee is zero.</strong> Phase 1 carries no management fee at all — gross and net are identical, which is why the fee input defaults to 0.00%. When a schedule is published, this model deducts it and every figure updates. The field is live so you can stress-test our future pricing before we have set it.</p>
+    <p class="text-slate-400 text-sm leading-relaxed"><strong class="text-white">One thing we will not blur:</strong> the arrangement above is a <strong class="text-white">founding-cohort term</strong>, not a permanent property of the product. Founding members keep it. What later cohorts are charged, and the basis their yield is calculated on, will be set separately and published then. <a href="#founding" class="text-gold hover:text-gold-light underline underline-offset-2">Why that is, and what it does not mean →</a></p>
    </div>
+  </div>
+ </div></div>
+</section>
+
+<!-- WHY A FOUNDING COHORT -->
+<section id="founding" class="py-20">
+ <div class="container mx-auto px-4 sm:px-6"><div class="max-w-3xl mx-auto">
+  <h2 class="font-heading text-3xl sm:text-4xl text-white mb-4 text-center">Why This Opens as a Founding Cohort</h2>
+  <p class="text-slate-400 text-center max-w-2xl mx-auto mb-10">Two reasons, both arithmetic. Neither is a deadline. Nothing here becomes more urgent if you wait — it becomes <em>different</em>, and we would rather name which part changes than let you find out afterwards.</p>
+
+  <div class="space-y-5">
+   <div class="card rounded-lg p-6 rule-gold">
+    <p class="text-gold text-xs uppercase tracking-wider mb-2">Reason one · Capacity</p>
+    <h3 class="font-heading text-xl text-white mb-3">The layer that makes 1% work is the layer that cannot scale</h3>
+    <div class="text-slate-400 text-sm leading-relaxed space-y-3">
+     <p>The 80% S&amp;P foundation is effectively uncapped. Index exposure does not care how many people hold it, and no amount of subscriber capital degrades it.</p>
+     <p><strong class="text-white">The booster engine is the opposite.</strong> It is a short-horizon futures book living inside finite liquidity at each entry. When too much capital mirrors the same entries and exits, fills slip — and the slippage comes straight out of the edge.</p>
+     <p>That matters more here than it would elsewhere, because of what the model above shows: <strong class="text-white">the foundation on its own does not fund a 1% monthly withdrawal.</strong> The engine is what carries this architecture from eroding to sustainable. So the capacity-bound layer is precisely the layer the withdrawal depends on — which means the cohort has to be sized to the engine, not to the foundation.</p>
+     <p class="text-slate-300">This is also why the <span class="text-white">$5,000,000</span> figure published on our futures-alert page does not simply carry across. That number was sized for an intraday futures book. This architecture is dominated by an index sleeve, so the old reason for the cap has stopped being true here. We would rather retire that number in public than reuse it because it sounded scarce.</p>
+     <div class="data-req">⚠ [DATA REQUIRED] Engine-sleeve capacity figure — stated with its basis and its measurement method, per SPEC-CF-EPIG §7.6 and §6 item 12. Must not ship as an unmeasurable or inherited number.</div>
+    </div>
+   </div>
+
+   <div class="card rounded-lg p-6 rule-gold">
+    <p class="text-gold text-xs uppercase tracking-wider mb-2">Reason two · Terms</p>
+    <h3 class="font-heading text-xl text-white mb-3">The zero-fee-if-missed rule is a founding term, and it is grandfathered</h3>
+    <div class="text-slate-400 text-sm leading-relaxed space-y-3">
+     <p>Founding members keep the arrangement described above — <strong class="text-white">no fee in any month the full withdrawal is not paid</strong> — for as long as they remain in the programme. That is what a founding place actually locks. It is not a vague promise of "better terms"; it is that specific rule, held.</p>
+     <p>For later cohorts, both the fee and <strong class="text-white">the basis on which the yield is calculated</strong> will be set separately and published at that time. We are not going to pretend they will be identical. They will be set against a longer live record than the one we have today, and that record — not a marketing decision — is what will inform them.</p>
+     <p class="text-slate-300"><strong class="text-white">What that does and does not mean.</strong> It does mean the terms available to a founding cohort are better than the terms we could responsibly offer once the programme is larger and the evidence base has changed. <strong class="text-white">It does not mean the product is open today.</strong> Ekantik 500 is not open for investment, nothing on this page is an offer, and there is nothing to buy. A founding place is a conversation and a position in a queue — not a transaction, and not a payment.</p>
+    </div>
+   </div>
+  </div>
+
+  <div class="card rounded-lg p-6 mt-8 text-center">
+   <p class="text-slate-300 leading-relaxed mb-5">If the architecture interests you, the useful next step is a conversation about whether it fits — not a commitment, because there is nothing to commit to yet.</p>
+   <a href="mailto:info@ekantikcapital.com?subject=Founding%20cohort%20—%20educational%20conversation" class="inline-block px-8 py-3.5 border border-gold text-gold font-bold text-sm uppercase tracking-wider hover:bg-gold/10 transition">Request a founder conversation</a>
+   <p class="text-slate-500 text-xs mt-4">Educational only. No capital is accepted and no offer is made.</p>
   </div>
  </div></div>
 </section>
@@ -249,6 +290,8 @@ tailwind.config={theme:{extend:{
     <p class="text-slate-400 text-sm leading-relaxed"><strong class="text-white">No.</strong> It is design intent with no verdict. The overlay has not completed a market cycle, and its beat-or-protect gate is measured across a full cycle and published when it resolves. The capture figures are model inputs. The historical S&amp;P returns underneath them are real; what the overlay does to them is the untested part.</p></div>
    <div class="card rounded-lg p-6"><h3 class="text-white font-bold mb-2">How is this different from the 4% rule?</h3>
     <p class="text-slate-400 text-sm leading-relaxed">The 4% rule draws from the portfolio itself, including in drawdowns, and is calibrated to survive rather than to pay well. This architecture targets roughly three times that rate, funds it from a dedicated buffer instead of by selling, dampens the drawdown it is exposed to — and, unlike the 4% rule, <strong class="text-white">will visibly stop paying</strong> rather than quietly increase your odds of ruin.</p></div>
+   <div class="card rounded-lg p-6"><h3 class="text-white font-bold mb-2">Why is this limited to a founding cohort?</h3>
+    <p class="text-slate-400 text-sm leading-relaxed">Two reasons, both structural. The booster engine — the layer that makes a 1% monthly withdrawal solvent rather than eroding — is capacity-bound in a way the index foundation is not, so the cohort is sized to the engine. And the no-fee-unless-paid arrangement is a <strong class="text-white">founding term that is grandfathered</strong>, with later cohorts' fee and yield-calculation basis set separately against a longer live record. <a href="#founding" class="text-gold hover:text-gold-light underline underline-offset-2">The full reasoning is here.</a> None of that makes the product open — it is not.</p></div>
    <div class="card rounded-lg p-6"><h3 class="text-white font-bold mb-2">Who executes this, and where does the money sit?</h3>
     <p class="text-slate-400 text-sm leading-relaxed">Ekantik 500 is <strong class="text-white">not currently open for investment</strong>, and nothing on this page is an offer or a solicitation. This is a published model of an architecture, for education. When the managed programme launches it will do so under the appropriate registration, with its custody arrangements, fee schedule and disclosures published at that time. Until then there is nothing to subscribe to and no capital is accepted.</p></div>
   </div>
@@ -263,6 +306,7 @@ tailwind.config={theme:{extend:{
    <p><strong class="text-white">INVESTING AND TRADING INVOLVE SUBSTANTIAL RISK OF LOSS.</strong> You can lose money, including amounts greater than your initial capital where leveraged instruments are used. Past performance is not indicative of future results.</p>
    <p>The 80/40 capture asymmetry is <strong>design intent under armed-but-unfired gates.</strong> The overlay has not completed a market cycle and carries no verdict. The withdrawal model uses <strong>real historical index returns combined with hypothetical capture inputs</strong> — it is not a record of overlay performance. Intra-year monthly paths are synthetic pending delivery of the verified monthly series.</p>
    <p>Withdrawals <strong>suspend automatically</strong> below the buffer floor; suspension is expected behaviour, not failure. The buffer is finite and can be fully depleted, after which no withdrawal is paid. The 20% cash allocation carries a quantified drag of roughly 17% over a 20-year window versus 100% S&amp;P per EPIG's own disclosure. A 1%-of-NAV monthly withdrawal is an 11.4% annual drag and is not supported by the foundation sleeve alone.</p>
+   <p>The no-fee-unless-paid arrangement described on this page is a <strong>founding-cohort term</strong> and is not a permanent feature of the product. Fees and the yield-calculation basis applicable to later cohorts have not been set and will be published when they are. Capacity figures are subject to restatement with their basis and date.</p>
    <p><strong class="text-white">Ekantik 500 is not open for investment.</strong> This page is educational and is not an offer, a solicitation, or a personalised recommendation. Ekantik Capital Advisors LLC is not currently a registered investment adviser and does not provide investment advice. Figures are modelled and illustrative; they assume the architecture is followed without deviation, and actual results would vary with execution, timing, slippage and adherence. Consult a licensed financial adviser before making any investment decision.</p>
   </div>
   <div class="text-center text-slate-500 text-xs mt-10 pt-6 border-t border-slate-700/40">
