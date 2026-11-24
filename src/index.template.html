@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{site.title}}</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="A {{total}} portfolio with two engines and two jobs: a futures engine for monthly cash, an options engine for growth. Every trade posted live.">
+<link rel="preload" href="fonts/cormorant-garamond-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/dm-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="styles.css?v={{buildId}}">
+</head>
+<body data-build="{{buildMode}}">
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <div class="wrap topbar__in">
+    <a class="wordmark" href="#top">Ekantik Capital Advisors</a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav id="nav" class="nav" aria-label="Sections">
+      <a href="#idea">The Idea</a>
+      <a href="#split">The Split</a>
+      <a href="#size">Your Size</a>
+      <a href="#cash-rules">Cash Rules</a>
+      <a href="#risk">Risk</a>
+      <a href="#record">The Record</a>
+      <a href="#stops">Stop Rules</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="btn btn--gold btn--sm" href="#follow">Follow live</a>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- 5.2 HERO -->
+<section id="top" class="sec sec--navy hero">
+  <div class="wrap">
+    <p class="eyebrow eyebrow--gold">{{total}} · TWO ENGINES · EVERY TRADE POSTED LIVE</p>
+    <h1>One engine pays you. The other compounds.</h1>
+<!--live-->
+    <p class="lede">A {{total}} portfolio with two jobs, kept apart. A futures engine works for monthly cash. An options engine works for growth and is never touched. Futures alerts are sized to a daily loss limit of {{dailyPct}} of the portfolio. Run them as alerted or at double size, never more. Your cash target follows your size: {{targetPct1}} a month at 1x, {{targetPct2}} at 2x. Nothing comes out until three months of it are banked.</p>
+<!--/live-->
+<!--off-->
+    <p class="lede">A {{total}} portfolio with two jobs, kept apart. A futures engine works for monthly cash. An options engine works for growth and is never touched. Futures alerts are sized to a daily loss limit of {{dailyPct}} of the portfolio. Run them as alerted or at double size, never more. Nothing comes out until three months of the cash target are banked.</p>
+<!--/off-->
+    <div class="chips" role="radiogroup" aria-label="Choose your size">
+{{heroChips}}
+    </div>
+<!--live-->
+    <p class="note-gold"><em>2x is the limit. Targets, not forecasts.</em></p>
+<!--/live-->
+<!--off-->
+    <p class="note-gold"><em>2x is the limit.</em></p>
+<!--/off-->
+    <div class="actions">
+      <a class="btn btn--gold" href="#follow">Follow both engines →</a>
+      <a class="btn btn--outline" href="{{site.bookCallUrl}}" target="_blank" rel="noopener" data-evt="book_call_click">Book a 30-minute call</a>
+    </div>
+    <ul class="proof" aria-label="Live record summary">
+      <li data-proof="futures" hidden></li>
+      <li data-proof="options" hidden></li>
+      <li>Your broker. Your accounts. We never have access.</li>
+    </ul>
+    <p class="fine">Educational trade alerts. Not investment advice. Futures and options carry substantial risk of loss. Past performance is not indicative of future results.</p>
+  </div>
+</section>
+
+<!-- 5.3 THE IDEA -->
+<section id="idea" class="sec sec--ivory reveal">
+  <div class="wrap">
+    <p class="eyebrow">THE FLAW IN MOST PORTFOLIOS</p>
+    <h2>Most portfolios ask one engine to do two jobs.</h2>
+    <div class="prose">
+      <p>Cash flow and compounding pull in opposite directions. Withdraw from a compounding account and you cut the doubling short. Compound an income account and nothing reaches you this month.</p>
+      <p>So the work is split. One engine is built to be withdrawn from. The other is built never to be touched. Each keeps its own rules, its own record and its own stop.</p>
+    </div>
+    <div class="table-scroll">
+      <table class="tbl">
+        <thead><tr><th scope="col"><span class="sr">Topic</span></th><th scope="col">The usual way</th><th scope="col">This portfolio</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Monthly cash</th><td>A 4% rule, or whatever dividends pay</td><td>A fixed target, paid from a banked buffer</td></tr>
+          <tr><th scope="row">Growth</th><td>The same account you withdraw from</td><td>A separate sleeve that is never withdrawn</td></tr>
+          <tr><th scope="row">Daily risk</th><td>Rarely stated</td><td>A published {{dailyPct}} daily loss limit at 1x</td></tr>
+          <tr><th scope="row">When something breaks</th><td>You hear at the quarterly review</td><td>Posted in Discord within one trading day</td></tr>
+          <tr><th scope="row">Who checks</th><td>The firm that runs it</td><td>A named independent witness</td></tr>
+          <tr><th scope="row">Custody</th><td>Their platform</td><td>Your broker, your accounts</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <blockquote class="pull">“Income and growth fight when they share an account. Here they don’t share one.”</blockquote>
+  </div>
+</section>
+
+<!-- 5.4 THE SPLIT -->
+<section id="split" class="sec reveal">
+  <div class="wrap">
+    <p class="eyebrow">{{total}}, SPLIT BY JOB</p>
+    <h2>Each dollar has one job.</h2>
+    <div class="split" style="--f: {{futuresShare}}; --o: {{optionsShare}};">
+      <article class="card card--accent split__f">
+        <h3><span class="num">{{futuresSleeve}}</span> · Cash-Flow Engine (futures)</h3>
+        <p class="job">Job: monthly cash.</p>
+        <p><em>Rules-based S&amp;P 500 futures (ES / MES). Hard loss limits by the day, week and month. Every withdrawal comes from this engine’s realized gains.</em></p>
+      </article>
+      <article class="card card--accent split__o">
+        <h3><span class="num">{{optionsSleeve}}</span> · Compounding Engine (options)</h3>
+        <p class="job">Job: long-term growth.</p>
+        <p><em>Short-dated options. Size grows only after profits pay for the next step, and shrinks the moment they’re given back. Never withdrawn. Treat the full {{optionsSleeve}} as money that can go to zero.</em></p>
+      </article>
+    </div>
+    <p class="after"><em>Two engines, two records. We never add them together.</em></p>
+  </div>
+</section>
+
+<!-- 5.5 YOUR SIZE -->
+<section id="size" class="sec sec--ivory reveal">
+  <div class="wrap">
+    <p class="eyebrow">ALERTED AT 1X. DOUBLE IS THE LIMIT.</p>
+    <h2>Run it as alerted, or at double. Never more.</h2>
+    <div class="prose">
+      <p>Every futures alert is sized for a {{total}} portfolio at 1x: a daily loss limit of {{dailyPct}} of the portfolio. You may double it. Every rule is written in R, the dollars risked on one futures trade, so doubling your size doubles every limit and your cash target with it. Nothing else changes.</p>
+    </div>
+    <div class="seg" role="radiogroup" aria-label="Size">
+{{segButtons}}
+    </div>
+    <h3 class="tbl-title" id="rules-title">The rules at each size</h3>
+    <div class="table-scroll">
+      <table class="tbl tbl--rules" aria-labelledby="rules-title" aria-live="polite">
+        <thead><tr><th scope="col">Rule</th><th scope="col">In R</th><th scope="col" data-col="1x">1x</th><th scope="col" data-col="2x">2x</th></tr></thead>
+        <tbody>
+{{rulesRows}}
+        </tbody>
+      </table>
+    </div>
+<!--live-->
+    <p class="after"><em>Percentages are of the full {{total}}. Targets, not forecasts.</em></p>
+<!--/live-->
+<!--off-->
+    <p class="after"><em>Smaller or larger account? The rules are in R, so they scale. Book a call to see them at your size.</em> <a class="btn btn--outline btn--sm" href="{{site.bookCallUrl}}" target="_blank" rel="noopener" data-evt="book_call_click">Book a 30-minute call</a></p>
+<!--/off-->
+    <aside class="callout" aria-labelledby="why2x">
+      <p class="eyebrow eyebrow--gold-text">CAUTION</p>
+      <h3 id="why2x">Why 2x is the limit:</h3>
+      <p>At 2x, each futures trade risks <span class="num">{{riskShare2}}</span> of the futures account. That is the same share the published record was run at. Above 2x, you would be trading a size the record has never been tested at.</p>
+      <p>At 2x, the monthly loss limit is already <span class="num">{{monthlyPct2}}</span> of the portfolio, and futures can gap past any limit.</p>
+      <p>If you would not sit through a full monthly loss limit at 2x, stay at 1x.</p>
+    </aside>
+    <p class="after"><em>The 2x choice applies to the Cash-Flow Engine only. The Compounding Engine sizes itself: it grows only on earned profit, by its own ladder.</em></p>
+  </div>
+</section>
+
+<!-- 5.6 CASH RULES -->
+<section id="cash-rules" class="sec sec--navy reveal">
+  <div class="wrap">
+    <p class="eyebrow eyebrow--gold">BUFFER FIRST</p>
+    <h2>Bank three months. Then withdraw.</h2>
+    <ol class="ladder">
+      <li class="ladder__step">
+        <span class="ladder__zero">$0 out</span>
+        <h3>1 · Build</h3>
+        <p><em>Realized futures gains fill the buffer: <span class="num" data-fig="{{r.buffer}}">{{fig.buffer}}</span>, three months of the target. Nothing comes out. About {{planning.buildText}} at the conservative planning rate. Markets set the real pace.</em></p>
+      </li>
+      <li class="ladder__step">
+        <h3>2 · Withdraw</h3>
+        <p><em>Each month, <span class="num" data-fig="{{r.target}}">{{fig.target}}</span> comes out. Months above target refill the buffer first. Gains beyond a full buffer stay in the futures account.</em></p>
+      </li>
+      <li class="ladder__step">
+        <h3>3 · Pause</h3>
+        <p><em>If the buffer falls below one month of target (<span class="num" data-fig="{{r.pauseBelow}}">{{fig.pauseBelow}}</span>), withdrawals pause. They restart when the buffer is back to three months (<span class="num" data-fig="{{r.resumeAt}}">{{fig.resumeAt}}</span>).</em></p>
+      </li>
+    </ol>
+    <p class="after"><em>The Compounding Engine is never part of this. It compounds on its own.</em></p>
+  </div>
+</section>
+
+<!--live-->
+<!-- 5.7 THE MATH -->
+<section id="math" class="sec reveal">
+  <div class="wrap">
+    <h2>The number you’re about to calculate.</h2>
+    <div class="blocks">
+      <p><strong>It’s simple, not compounded.</strong> At 1x, {{targetPct1}} a month is {{annual1}} a year on {{total}}. At 2x, {{targetPct2}} is {{annual2}}. The cash leaves the account, so nothing compounds on it.</p>
+      <p><strong>Year one pays fewer than twelve months.</strong> The buffer is built first.</p>
+      <p><strong>The target sits below the planning rate.</strong> The target is {{r.target}}R a month. The conservative planning rate for the futures engine is {{planning.annualR}}R a year, about {{planningMonthlyR}}R a month.</p>
+      <p><strong>2x is not a better 1x.</strong> It is the same plan with twice the risk.</p>
+    </div>
+    <p class="after"><em>Targets and planning rates are not forecasts.</em></p>
+  </div>
+</section>
+<!--/live-->
+
+<!-- 5.8 RISK -->
+<section id="risk" class="sec sec--ivory reveal">
+  <div class="wrap">
+    <p class="eyebrow">READ THIS BEFORE THE RESULTS</p>
+    <h2>The downside comes first.</h2>
+    <aside class="callout" aria-labelledby="arith">
+      <h3 id="arith">The arithmetic you should run:</h3>
+      <p>At your size, the monthly loss limit is <span class="num" data-limit="{{r.monthly}}">{{limit.monthly}}</span>. The monthly cash target is <span class="num" data-fig="{{r.target}}">{{fig.target}}</span>. The limit is four times the target. That is deliberate: the limit is a circuit breaker for a bad month, not a forecast of one.</p>
+      <p data-dd-text><span data-dd-sentence>The deepest drawdown so far is on the dashboard.</span> The buffer is {{r.buffer}}R. A repeat of that stretch would use most or all of the buffer. That is why withdrawals pause at {{r.pauseBelow}}R instead of running the buffer to zero.</p>
+    </aside>
+    <ul class="facts">
+      <li><svg aria-hidden="true" viewBox="0 0 24 24" class="ico"><path d="M12 3 2 21h20L12 3z"/><path d="M12 10v5M12 18v.01"/></svg><em>Loss limits stop new trades. They are not floors. Futures can gap, and a loss can run past the limit.</em></li>
+      <li><svg aria-hidden="true" viewBox="0 0 24 24" class="ico"><path d="M12 3 2 21h20L12 3z"/><path d="M12 10v5M12 18v.01"/></svg><em>The options sleeve can go to zero. Treat the full {{optionsSleeve}} as at risk.</em></li>
+      <li><svg aria-hidden="true" viewBox="0 0 24 24" class="ico"><path d="M12 3 2 21h20L12 3z"/><path d="M12 10v5M12 18v.01"/></svg><em>Futures are leveraged. Losses can exceed the amount deposited.</em></li>
+    </ul>
+    <h3 class="tbl-title" id="opt-rules">Compounding Engine rules (always 1x)</h3>
+    <div class="table-scroll">
+      <table class="tbl" aria-labelledby="opt-rules">
+        <thead><tr><th scope="col">Rule</th><th scope="col">Level</th><th scope="col">What happens</th></tr></thead>
+        <tbody>
+{{optionsRulesRows}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 5.9 THE RECORD -->
+<section id="record" class="sec reveal">
+  <div class="wrap">
+    <p class="eyebrow">ONE PORTFOLIO · TWO RECORDS · NEVER BLENDED</p>
+    <h2>Every trade, posted before the result is known.</h2>
+    <div class="prose">
+      <p>The portfolio combines two engines. The proof does not. Each engine keeps its own record, its own start date and its own dashboard. Adding them together would create a history that never happened.</p>
+    </div>
+    <div class="panels">
+      <article class="panel card" data-engine="futures" aria-labelledby="pf-h">
+        <header class="panel__head">
+          <h3 id="pf-h">Cash-Flow Engine</h3>
+          <div class="panel__meta">{{badge.futures}} <span>Since {{startDate.futures}}</span> {{statusChip.futures}} <span class="asof" data-asof></span></div>
+        </header>
+        <div class="panel__body" data-body>
+          <p class="empty">Live numbers are on the dashboard while the feed connects.</p>
+        </div>
+        <p class="panel__note"><em>Shown in R, the unit every rule above is written in. It reads the same at 1x or 2x.</em></p>
+        <div class="panel__btns">
+          <a class="btn btn--gold btn--sm" href="{{eng.futures.dashboardUrl}}" target="_blank" rel="noopener" data-evt="dashboard_click" data-engine-evt="futures">Open the full dashboard ↗</a>
+          <a class="btn btn--outline btn--sm" href="{{eng.futures.discordUrl}}" target="_blank" rel="noopener" data-evt="discord_click" data-engine-evt="futures">Join the Discord ↗</a>
+        </div>
+        <div class="sample" data-sample hidden></div>
+      </article>
+      <article class="panel card" data-engine="options" aria-labelledby="po-h">
+        <header class="panel__head">
+          <h3 id="po-h">Compounding Engine</h3>
+          <div class="panel__meta">{{badge.options}} <span>Since {{startDate.options}}</span> {{statusChip.options}} <span class="asof" data-asof></span></div>
+        </header>
+        <div class="panel__body" data-body>
+          <p class="empty">Live numbers are on the dashboard while the feed connects.</p>
+        </div>
+        <div class="panel__btns">
+          <a class="btn btn--gold btn--sm" href="{{eng.options.dashboardUrl}}" target="_blank" rel="noopener" data-evt="dashboard_click" data-engine-evt="options">Open the full dashboard ↗</a>
+          <a class="btn btn--outline btn--sm" href="{{eng.options.discordUrl}}" target="_blank" rel="noopener" data-evt="discord_click" data-engine-evt="options">Join the Discord ↗</a>
+        </div>
+        <div class="sample" data-sample hidden></div>
+      </article>
+    </div>
+    <p class="after"><em>{{recordsLine}} Past performance is not indicative of future results. Each record is shown on its own and never combined.</em></p>
+  </div>
+</section>
+
+<!-- 5.10 STOP RULES -->
+<section id="stops" class="sec sec--navy reveal">
+  <div class="wrap">
+    <p class="eyebrow eyebrow--gold">PUBLISHED IN ADVANCE</p>
+    <h2>If an engine fails, you see it first.</h2>
+    <p class="mono tiers"><span>T0 Normal</span> · <span>T1 Elevated scrutiny, trading continues</span> · <span>T2 Stood down, research only</span></p>
+    <div class="stops">
+      <article class="card card--dark">
+        <h3>Cash-Flow Engine {{statusChip.futures}}</h3>
+        <p>{{eng.futures.stopRule}}</p>
+        <p><em>While trading is stopped, the buffer keeps paying the target down to the pause line.</em></p>
+      </article>
+      <article class="card card--dark">
+        <h3>Compounding Engine {{statusChip.options}}</h3>
+        <p>{{eng.options.stopRule}}</p>
+      </article>
+    </div>
+    <div class="witness">
+      <p>Independent witness <strong>{{site.witness}}</strong> holds binding authority over rule changes and breach calls. Rule changes post before they take effect. Stops post in Discord within one trading day. Losing trades stay on the record.</p>
+      <p><a class="link-gold" href="{{site.protocolUrl}}" target="_blank" rel="noopener">Read the full falsifiability protocol →</a></p>
+    </div>
+  </div>
+</section>
+
+<!--capacity-->
+<!-- 5.11 CAPACITY -->
+<section id="capacity" class="sec reveal">
+  <div class="wrap">
+    <h2>Capacity is limited — by design.</h2>
+    <p><em>A short-horizon futures edge only absorbs so many contracts before fills slip. Total capital following the alerts is limited to {{capacity}}. When it fills, new interest goes to a waitlist.</em></p>
+    <p><em>Accounts start at {{minAccount}}, in {{unit}} units.</em></p>
+  </div>
+</section>
+<!--/capacity-->
+
+<!-- 5.12 FOLLOW LIVE -->
+<section id="follow" class="sec sec--ivory reveal">
+  <div class="wrap">
+    <h2>Watch first. Decide later.</h2>
+    <ol class="steps">
+      <li><span class="steps__n">1</span><div><strong>Observe.</strong> <em>Join both Discords. Every entry, exit, stand-down and rule change posts there. Free.</em></div></li>
+      <li><span class="steps__n">2</span><div><strong>Validate.</strong> <em>Watch for 30 to 60 days. See a bad week, not only a good one.</em></div></li>
+      <li><span class="steps__n">3</span><div><strong>Decide.</strong> <em>If you go ahead, you place the trades yourself, in your own accounts at your own broker. We never have access.</em></div></li>
+    </ol>
+    <p class="howsize"><strong>How alerts state size:</strong> <em>Every futures alert gives contracts at 1x for a {{total}} portfolio. At 2x, double the contracts. Never go past 2x. Options alerts give contracts for the {{optionsSleeve}} sleeve; follow them as alerted.</em></p>
+    <div class="actions">
+      <a class="btn btn--gold" href="{{eng.futures.discordUrl}}" target="_blank" rel="noopener" data-evt="discord_click" data-engine-evt="futures">Cash-Flow Engine Discord ↗</a>
+      <a class="btn btn--gold" href="{{eng.options.discordUrl}}" target="_blank" rel="noopener" data-evt="discord_click" data-engine-evt="options">Compounding Engine Discord ↗</a>
+      <a class="btn btn--outline" href="{{site.bookCallUrl}}" target="_blank" rel="noopener" data-evt="book_call_click">Book a 30-minute call</a>
+    </div>
+    <p class="fine">Accounts start at {{minAccount}}. {{site.feeLine}}</p>
+  </div>
+</section>
+
+<!-- 5.13 FAQ -->
+<section id="faq" class="sec reveal">
+  <div class="wrap wrap--narrow">
+    <h2>Questions</h2>
+    <div class="faq">
+      <details><summary>Why two engines instead of one?</summary><p><em>Because cash flow and compounding pull against each other. Taking cash out of a compounding account cuts its doublings short. So one engine is built to pay you and the other is built to be left alone.</em></p></details>
+      <details><summary>Should I run 1x or 2x?</summary><p><em>We can’t tell you what suits you. Here is the difference: 2x doubles every loss limit and, with it, the monthly cash target. Same rules, twice the risk.</em></p></details>
+      <details><summary>Can I go above 2x?</summary><p><em>Please don’t. 2x is the size the published record was run at. Above it, the size is untested and every loss limit grows past what this page describes.</em></p></details>
+      <details><summary>Why does nothing come out at first?</summary><p><em>Three months of the target are banked first. That buffer is what keeps the withdrawal level through soft months.</em></p></details>
+      <details><summary>What happens in a bad month?</summary><p><em>The buffer pays the target. If the buffer falls below one month of target, withdrawals pause until it is back to three months.</em></p></details>
+      <details><summary>What if an engine stops working?</summary><p><em>Its stop rule fires, the stand-down posts in Discord within one trading day, and new trades stop. The other engine keeps its own rules.</em></p></details>
+      <details><summary>Is the target realistic?</summary><p><em>It is a target, not a record. It is set at {{r.target}}R a month, below the conservative planning rate of {{planning.annualR}}R a year. The record is young. Judge it trade by trade in Discord.</em></p></details>
+      <details><summary>Can I take money from the Compounding Engine?</summary><p><em>The design never does. Withdrawing from it cuts the doubling short.</em></p></details>
+      <details><summary>Do I need {{minAccount}}?</summary><p><em>Alerts are sized for {{minAccount}} at 1x. The rules are written in R, so they scale. Book a call to see them at your account size.</em></p></details>
+    </div>
+  </div>
+</section>
+
+<!-- 5.14 WHERE THIS SITS -->
+<section class="sec sec--ivory sec--tight reveal" aria-labelledby="where">
+  <div class="wrap wrap--narrow">
+    <h2 id="where" class="h-small">Where this sits</h2>
+    <div class="table-scroll">
+      <table class="tbl tbl--small">
+        <tbody>
+          <tr><th scope="row">The Doctrine</th><td>Why doublings dominate wealth outcomes. Free.</td><td><a href="https://doubles.ekantikcapital.com" target="_blank" rel="noopener">doubles.ekantikcapital.com</a></td></tr>
+          <tr><th scope="row">The Machine</th><td>How leverage, cash flow and compounding fit together.</td><td><a href="https://accelerator.ekantikcapital.com" target="_blank" rel="noopener">accelerator.ekantikcapital.com</a></td></tr>
+          <tr><th scope="row">The Research</th><td>Research for applying it yourself.</td><td><a href="https://alpha.ekantikcapital.com" target="_blank" rel="noopener">alpha.ekantikcapital.com</a></td></tr>
+          <tr><th scope="row">This page</th><td>One portfolio, two engines, every trade posted live.</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 5.15 CLOSING -->
+<section class="sec sec--navy reveal">
+  <div class="wrap wrap--narrow center">
+    <h2>Cash you can plan around. Growth you leave alone.</h2>
+    <p><em>Watch both engines before you commit a dollar. Every trade posts as it happens, the losing ones too.</em></p>
+    <div class="actions actions--center">
+      <a class="btn btn--gold" href="#follow">Follow live</a>
+      <a class="btn btn--outline" href="{{site.bookCallUrl}}" target="_blank" rel="noopener" data-evt="book_call_click">Book a 30-minute call</a>
+    </div>
+    <p class="fine"><em>Or email <a class="link-gold" href="mailto:{{site.email}}">{{site.email}}</a></em></p>
+  </div>
+</section>
+
+</main>
+
+<!-- 5.16 FOOTER -->
+<footer class="footer">
+  <div class="wrap">
+    <p class="disclosure">{{disclosure}}</p>
+    <p class="copy">© <span data-year>{{year}}</span> {{site.publisher}} · <a href="{{site.homeUrl}}">ekantikcapital.com</a></p>
+  </div>
+</footer>
+
+<script src="config.js?v={{buildId}}"></script>
+<script src="lib/size.js?v={{buildId}}"></script>
+<script src="app.js?v={{buildId}}"></script>
+</body>
+</html>

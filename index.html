@@ -1,1043 +1,357 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ECFS Predisposal — Systematic Cash Flow Strategy | Ekantik Capital Advisors</title>
-
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="ECFS Predisposal: A systematic, rules-based trading strategy built on structural market inefficiencies. Targeting ~2% average monthly yield with hard-coded risk controls. Validate free before subscribing.">
-    <meta name="keywords" content="ECFS Predisposal, systematic trading, automated copy trading, Discord trade alerts, cash flow strategy, risk management, futures trading">
-    <meta name="robots" content="index, follow">
-
-    <!-- OpenGraph Meta Tags -->
-    <meta property="og:title" content="ECFS Predisposal — Systematic Cash Flow Strategy | Ekantik Capital Advisors">
-    <meta property="og:description" content="A rules-based trading strategy targeting ~2% average monthly yield. Free Discord alerts from day one. Hard-coded risk controls. Validate before you subscribe.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://cashflow.ekantikcapital.com">
-    <meta property="og:image" content="https://cashflow.ekantikcapital.com/og-image.jpg">
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="ECFS Predisposal — Systematic Cash Flow Strategy">
-    <meta name="twitter:description" content="A rules-based trading strategy targeting ~2% average monthly yield. Free Discord alerts. Hard-coded risk controls. Validate before you subscribe.">
-
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: {
-                        'heading': ['"DM Serif Display"', 'Georgia', 'serif'],
-                        'body': ['Inter', 'system-ui', 'sans-serif'],
-                    },
-                    colors: {
-                        'navy': {
-                            900: '#060c18',
-                            800: '#0a1628',
-                            700: '#0d1d35',
-                            600: '#12264a',
-                        },
-                        'gold': {
-                            DEFAULT: '#d4af37',
-                            light: '#e8cc6e',
-                            dark: '#b8962e',
-                        },
-                    }
-                }
-            }
-        }
-    </script>
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-
-    <style>
-        .font-heading { font-family: 'DM Serif Display', Georgia, serif; }
-        .font-body { font-family: 'Inter', system-ui, sans-serif; }
-        .gradient-gold { background: linear-gradient(135deg, #d4af37 0%, #e8cc6e 50%, #d4af37 100%); }
-        .text-gradient-gold {
-            background: linear-gradient(135deg, #d4af37, #e8cc6e);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .card {
-            background: rgba(13, 29, 53, 0.4);
-            border: 1px solid rgba(212, 175, 55, 0.12);
-            backdrop-filter: blur(8px);
-        }
-        .card-hover:hover {
-            border-color: rgba(212, 175, 55, 0.35);
-            box-shadow: 0 4px 24px rgba(212, 175, 55, 0.08);
-        }
-
-        .faq-item .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            opacity: 0;
-            transition: max-height 0.3s ease-out, opacity 0.2s ease-out, padding 0.3s ease-out;
-            padding-top: 0;
-            padding-bottom: 0;
-        }
-        .faq-item.active .faq-answer {
-            max-height: 5000px;
-            opacity: 1;
-            transition: max-height 0.5s ease-in, opacity 0.3s ease-in 0.1s, padding 0.3s ease-in;
-            padding-top: 0;
-            padding-bottom: 1.5rem;
-        }
-        .faq-item.active .fa-chevron-down {
-            transform: rotate(180deg);
-        }
-        .fa-chevron-down {
-            transition: transform 0.3s ease;
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>One Portfolio, Two Engines | Ekantik Capital Advisors</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="A $50,000 portfolio with two engines and two jobs: a futures engine for monthly cash, an options engine for growth. Every trade posted live.">
+<link rel="preload" href="fonts/cormorant-garamond-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/dm-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="styles.css?v=mwuyflic">
 </head>
-<body class="font-body antialiased bg-navy-900 text-gray-100">
+<body data-build="dev">
 
-    <!-- ============================================ -->
-    <!-- HEADER                                       -->
-    <!-- ============================================ -->
-    <header id="header" class="fixed top-0 left-0 right-0 z-50 bg-navy-900/95 backdrop-blur-md border-b border-slate-700/40 transition-all duration-300">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                <!-- Logo -->
-                <a href="#hero" class="flex items-center space-x-3">
-                    <div class="w-11 h-11 gradient-gold rounded-lg flex items-center justify-center">
-                        <span class="text-navy-900 font-bold text-lg">ECA</span>
-                    </div>
-                    <div class="hidden sm:block">
-                        <div class="text-gold font-heading text-lg leading-tight">Ekantik Capital</div>
-                        <div class="text-slate-500 text-[10px] tracking-[0.2em] uppercase">Advisors LLC</div>
-                    </div>
-                </a>
+<a class="skip" href="#main">Skip to content</a>
 
-                <!-- Desktop Navigation -->
-                <nav class="hidden lg:flex items-center space-x-8">
-                    <a href="#strategy" class="text-slate-400 hover:text-white transition-colors text-sm font-medium">The Strategy</a>
-                    <a href="#how-it-works" class="text-slate-400 hover:text-white transition-colors text-sm font-medium">How It Works</a>
-                    <a href="https://dashboard.ekantikcapital.com/" target="_blank" class="text-gold hover:text-gold-light transition-colors text-sm font-semibold flex items-center gap-1.5">
-                        <i class="fas fa-chart-line text-xs"></i>Performance
-                    </a>
-                    <a href="#faq" class="text-slate-400 hover:text-white transition-colors text-sm font-medium">FAQ</a>
-                </nav>
+<header class="topbar">
+  <div class="wrap topbar__in">
+    <a class="wordmark" href="#top">Ekantik Capital Advisors</a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav id="nav" class="nav" aria-label="Sections">
+      <a href="#idea">The Idea</a>
+      <a href="#split">The Split</a>
+      <a href="#size">Your Size</a>
+      <a href="#cash-rules">Cash Rules</a>
+      <a href="#risk">Risk</a>
+      <a href="#record">The Record</a>
+      <a href="#stops">Stop Rules</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="btn btn--gold btn--sm" href="#follow">Follow live</a>
+  </div>
+</header>
 
-                <!-- CTA Button -->
-                <div class="flex items-center space-x-4">
-                    <a href="#get-started" class="hidden sm:inline-flex items-center px-5 py-2.5 gradient-gold text-navy-900 font-bold text-sm rounded-lg hover:shadow-lg hover:shadow-gold/30 transition-all">
-                        Get Started Free
-                    </a>
-                    <button id="mobile-menu-btn" class="lg:hidden text-slate-400 hover:text-gold">
-                        <i class="fas fa-bars text-2xl"></i>
-                    </button>
-                </div>
-            </div>
+<main id="main">
+
+<!-- 5.2 HERO -->
+<section id="top" class="sec sec--navy hero">
+  <div class="wrap">
+    <p class="eyebrow eyebrow--gold">$50,000 · TWO ENGINES · EVERY TRADE POSTED LIVE</p>
+    <h1>One engine pays you. The other compounds.</h1>
+
+    <p class="lede">A $50,000 portfolio with two jobs, kept apart. A futures engine works for monthly cash. An options engine works for growth and is never touched. Futures alerts are sized to a daily loss limit of 1% of the portfolio. Run them as alerted or at double size, never more. Nothing comes out until three months of the cash target are banked.</p>
+    <div class="chips" role="radiogroup" aria-label="Choose your size">
+      <button type="button" class="chip" role="radio" aria-checked="true" data-size="1x">1x · 1% daily loss limit</button>
+      <button type="button" class="chip" role="radio" aria-checked="false" data-size="2x">2x · 2% daily loss limit</button>
+    </div>
+
+    <p class="note-gold"><em>2x is the limit.</em></p>
+    <div class="actions">
+      <a class="btn btn--gold" href="#follow">Follow both engines →</a>
+      <a class="btn btn--outline" href="https://cal.com/ekantik" target="_blank" rel="noopener" data-evt="book_call_click">Book a 30-minute call</a>
+    </div>
+    <ul class="proof" aria-label="Live record summary">
+      <li data-proof="futures" hidden></li>
+      <li data-proof="options" hidden></li>
+      <li>Your broker. Your accounts. We never have access.</li>
+    </ul>
+    <p class="fine">Educational trade alerts. Not investment advice. Futures and options carry substantial risk of loss. Past performance is not indicative of future results.</p>
+  </div>
+</section>
+
+<!-- 5.3 THE IDEA -->
+<section id="idea" class="sec sec--ivory reveal">
+  <div class="wrap">
+    <p class="eyebrow">THE FLAW IN MOST PORTFOLIOS</p>
+    <h2>Most portfolios ask one engine to do two jobs.</h2>
+    <div class="prose">
+      <p>Cash flow and compounding pull in opposite directions. Withdraw from a compounding account and you cut the doubling short. Compound an income account and nothing reaches you this month.</p>
+      <p>So the work is split. One engine is built to be withdrawn from. The other is built never to be touched. Each keeps its own rules, its own record and its own stop.</p>
+    </div>
+    <div class="table-scroll">
+      <table class="tbl">
+        <thead><tr><th scope="col"><span class="sr">Topic</span></th><th scope="col">The usual way</th><th scope="col">This portfolio</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Monthly cash</th><td>A 4% rule, or whatever dividends pay</td><td>A fixed target, paid from a banked buffer</td></tr>
+          <tr><th scope="row">Growth</th><td>The same account you withdraw from</td><td>A separate sleeve that is never withdrawn</td></tr>
+          <tr><th scope="row">Daily risk</th><td>Rarely stated</td><td>A published 1% daily loss limit at 1x</td></tr>
+          <tr><th scope="row">When something breaks</th><td>You hear at the quarterly review</td><td>Posted in Discord within one trading day</td></tr>
+          <tr><th scope="row">Who checks</th><td>The firm that runs it</td><td>A named independent witness</td></tr>
+          <tr><th scope="row">Custody</th><td>Their platform</td><td>Your broker, your accounts</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <blockquote class="pull">“Income and growth fight when they share an account. Here they don’t share one.”</blockquote>
+  </div>
+</section>
+
+<!-- 5.4 THE SPLIT -->
+<section id="split" class="sec reveal">
+  <div class="wrap">
+    <p class="eyebrow">$50,000, SPLIT BY JOB</p>
+    <h2>Each dollar has one job.</h2>
+    <div class="split" style="--f: 80; --o: 20;">
+      <article class="card card--accent split__f">
+        <h3><span class="num">$40,000</span> · Cash-Flow Engine (futures)</h3>
+        <p class="job">Job: monthly cash.</p>
+        <p><em>Rules-based S&amp;P 500 futures (ES / MES). Hard loss limits by the day, week and month. Every withdrawal comes from this engine’s realized gains.</em></p>
+      </article>
+      <article class="card card--accent split__o">
+        <h3><span class="num">$10,000</span> · Compounding Engine (options)</h3>
+        <p class="job">Job: long-term growth.</p>
+        <p><em>Short-dated options. Size grows only after profits pay for the next step, and shrinks the moment they’re given back. Never withdrawn. Treat the full $10,000 as money that can go to zero.</em></p>
+      </article>
+    </div>
+    <p class="after"><em>Two engines, two records. We never add them together.</em></p>
+  </div>
+</section>
+
+<!-- 5.5 YOUR SIZE -->
+<section id="size" class="sec sec--ivory reveal">
+  <div class="wrap">
+    <p class="eyebrow">ALERTED AT 1X. DOUBLE IS THE LIMIT.</p>
+    <h2>Run it as alerted, or at double. Never more.</h2>
+    <div class="prose">
+      <p>Every futures alert is sized for a $50,000 portfolio at 1x: a daily loss limit of 1% of the portfolio. You may double it. Every rule is written in R, the dollars risked on one futures trade, so doubling your size doubles every limit and your cash target with it. Nothing else changes.</p>
+    </div>
+    <div class="seg" role="radiogroup" aria-label="Size">
+      <button type="button" class="seg__btn" role="radio" aria-checked="true" data-size="1x">1x · as alerted</button>
+      <button type="button" class="seg__btn" role="radio" aria-checked="false" data-size="2x">2x · double size</button>
+    </div>
+    <h3 class="tbl-title" id="rules-title">The rules at each size</h3>
+    <div class="table-scroll">
+      <table class="tbl tbl--rules" aria-labelledby="rules-title" aria-live="polite">
+        <thead><tr><th scope="col">Rule</th><th scope="col">In R</th><th scope="col" data-col="1x">1x</th><th scope="col" data-col="2x">2x</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Risk per futures trade</th><td class="num">1R</td><td data-col="1x" class="is-sel"><span class="num">$250</span><small>0.5% of $50,000</small></td><td data-col="2x" class=""><span class="num">$500</span><small>1% of $50,000</small></td></tr>
+          <tr><th scope="row">Daily loss limit</th><td class="num">2R</td><td data-col="1x" class="is-sel"><span class="num">$500</span><small>1% of $50,000</small></td><td data-col="2x" class=""><span class="num">$1,000</span><small>2% of $50,000</small></td></tr>
+          <tr><th scope="row">Weekly loss limit</th><td class="num">4R</td><td data-col="1x" class="is-sel"><span class="num">$1,000</span><small>2% of $50,000</small></td><td data-col="2x" class=""><span class="num">$2,000</span><small>4% of $50,000</small></td></tr>
+          <tr><th scope="row">Monthly loss limit</th><td class="num">8R</td><td data-col="1x" class="is-sel"><span class="num">$2,000</span><small>4% of $50,000</small></td><td data-col="2x" class=""><span class="num">$4,000</span><small>8% of $50,000</small></td></tr>
+          <tr><th scope="row">Monthly cash target</th><td class="num">2R</td><td data-col="1x" class="is-sel"><span class="num">2R</span></td><td data-col="2x" class=""><span class="num">2R</span></td></tr>
+          <tr><th scope="row">Banked before the first withdrawal</th><td class="num">6R (3 months)</td><td data-col="1x" class="is-sel"><span class="num">6R</span></td><td data-col="2x" class=""><span class="num">6R</span></td></tr>
+          <tr><th scope="row">Withdrawals pause if the buffer falls below</th><td class="num">2R (1 month)</td><td data-col="1x" class="is-sel"><span class="num">2R</span></td><td data-col="2x" class=""><span class="num">2R</span></td></tr>
+          <tr><th scope="row">Withdrawals resume when the buffer is back to</th><td class="num">6R (3 months)</td><td data-col="1x" class="is-sel"><span class="num">6R</span></td><td data-col="2x" class=""><span class="num">6R</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="after"><em>Smaller or larger account? The rules are in R, so they scale. Book a call to see them at your size.</em> <a class="btn btn--outline btn--sm" href="https://cal.com/ekantik" target="_blank" rel="noopener" data-evt="book_call_click">Book a 30-minute call</a></p>
+    <aside class="callout" aria-labelledby="why2x">
+      <p class="eyebrow eyebrow--gold-text">CAUTION</p>
+      <h3 id="why2x">Why 2x is the limit:</h3>
+      <p>At 2x, each futures trade risks <span class="num">1.25%</span> of the futures account. That is the same share the published record was run at. Above 2x, you would be trading a size the record has never been tested at.</p>
+      <p>At 2x, the monthly loss limit is already <span class="num">8%</span> of the portfolio, and futures can gap past any limit.</p>
+      <p>If you would not sit through a full monthly loss limit at 2x, stay at 1x.</p>
+    </aside>
+    <p class="after"><em>The 2x choice applies to the Cash-Flow Engine only. The Compounding Engine sizes itself: it grows only on earned profit, by its own ladder.</em></p>
+  </div>
+</section>
+
+<!-- 5.6 CASH RULES -->
+<section id="cash-rules" class="sec sec--navy reveal">
+  <div class="wrap">
+    <p class="eyebrow eyebrow--gold">BUFFER FIRST</p>
+    <h2>Bank three months. Then withdraw.</h2>
+    <ol class="ladder">
+      <li class="ladder__step">
+        <span class="ladder__zero">$0 out</span>
+        <h3>1 · Build</h3>
+        <p><em>Realized futures gains fill the buffer: <span class="num" data-fig="6">6R</span>, three months of the target. Nothing comes out. About two to three months at the conservative planning rate. Markets set the real pace.</em></p>
+      </li>
+      <li class="ladder__step">
+        <h3>2 · Withdraw</h3>
+        <p><em>Each month, <span class="num" data-fig="2">2R</span> comes out. Months above target refill the buffer first. Gains beyond a full buffer stay in the futures account.</em></p>
+      </li>
+      <li class="ladder__step">
+        <h3>3 · Pause</h3>
+        <p><em>If the buffer falls below one month of target (<span class="num" data-fig="2">2R</span>), withdrawals pause. They restart when the buffer is back to three months (<span class="num" data-fig="6">6R</span>).</em></p>
+      </li>
+    </ol>
+    <p class="after"><em>The Compounding Engine is never part of this. It compounds on its own.</em></p>
+  </div>
+</section>
+
+
+<!-- 5.8 RISK -->
+<section id="risk" class="sec sec--ivory reveal">
+  <div class="wrap">
+    <p class="eyebrow">READ THIS BEFORE THE RESULTS</p>
+    <h2>The downside comes first.</h2>
+    <aside class="callout" aria-labelledby="arith">
+      <h3 id="arith">The arithmetic you should run:</h3>
+      <p>At your size, the monthly loss limit is <span class="num" data-limit="8">$2,000 · 4% of $50,000 · 8R</span>. The monthly cash target is <span class="num" data-fig="2">2R</span>. The limit is four times the target. That is deliberate: the limit is a circuit breaker for a bad month, not a forecast of one.</p>
+      <p data-dd-text><span data-dd-sentence>The deepest futures drawdown in the record so far is 3.25R (as of Nov 24, 2026).</span> The buffer is 6R. A repeat of that stretch would use most or all of the buffer. That is why withdrawals pause at 2R instead of running the buffer to zero.</p>
+    </aside>
+    <ul class="facts">
+      <li><svg aria-hidden="true" viewBox="0 0 24 24" class="ico"><path d="M12 3 2 21h20L12 3z"/><path d="M12 10v5M12 18v.01"/></svg><em>Loss limits stop new trades. They are not floors. Futures can gap, and a loss can run past the limit.</em></li>
+      <li><svg aria-hidden="true" viewBox="0 0 24 24" class="ico"><path d="M12 3 2 21h20L12 3z"/><path d="M12 10v5M12 18v.01"/></svg><em>The options sleeve can go to zero. Treat the full $10,000 as at risk.</em></li>
+      <li><svg aria-hidden="true" viewBox="0 0 24 24" class="ico"><path d="M12 3 2 21h20L12 3z"/><path d="M12 10v5M12 18v.01"/></svg><em>Futures are leveraged. Losses can exceed the amount deposited.</em></li>
+    </ul>
+    <h3 class="tbl-title" id="opt-rules">Compounding Engine rules (always 1x)</h3>
+    <div class="table-scroll">
+      <table class="tbl" aria-labelledby="opt-rules">
+        <thead><tr><th scope="col">Rule</th><th scope="col">Level</th><th scope="col">What happens</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Starting size</th><td>1 contract</td><td>The full sleeve is treated as at risk</td></tr>
+          <tr><th scope="row">Step up</th><td>6 profitable, unrelated trades at the current size</td><td>Size doubles: 1 → 2 → 4 → 8 → 16</td></tr>
+          <tr><th scope="row">Step down</th><td>Profits fall back to the last step</td><td>Size drops one level at once</td></tr>
+          <tr><th scope="row">Daily</th><td>1 realized loss</td><td>Done for the day</td></tr>
+          <tr><th scope="row">Weekly premium-loss limit</th><td><span class="flag" title="Fill in config.js before the production deploy">[DATA REQUIRED]</span></td><td>Done for the week</td></tr>
+          <tr><th scope="row">Monthly</th><td>2 losing weeks in a row</td><td>Done for the month</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 5.9 THE RECORD -->
+<section id="record" class="sec reveal">
+  <div class="wrap">
+    <p class="eyebrow">ONE PORTFOLIO · TWO RECORDS · NEVER BLENDED</p>
+    <h2>Every trade, posted before the result is known.</h2>
+    <div class="prose">
+      <p>The portfolio combines two engines. The proof does not. Each engine keeps its own record, its own start date and its own dashboard. Adding them together would create a history that never happened.</p>
+    </div>
+    <div class="panels">
+      <article class="panel card" data-engine="futures" aria-labelledby="pf-h">
+        <header class="panel__head">
+          <h3 id="pf-h">Cash-Flow Engine</h3>
+          <div class="panel__meta"><span class="flag" title="Fill in config.js before the production deploy">[DATA REQUIRED]</span> <span>Since <span class="flag" title="Fill in config.js before the production deploy">[DATA REQUIRED]</span></span> <span class="status" data-status="futures" hidden></span> <span class="asof" data-asof></span></div>
+        </header>
+        <div class="panel__body" data-body>
+          <p class="empty">Live numbers are on the dashboard while the feed connects.</p>
         </div>
-
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden lg:hidden bg-navy-900 border-t border-slate-700/40">
-            <div class="container mx-auto px-4 py-6 space-y-4">
-                <a href="#strategy" class="block text-slate-300 hover:text-gold transition-colors py-2">The Strategy</a>
-                <a href="#how-it-works" class="block text-slate-300 hover:text-gold transition-colors py-2">How It Works</a>
-                <a href="https://dashboard.ekantikcapital.com/" target="_blank" class="block text-gold hover:text-gold-light transition-colors py-2 font-semibold">
-                    <i class="fas fa-chart-line mr-2"></i>Performance
-                </a>
-                <a href="#faq" class="block text-slate-300 hover:text-gold transition-colors py-2">FAQ</a>
-                <a href="#get-started" class="block px-6 py-3 gradient-gold text-navy-900 font-bold text-sm rounded-lg text-center mt-4">
-                    Get Started Free
-                </a>
-            </div>
+        <p class="panel__note"><em>Shown in R, the unit every rule above is written in. It reads the same at 1x or 2x.</em></p>
+        <div class="panel__btns">
+          <a class="btn btn--gold btn--sm" href="https://accelerator.ekantikcapital.com/experiment.html" target="_blank" rel="noopener" data-evt="dashboard_click" data-engine-evt="futures">Open the full dashboard ↗</a>
+          <a class="btn btn--outline btn--sm" href="https://discord.gg/GprT4S8Vrj" target="_blank" rel="noopener" data-evt="discord_click" data-engine-evt="futures">Join the Discord ↗</a>
         </div>
-    </header>
-
-    <!-- ============================================ -->
-    <!-- HERO                                         -->
-    <!-- ============================================ -->
-    <section id="hero" class="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-br from-navy-900 via-navy-800 to-navy-900"></div>
-        <div class="absolute inset-0 opacity-15">
-            <div class="absolute top-20 left-10 w-72 h-72 bg-gold/30 rounded-full blur-[100px]"></div>
-            <div class="absolute bottom-20 right-10 w-96 h-96 bg-blue-500/15 rounded-full blur-[120px]"></div>
+        <div class="sample" data-sample hidden></div>
+      </article>
+      <article class="panel card" data-engine="options" aria-labelledby="po-h">
+        <header class="panel__head">
+          <h3 id="po-h">Compounding Engine</h3>
+          <div class="panel__meta"><span class="flag" title="Fill in config.js before the production deploy">[DATA REQUIRED]</span> <span>Since Jun 30, 2026</span> <span class="status" data-status="options" hidden></span> <span class="asof" data-asof></span></div>
+        </header>
+        <div class="panel__body" data-body>
+          <p class="empty">Live numbers are on the dashboard while the feed connects.</p>
         </div>
-
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="max-w-4xl mx-auto text-center">
-                <!-- Badge -->
-                <div class="inline-block bg-gold/8 border border-gold/25 rounded-full px-5 py-2 mb-8">
-                    <span class="text-gold text-sm font-semibold tracking-wide">
-                        <i class="fas fa-chart-line mr-2 text-xs"></i>SYSTEMATIC TRADING STRATEGY
-                    </span>
-                </div>
-
-                <!-- Headline -->
-                <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl text-white mb-6 leading-[1.15]">
-                    <span class="text-gradient-gold">ECFS Predisposal</span><br>
-                    Consistent Monthly Cash Flow
-                </h1>
-
-                <!-- Subheadline -->
-                <p class="text-lg sm:text-xl text-slate-300 mb-10 max-w-2xl mx-auto leading-relaxed">
-                    A rules-based strategy built on structural market inefficiencies, targeting <strong class="text-white">~2% average monthly yield</strong> with hard-coded risk controls. Observe every trade free on Discord before committing capital.
-                </p>
-
-                <!-- Key Stats -->
-                <div class="flex flex-wrap justify-center gap-6 sm:gap-10 mb-10">
-                    <div class="text-center">
-                        <p class="text-gold font-heading text-3xl">~2%</p>
-                        <p class="text-slate-500 text-xs uppercase tracking-wider mt-1">Monthly Target</p>
-                    </div>
-                    <div class="w-px bg-slate-700 hidden sm:block"></div>
-                    <div class="text-center">
-                        <p class="text-white font-heading text-3xl">2.5% | 5%</p>
-                        <p class="text-slate-500 text-xs uppercase tracking-wider mt-1">Daily | Weekly Loss Caps</p>
-                    </div>
-                    <div class="w-px bg-slate-700 hidden sm:block"></div>
-                    <div class="text-center">
-                        <p class="text-emerald-400 font-heading text-3xl">Free</p>
-                        <p class="text-slate-500 text-xs uppercase tracking-wider mt-1">To Start Observing</p>
-                    </div>
-                </div>
-
-                <!-- CTAs -->
-                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
-                    <a href="#get-started" class="px-10 py-4 gradient-gold text-navy-900 font-bold text-base rounded-lg hover:shadow-xl hover:shadow-gold/30 transition-all inline-flex items-center">
-                        <i class="fab fa-discord mr-3"></i>Start Validating Free
-                    </a>
-                    <a href="https://dashboard.ekantikcapital.com/" target="_blank" class="px-10 py-4 bg-transparent border border-slate-600 text-slate-300 font-semibold text-base rounded-lg hover:border-slate-400 hover:text-white transition-all inline-flex items-center">
-                        <i class="fas fa-chart-line mr-3"></i>View Performance
-                    </a>
-                </div>
-
-                <!-- Compliance -->
-                <p class="text-slate-600 text-xs">
-                    <i class="fas fa-gavel mr-1"></i>Educational trade alerts only. Not investment advice. Past performance does not guarantee future results.
-                </p>
-            </div>
+        <div class="panel__btns">
+          <a class="btn btn--gold btn--sm" href="https://accelerator.ekantikcapital.com/options-dashboard.html" target="_blank" rel="noopener" data-evt="dashboard_click" data-engine-evt="options">Open the full dashboard ↗</a>
+          <a class="btn btn--outline btn--sm" href="https://discord.gg/GawjC6ef7t" target="_blank" rel="noopener" data-evt="discord_click" data-engine-evt="options">Join the Discord ↗</a>
         </div>
-    </section>
+        <div class="sample" data-sample hidden></div>
+      </article>
+    </div>
+    <p class="after"><em><span class="flag" title="Fill in config.js before the production deploy">[DATA REQUIRED]</span> records. Past performance is not indicative of future results. Each record is shown on its own and never combined.</em></p>
+  </div>
+</section>
 
-    <!-- ============================================ -->
-    <!-- THE STRATEGY                                 -->
-    <!-- ============================================ -->
-    <section id="strategy" class="py-20 bg-gradient-to-b from-navy-900 to-navy-800">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-5xl mx-auto">
-                <div class="text-center mb-14">
-                    <h2 class="font-heading text-3xl sm:text-4xl text-white mb-4">
-                        Built on Structural Market Inefficiencies
-                    </h2>
-                    <p class="text-lg text-slate-400 max-w-2xl mx-auto">
-                        ECFS Predisposal exploits repeating patterns in market microstructure — inefficiencies that persist because of how markets are organized, not temporary anomalies.
-                    </p>
-                </div>
+<!-- 5.10 STOP RULES -->
+<section id="stops" class="sec sec--navy reveal">
+  <div class="wrap">
+    <p class="eyebrow eyebrow--gold">PUBLISHED IN ADVANCE</p>
+    <h2>If an engine fails, you see it first.</h2>
+    <p class="mono tiers"><span>T0 Normal</span> · <span>T1 Elevated scrutiny, trading continues</span> · <span>T2 Stood down, research only</span></p>
+    <div class="stops">
+      <article class="card card--dark">
+        <h3>Cash-Flow Engine <span class="status" data-status="futures" hidden></span></h3>
+        <p>If the last 100 trades average $0 or less, trading stops. A restart needs a 50-trade test, a written cause analysis, a 48-hour cool-off and witness sign-off.</p>
+        <p><em>While trading is stopped, the buffer keeps paying the target down to the pause line.</em></p>
+      </article>
+      <article class="card card--dark">
+        <h3>Compounding Engine <span class="status" data-status="options" hidden></span></h3>
+        <p>If the last 100 trades average $0 or less, the engine goes to review. Two step-downs within 14 days pause it until the witness signs a restart.</p>
+      </article>
+    </div>
+    <div class="witness">
+      <p>Independent witness <strong>Manish Dharod</strong> holds binding authority over rule changes and breach calls. Rule changes post before they take effect. Stops post in Discord within one trading day. Losing trades stay on the record.</p>
+      <p><a class="link-gold" href="https://accelerator.ekantikcapital.com/falsifiability-protocol-v2.html" target="_blank" rel="noopener">Read the full falsifiability protocol →</a></p>
+    </div>
+  </div>
+</section>
 
-                <!-- Three Pillars -->
-                <div class="grid md:grid-cols-3 gap-6 mb-12">
-                    <div class="card rounded-xl p-7 card-hover transition-all">
-                        <div class="w-12 h-12 bg-gold/10 border border-gold/20 rounded-lg flex items-center justify-center mb-5">
-                            <i class="fas fa-microscope text-gold text-xl"></i>
-                        </div>
-                        <h3 class="text-white font-semibold text-lg mb-2">Structural Edge</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed">
-                            Every trade is grounded in mathematically validated market structure patterns, tested and refined across years of data.
-                        </p>
-                    </div>
 
-                    <div class="card rounded-xl p-7 card-hover transition-all">
-                        <div class="w-12 h-12 bg-gold/10 border border-gold/20 rounded-lg flex items-center justify-center mb-5">
-                            <i class="fas fa-shield-alt text-gold text-xl"></i>
-                        </div>
-                        <h3 class="text-white font-semibold text-lg mb-2">Risk-First Design</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed">
-                            Hard-coded loss limits (2.5% daily, 5% weekly) enforced at the broker level. The strategy is built around "Never Lose Money" first principles.
-                        </p>
-                    </div>
+<!-- 5.12 FOLLOW LIVE -->
+<section id="follow" class="sec sec--ivory reveal">
+  <div class="wrap">
+    <h2>Watch first. Decide later.</h2>
+    <ol class="steps">
+      <li><span class="steps__n">1</span><div><strong>Observe.</strong> <em>Join both Discords. Every entry, exit, stand-down and rule change posts there. Free.</em></div></li>
+      <li><span class="steps__n">2</span><div><strong>Validate.</strong> <em>Watch for 30 to 60 days. See a bad week, not only a good one.</em></div></li>
+      <li><span class="steps__n">3</span><div><strong>Decide.</strong> <em>If you go ahead, you place the trades yourself, in your own accounts at your own broker. We never have access.</em></div></li>
+    </ol>
+    <p class="howsize"><strong>How alerts state size:</strong> <em>Every futures alert gives contracts at 1x for a $50,000 portfolio. At 2x, double the contracts. Never go past 2x. Options alerts give contracts for the $10,000 sleeve; follow them as alerted.</em></p>
+    <div class="actions">
+      <a class="btn btn--gold" href="https://discord.gg/GprT4S8Vrj" target="_blank" rel="noopener" data-evt="discord_click" data-engine-evt="futures">Cash-Flow Engine Discord ↗</a>
+      <a class="btn btn--gold" href="https://discord.gg/GawjC6ef7t" target="_blank" rel="noopener" data-evt="discord_click" data-engine-evt="options">Compounding Engine Discord ↗</a>
+      <a class="btn btn--outline" href="https://cal.com/ekantik" target="_blank" rel="noopener" data-evt="book_call_click">Book a 30-minute call</a>
+    </div>
+    <p class="fine">Accounts start at $50,000. Phase 1 has no management fee.</p>
+  </div>
+</section>
 
-                    <div class="card rounded-xl p-7 card-hover transition-all">
-                        <div class="w-12 h-12 bg-gold/10 border border-gold/20 rounded-lg flex items-center justify-center mb-5">
-                            <i class="fas fa-calculator text-gold text-xl"></i>
-                        </div>
-                        <h3 class="text-white font-semibold text-lg mb-2">Positive Expected Value</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed">
-                            Every entry condition passes an EV filter. We only trade when the math supports a genuine, repeatable advantage.
-                        </p>
-                    </div>
-                </div>
+<!-- 5.13 FAQ -->
+<section id="faq" class="sec reveal">
+  <div class="wrap wrap--narrow">
+    <h2>Questions</h2>
+    <div class="faq">
+      <details><summary>Why two engines instead of one?</summary><p><em>Because cash flow and compounding pull against each other. Taking cash out of a compounding account cuts its doublings short. So one engine is built to pay you and the other is built to be left alone.</em></p></details>
+      <details><summary>Should I run 1x or 2x?</summary><p><em>We can’t tell you what suits you. Here is the difference: 2x doubles every loss limit and, with it, the monthly cash target. Same rules, twice the risk.</em></p></details>
+      <details><summary>Can I go above 2x?</summary><p><em>Please don’t. 2x is the size the published record was run at. Above it, the size is untested and every loss limit grows past what this page describes.</em></p></details>
+      <details><summary>Why does nothing come out at first?</summary><p><em>Three months of the target are banked first. That buffer is what keeps the withdrawal level through soft months.</em></p></details>
+      <details><summary>What happens in a bad month?</summary><p><em>The buffer pays the target. If the buffer falls below one month of target, withdrawals pause until it is back to three months.</em></p></details>
+      <details><summary>What if an engine stops working?</summary><p><em>Its stop rule fires, the stand-down posts in Discord within one trading day, and new trades stop. The other engine keeps its own rules.</em></p></details>
+      <details><summary>Is the target realistic?</summary><p><em>It is a target, not a record. It is set at 2R a month, below the conservative planning rate of 30R a year. The record is young. Judge it trade by trade in Discord.</em></p></details>
+      <details><summary>Can I take money from the Compounding Engine?</summary><p><em>The design never does. Withdrawing from it cuts the doubling short.</em></p></details>
+      <details><summary>Do I need $50,000?</summary><p><em>Alerts are sized for $50,000 at 1x. The rules are written in R, so they scale. Book a call to see them at your account size.</em></p></details>
+    </div>
+  </div>
+</section>
 
-                <!-- Never Lose Money Framework -->
-                <div class="card rounded-xl p-8 max-w-3xl mx-auto">
-                    <div class="flex items-center gap-4 mb-4">
-                        <div class="w-10 h-10 bg-blue-500/15 rounded-lg flex items-center justify-center flex-shrink-0">
-                            <i class="fas fa-book text-blue-400 text-lg"></i>
-                        </div>
-                        <div>
-                            <h4 class="text-white font-semibold">"Never Lose Money" Framework</h4>
-                            <p class="text-slate-500 text-sm">The foundational principles behind every ECFS decision</p>
-                        </div>
-                    </div>
-                    <p class="text-slate-400 text-sm leading-relaxed mb-4">
-                        Four principles govern the strategy: <strong class="text-slate-200">Risk Management</strong> (caps prevent catastrophic loss), <strong class="text-slate-200">Position Sizing</strong> (never overweight a single trade), <strong class="text-slate-200">Expected Value</strong> (only trade with proven positive EV), and <strong class="text-slate-200">Structural Edge</strong> (exploit persistent market inefficiencies).
-                    </p>
-                    <a href="https://www.genspark.ai/api/files/s/3Y3y87wh" target="_blank" class="inline-flex items-center text-gold hover:text-gold-light text-sm font-semibold transition-colors">
-                        <i class="fas fa-external-link-alt mr-2 text-xs"></i>Read the Full Framework
-                    </a>
-                </div>
+<!-- 5.14 WHERE THIS SITS -->
+<section class="sec sec--ivory sec--tight reveal" aria-labelledby="where">
+  <div class="wrap wrap--narrow">
+    <h2 id="where" class="h-small">Where this sits</h2>
+    <div class="table-scroll">
+      <table class="tbl tbl--small">
+        <tbody>
+          <tr><th scope="row">The Doctrine</th><td>Why doublings dominate wealth outcomes. Free.</td><td><a href="https://doubles.ekantikcapital.com" target="_blank" rel="noopener">doubles.ekantikcapital.com</a></td></tr>
+          <tr><th scope="row">The Machine</th><td>How leverage, cash flow and compounding fit together.</td><td><a href="https://accelerator.ekantikcapital.com" target="_blank" rel="noopener">accelerator.ekantikcapital.com</a></td></tr>
+          <tr><th scope="row">The Research</th><td>Research for applying it yourself.</td><td><a href="https://alpha.ekantikcapital.com" target="_blank" rel="noopener">alpha.ekantikcapital.com</a></td></tr>
+          <tr><th scope="row">This page</th><td>One portfolio, two engines, every trade posted live.</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
 
-                <!-- Two Ways to Follow -->
-                <div class="mt-12 text-center">
-                    <p class="text-slate-500 text-sm uppercase tracking-wider mb-3">One Strategy, Two Ways to Follow</p>
-                    <div class="flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-6">
-                        <span class="text-emerald-400 font-semibold text-sm">
-                            <i class="fab fa-discord mr-1.5"></i>Discord Alerts — Free
-                        </span>
-                        <span class="text-slate-600 hidden sm:inline">|</span>
-                        <span class="text-gold font-semibold text-sm">
-                            <i class="fas fa-robot mr-1.5"></i>Automated Copy Trading — $149/mo + $15-20/mo software
-                        </span>
-                    </div>
-                    <p class="text-slate-500 text-xs mt-3">Same signals, same trades. You keep custody at your broker. You keep 100% of profits.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- 5.15 CLOSING -->
+<section class="sec sec--navy reveal">
+  <div class="wrap wrap--narrow center">
+    <h2>Cash you can plan around. Growth you leave alone.</h2>
+    <p><em>Watch both engines before you commit a dollar. Every trade posts as it happens, the losing ones too.</em></p>
+    <div class="actions actions--center">
+      <a class="btn btn--gold" href="#follow">Follow live</a>
+      <a class="btn btn--outline" href="https://cal.com/ekantik" target="_blank" rel="noopener" data-evt="book_call_click">Book a 30-minute call</a>
+    </div>
+    <p class="fine"><em>Or email <a class="link-gold" href="mailto:info@ekantikcapital.com">info@ekantikcapital.com</a></em></p>
+  </div>
+</section>
 
-    <!-- ============================================ -->
-    <!-- PERFORMANCE DASHBOARD                        -->
-    <!-- ============================================ -->
-    <section class="py-20 bg-navy-800">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-4xl mx-auto text-center">
-                <h2 class="font-heading text-3xl sm:text-4xl text-white mb-4">
-                    Full Transparency — <span class="text-gradient-gold">Exposed in Real Time</span>
-                </h2>
-                <p class="text-lg text-slate-400 max-w-2xl mx-auto mb-10">
-                    Track strategy performance, metrics, and risk controls on our public dashboard — updated regularly, no login required.
-                </p>
+</main>
 
-                <!-- Dashboard Preview -->
-                <div class="card rounded-2xl p-8 md:p-10 mb-8 border-gold/15">
-                    <div class="grid md:grid-cols-3 gap-8 mb-8">
-                        <div class="text-center">
-                            <div class="w-12 h-12 bg-gold/10 rounded-xl flex items-center justify-center mx-auto mb-3">
-                                <i class="fas fa-shield-alt text-gold text-xl"></i>
-                            </div>
-                            <p class="text-gold text-sm font-semibold mb-1">Risk Controls</p>
-                            <p class="text-white font-bold">2.5% Daily | 5% Weekly</p>
-                            <p class="text-xs text-slate-500 mt-1">Broker-enforced limits</p>
-                        </div>
-                        <div class="text-center">
-                            <div class="w-12 h-12 bg-emerald-500/10 rounded-xl flex items-center justify-center mx-auto mb-3">
-                                <i class="fas fa-chart-bar text-emerald-400 text-xl"></i>
-                            </div>
-                            <p class="text-emerald-400 text-sm font-semibold mb-1">Strategy Metrics</p>
-                            <p class="text-white font-bold">EV, Win Rate, Frequency</p>
-                            <p class="text-xs text-slate-500 mt-1">Full visibility</p>
-                        </div>
-                        <div class="text-center">
-                            <div class="w-12 h-12 bg-blue-500/10 rounded-xl flex items-center justify-center mx-auto mb-3">
-                                <i class="fas fa-sync text-blue-400 text-xl"></i>
-                            </div>
-                            <p class="text-blue-400 text-sm font-semibold mb-1">Updated Regularly</p>
-                            <p class="text-white font-bold">Live Performance Data</p>
-                            <p class="text-xs text-slate-500 mt-1">No stale numbers</p>
-                        </div>
-                    </div>
+<!-- 5.16 FOOTER -->
+<footer class="footer">
+  <div class="wrap">
+    <p class="disclosure">Ekantik Capital Advisors LLC is a financial publisher. This page is educational, of general circulation and not personalized to anyone. It is not investment advice and not an offer to sell, or a solicitation of an offer to buy, any security or advisory service. Monthly cash targets are targets, not forecasts; they may be reduced, paused or never reached. Each engine’s record is labeled as a demo (paper) account or an own-money account; demo results are hypothetical and real results would differ. Figures assume every alert is followed without deviation; real results vary with timing, slippage and adherence. Alerts are sized at 1x for a $50,000 portfolio; sizes above 2x are outside the published rules. Futures are leveraged and losses can exceed the amount deposited. Options can lose the full premium paid. Loss limits stop new trades; they are not floors. Past performance is not indicative of future results.</p>
+    <p class="copy">© <span data-year>2026</span> Ekantik Capital Advisors LLC · <a href="https://ekantikcapital.com">ekantikcapital.com</a></p>
+  </div>
+</footer>
 
-                    <a href="https://dashboard.ekantikcapital.com/" target="_blank"
-                       class="inline-flex items-center gap-3 gradient-gold text-navy-900 font-bold text-lg px-10 py-4 rounded-xl hover:shadow-2xl hover:shadow-gold/20 transition-all">
-                        <i class="fas fa-chart-line text-xl"></i>
-                        View Performance Dashboard
-                        <i class="fas fa-external-link-alt text-sm"></i>
-                    </a>
-                    <p class="text-slate-600 text-sm mt-4">
-                        <i class="fas fa-lock-open mr-1"></i>No login required
-                    </p>
-                </div>
-
-                <!-- Disclaimer -->
-                <div class="bg-amber-900/15 border border-amber-500/20 rounded-xl p-5 text-left max-w-3xl mx-auto">
-                    <p class="text-amber-200/80 text-sm leading-relaxed">
-                        <i class="fas fa-exclamation-triangle text-amber-500/70 mr-2"></i>
-                        <strong class="text-white/80">Important:</strong> Past performance — backtested or live — does not guarantee future results. All trading involves risk of loss. Dashboard data is for informational purposes only.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================ -->
-    <!-- HOW IT WORKS                                 -->
-    <!-- ============================================ -->
-    <section id="how-it-works" class="py-20 bg-gradient-to-b from-navy-800 to-navy-900">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-4xl mx-auto">
-                <div class="text-center mb-14">
-                    <h2 class="font-heading text-3xl sm:text-4xl text-white mb-4">
-                        How It Works
-                    </h2>
-                    <p class="text-lg text-slate-400">
-                        Three steps — start observing with zero cost or commitment
-                    </p>
-                </div>
-
-                <div class="space-y-6">
-                    <!-- Step 1 -->
-                    <div class="card rounded-xl p-6 sm:p-8 flex gap-5 sm:gap-7 items-start card-hover transition-all">
-                        <div class="flex-shrink-0">
-                            <div class="w-14 h-14 gradient-gold rounded-full flex items-center justify-center">
-                                <span class="text-navy-900 font-bold text-xl">1</span>
-                            </div>
-                        </div>
-                        <div>
-                            <h3 class="text-white font-bold text-xl mb-2">Join Discord — Start Observing</h3>
-                            <p class="text-slate-400 leading-relaxed mb-3">
-                                Join our Discord channel and receive real-time alerts for every trade: entries, exits, stop-losses, and position sizing. See the strategy's decision-making as it happens — <strong class="text-emerald-400">completely free</strong>.
-                            </p>
-                            <p class="text-slate-500 text-sm">
-                                <i class="fas fa-desktop mr-1.5"></i>Want hands-on simulation? You can also open a <strong class="text-slate-300">free virtual demo account</strong> to see trades execute with simulated capital. <a href="https://calendly.com/hd-ekantikcapital/30min" target="_blank" class="text-gold hover:text-gold-light underline underline-offset-2">Book a call</a> for setup help.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Step 2 -->
-                    <div class="card rounded-xl p-6 sm:p-8 flex gap-5 sm:gap-7 items-start card-hover transition-all">
-                        <div class="flex-shrink-0">
-                            <div class="w-14 h-14 gradient-gold rounded-full flex items-center justify-center">
-                                <span class="text-navy-900 font-bold text-xl">2</span>
-                            </div>
-                        </div>
-                        <div>
-                            <h3 class="text-white font-bold text-xl mb-2">Watch for 30-60 Days</h3>
-                            <p class="text-slate-400 leading-relaxed">
-                                Observe how the strategy manages risk, when it enters and exits trades, and how the loss limits protect capital. Paper trade alongside if you like. No commitment, no cost — just pure observation.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Step 3 -->
-                    <div class="card rounded-xl p-6 sm:p-8 flex gap-5 sm:gap-7 items-start card-hover transition-all">
-                        <div class="flex-shrink-0">
-                            <div class="w-14 h-14 gradient-gold rounded-full flex items-center justify-center">
-                                <span class="text-navy-900 font-bold text-xl">3</span>
-                            </div>
-                        </div>
-                        <div>
-                            <h3 class="text-white font-bold text-xl mb-2">Go Live When Ready</h3>
-                            <p class="text-slate-400 leading-relaxed mb-3">
-                                Continue following via <strong class="text-emerald-400">Discord alerts</strong> (stay free) or upgrade to <strong class="text-gold">automated copy trading</strong> ($149/mo + $15-20/mo software) for hands-free execution. Either way — same signals, your broker, your capital.
-                            </p>
-                            <div class="flex flex-wrap gap-3 text-xs">
-                                <span class="bg-navy-900/60 border border-slate-700/50 rounded-full px-3 py-1 text-slate-400">
-                                    <i class="fas fa-times-circle mr-1 text-emerald-500/70"></i>No performance fees
-                                </span>
-                                <span class="bg-navy-900/60 border border-slate-700/50 rounded-full px-3 py-1 text-slate-400">
-                                    <i class="fas fa-times-circle mr-1 text-emerald-500/70"></i>No revenue splits
-                                </span>
-                                <span class="bg-navy-900/60 border border-slate-700/50 rounded-full px-3 py-1 text-slate-400">
-                                    <i class="fas fa-undo mr-1 text-emerald-500/70"></i>Cancel anytime
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================ -->
-    <!-- CASH FLOW EXPECTATIONS                       -->
-    <!-- ============================================ -->
-    <section class="py-20 bg-navy-900">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-6xl mx-auto">
-                <div class="text-center mb-14">
-                    <h2 class="font-heading text-3xl sm:text-4xl text-white mb-4">
-                        What to Realistically Expect
-                    </h2>
-                    <p class="text-lg text-slate-400 max-w-3xl mx-auto">
-                        Trading returns fluctuate month-to-month. We recommend <strong class="text-gold">quarterly withdrawals</strong> instead of monthly to smooth variability and protect compounding.
-                    </p>
-                </div>
-
-                <!-- Problem / Solution -->
-                <div class="grid md:grid-cols-2 gap-6 mb-12">
-                    <div class="card rounded-xl p-7 border-amber-500/15">
-                        <div class="flex items-center mb-4">
-                            <div class="w-10 h-10 bg-amber-500/10 rounded-lg flex items-center justify-center mr-3">
-                                <i class="fas fa-chart-line text-amber-400 text-lg"></i>
-                            </div>
-                            <h3 class="text-amber-300 font-semibold text-lg">Monthly Variability</h3>
-                        </div>
-                        <p class="text-slate-400 text-sm leading-relaxed">
-                            Some months may yield +6%, others +1%, or even negative. Monthly withdrawals during down months reduce compound growth and can disrupt the strategy's rhythm.
-                        </p>
-                    </div>
-
-                    <div class="card rounded-xl p-7 border-emerald-500/15">
-                        <div class="flex items-center mb-4">
-                            <div class="w-10 h-10 bg-emerald-500/10 rounded-lg flex items-center justify-center mr-3">
-                                <i class="fas fa-calendar-check text-emerald-400 text-lg"></i>
-                            </div>
-                            <h3 class="text-emerald-300 font-semibold text-lg">Quarterly Withdrawals</h3>
-                        </div>
-                        <p class="text-slate-400 text-sm leading-relaxed">
-                            Withdraw once per quarter to smooth monthly fluctuations. Take distributions based on actual performance. Better compounding, more predictable cash flow.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Quarterly Target -->
-                <div class="card rounded-2xl p-8 mb-8 border-gold/15">
-                    <div class="text-center mb-6">
-                        <p class="text-slate-500 text-sm uppercase tracking-wider mb-2">ECFS Predisposal Automated Copy Trading</p>
-                        <p class="text-gold font-heading text-4xl mb-1">~6-10% per Quarter</p>
-                        <p class="text-slate-500 text-sm">Target range with risk controls active</p>
-                    </div>
-
-                    <!-- Portfolio Examples -->
-                    <div class="grid md:grid-cols-3 gap-6 mb-8">
-                        <!-- $20K -->
-                        <div class="bg-navy-900/50 border border-slate-700/30 rounded-xl p-6">
-                            <div class="text-center mb-4">
-                                <p class="text-slate-500 text-sm mb-1">Portfolio Size</p>
-                                <p class="text-2xl font-bold text-white">$20,000</p>
-                            </div>
-                            <div class="space-y-3">
-                                <div class="flex justify-between items-center">
-                                    <span class="text-slate-500 text-sm">Quarterly target (10%):</span>
-                                    <span class="text-emerald-400 font-bold">$2,000</span>
-                                </div>
-                                <div class="flex justify-between items-center">
-                                    <span class="text-slate-500 text-sm">Total fees:</span>
-                                    <span class="text-amber-400">-$507</span>
-                                </div>
-                                <div class="border-t border-slate-700/40 pt-2 flex justify-between items-center">
-                                    <span class="text-white font-semibold">Net cash flow:</span>
-                                    <span class="text-gold font-bold text-lg">$1,493</span>
-                                </div>
-                                <p class="text-xs text-slate-600 text-center mt-2">$8,000/yr - $2,028 fees = <strong class="text-emerald-400/80">$5,972/yr</strong></p>
-                            </div>
-                        </div>
-
-                        <!-- $50K (Optimal) -->
-                        <div class="bg-gold/5 border-2 border-gold/30 rounded-xl p-6 relative">
-                            <div class="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                                <span class="bg-gold text-navy-900 px-4 py-1 rounded-full text-xs font-bold">OPTIMAL</span>
-                            </div>
-                            <div class="text-center mb-4 mt-2">
-                                <p class="text-slate-500 text-sm mb-1">Portfolio Size</p>
-                                <p class="text-2xl font-bold text-white">$50,000</p>
-                            </div>
-                            <div class="space-y-3">
-                                <div class="flex justify-between items-center">
-                                    <span class="text-slate-500 text-sm">Quarterly target (10%):</span>
-                                    <span class="text-emerald-400 font-bold">$5,000</span>
-                                </div>
-                                <div class="flex justify-between items-center">
-                                    <span class="text-slate-500 text-sm">Total fees:</span>
-                                    <span class="text-amber-400">-$507</span>
-                                </div>
-                                <div class="border-t border-slate-700/40 pt-2 flex justify-between items-center">
-                                    <span class="text-white font-semibold">Net cash flow:</span>
-                                    <span class="text-gold font-bold text-xl">$4,493</span>
-                                </div>
-                                <p class="text-xs text-slate-600 text-center mt-2">$20,000/yr - $2,028 fees = <strong class="text-emerald-400/80">$17,972/yr</strong></p>
-                            </div>
-                        </div>
-
-                        <!-- $100K -->
-                        <div class="bg-navy-900/50 border border-slate-700/30 rounded-xl p-6">
-                            <div class="text-center mb-4">
-                                <p class="text-slate-500 text-sm mb-1">Portfolio Size</p>
-                                <p class="text-2xl font-bold text-white">$100,000</p>
-                            </div>
-                            <div class="space-y-3">
-                                <div class="flex justify-between items-center">
-                                    <span class="text-slate-500 text-sm">Quarterly target (10%):</span>
-                                    <span class="text-emerald-400 font-bold">$10,000</span>
-                                </div>
-                                <div class="flex justify-between items-center">
-                                    <span class="text-slate-500 text-sm">Total fees:</span>
-                                    <span class="text-amber-400">-$507</span>
-                                </div>
-                                <div class="border-t border-slate-700/40 pt-2 flex justify-between items-center">
-                                    <span class="text-white font-semibold">Net cash flow:</span>
-                                    <span class="text-gold font-bold text-xl">$9,493</span>
-                                </div>
-                                <p class="text-xs text-slate-600 text-center mt-2">$40,000/yr - $2,028 fees = <strong class="text-emerald-400/80">$37,972/yr</strong></p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Fee Breakdown -->
-                    <div class="grid md:grid-cols-2 gap-4 max-w-2xl mx-auto mb-6">
-                        <div class="bg-emerald-500/5 border border-emerald-500/15 rounded-lg p-4 text-center">
-                            <p class="text-emerald-400 text-sm font-semibold mb-1">
-                                <i class="fab fa-discord mr-1.5"></i>Discord Alerts
-                            </p>
-                            <p class="text-slate-300 text-xs"><strong class="text-emerald-400">Free</strong> — follow trades manually</p>
-                        </div>
-                        <div class="bg-gold/5 border border-gold/15 rounded-lg p-4 text-center">
-                            <p class="text-gold text-sm font-semibold mb-1">
-                                <i class="fas fa-robot mr-1.5"></i>Copy Trading
-                            </p>
-                            <p class="text-slate-300 text-xs">~$169/mo ($149 + $15-20 software) = <strong class="text-gold">~$507/qtr</strong></p>
-                        </div>
-                    </div>
-
-                    <!-- Note -->
-                    <p class="text-amber-200/60 text-xs text-center">
-                        <i class="fas fa-info-circle mr-1"></i>Portfolio examples use ~8% quarterly for the automated copy trading path. Discord alerts follow the same signals — manual execution results may vary. <strong>Targets are objectives, not guarantees.</strong>
-                    </p>
-                </div>
-
-                <!-- Quarterly Cycle -->
-                <div class="card rounded-xl p-8">
-                    <h3 class="font-heading text-2xl text-white mb-6 text-center">
-                        How Quarterly Withdrawals Work
-                    </h3>
-                    <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-5">
-                        <div class="bg-navy-900/50 rounded-xl p-5 border border-slate-700/20 text-center">
-                            <div class="w-10 h-10 bg-emerald-500/10 rounded-full flex items-center justify-center mx-auto mb-3">
-                                <span class="text-emerald-400 font-bold text-sm">Q1</span>
-                            </div>
-                            <p class="text-white font-semibold text-sm mb-1">Trade & Grow</p>
-                            <p class="text-slate-500 text-xs">Profits compound within the quarter. Target: ~6-10% growth.</p>
-                        </div>
-                        <div class="bg-navy-900/50 rounded-xl p-5 border border-slate-700/20 text-center">
-                            <div class="w-10 h-10 bg-blue-500/10 rounded-full flex items-center justify-center mx-auto mb-3">
-                                <span class="text-blue-400 font-bold text-sm">Q2</span>
-                            </div>
-                            <p class="text-white font-semibold text-sm mb-1">Withdraw Profits</p>
-                            <p class="text-slate-500 text-xs">Take Q1 gains minus fees. Fresh quarter begins.</p>
-                        </div>
-                        <div class="bg-navy-900/50 rounded-xl p-5 border border-slate-700/20 text-center">
-                            <div class="w-10 h-10 bg-gold/10 rounded-full flex items-center justify-center mx-auto mb-3">
-                                <span class="text-gold font-bold text-sm">Q3</span>
-                            </div>
-                            <p class="text-white font-semibold text-sm mb-1">Steady Rhythm</p>
-                            <p class="text-slate-500 text-xs">Quarterly cadence smooths monthly volatility.</p>
-                        </div>
-                        <div class="bg-navy-900/50 rounded-xl p-5 border border-slate-700/20 text-center">
-                            <div class="w-10 h-10 bg-amber-500/10 rounded-full flex items-center justify-center mx-auto mb-3">
-                                <span class="text-amber-400 font-bold text-sm">Q4</span>
-                            </div>
-                            <p class="text-white font-semibold text-sm mb-1">Annual Review</p>
-                            <p class="text-slate-500 text-xs">Evaluate full-year results. Adjust if needed.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Disclaimer -->
-                <div class="bg-amber-900/10 border border-amber-500/15 rounded-xl p-6 mt-8">
-                    <p class="text-amber-200/70 text-sm leading-relaxed">
-                        <i class="fas fa-exclamation-circle text-amber-500/60 mr-2"></i>
-                        <strong class="text-white/70">Performance notes:</strong> The ~6-10% quarterly target is based on backtested and live results with optimal execution — it is a target, not a guarantee. Risk controls (2.5% daily, 5% weekly) protect against large drawdowns but do not eliminate variability. All trading involves risk of loss.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================ -->
-    <!-- GET STARTED                                  -->
-    <!-- ============================================ -->
-    <section id="get-started" class="py-20 bg-gradient-to-b from-navy-900 to-navy-800">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-5xl mx-auto">
-                <div class="text-center mb-14">
-                    <div class="inline-block bg-emerald-500/8 border border-emerald-500/20 rounded-full px-5 py-2 mb-6">
-                        <span class="text-emerald-400 font-semibold text-sm">
-                            <i class="fas fa-shield-alt mr-2"></i>ZERO CAPITAL AT RISK
-                        </span>
-                    </div>
-                    <h2 class="font-heading text-3xl sm:text-4xl text-white mb-4">
-                        Choose Your Path
-                    </h2>
-                    <p class="text-lg text-slate-400 max-w-2xl mx-auto">
-                        Start observing the strategy free. Upgrade to automated execution when you're confident in what you've seen.
-                    </p>
-                </div>
-
-                <!-- Two Options -->
-                <div class="grid md:grid-cols-2 gap-8 mb-10">
-                    <!-- Discord Alerts -->
-                    <div class="card rounded-2xl p-8 border-emerald-500/20 relative">
-                        <div class="absolute top-4 right-4 bg-emerald-500 text-white px-3 py-1 rounded-full text-xs font-bold uppercase">
-                            Start Here
-                        </div>
-                        <div class="text-center mb-6">
-                            <div class="w-14 h-14 bg-emerald-500/10 border border-emerald-500/25 rounded-xl flex items-center justify-center mx-auto mb-4">
-                                <i class="fab fa-discord text-emerald-400 text-2xl"></i>
-                            </div>
-                            <h3 class="text-white font-bold text-xl mb-1">Discord Trade Alerts</h3>
-                            <p class="text-emerald-400 font-semibold text-sm">Free</p>
-                        </div>
-
-                        <ul class="space-y-3 mb-6">
-                            <li class="flex items-start gap-3 text-sm">
-                                <i class="fas fa-check text-emerald-500/70 mt-0.5"></i>
-                                <span class="text-slate-400">Real-time alerts for every entry, exit, and stop-loss</span>
-                            </li>
-                            <li class="flex items-start gap-3 text-sm">
-                                <i class="fas fa-check text-emerald-500/70 mt-0.5"></i>
-                                <span class="text-slate-400">Position sizing guidance included</span>
-                            </li>
-                            <li class="flex items-start gap-3 text-sm">
-                                <i class="fas fa-check text-emerald-500/70 mt-0.5"></i>
-                                <span class="text-slate-400">Paper trade or execute manually at your own pace</span>
-                            </li>
-                            <li class="flex items-start gap-3 text-sm">
-                                <i class="fas fa-check text-emerald-500/70 mt-0.5"></i>
-                                <span class="text-slate-400">Weekly recaps and strategy metrics</span>
-                            </li>
-                        </ul>
-
-                        <a href="https://discord.gg/GprT4S8Vrj" target="_blank" class="block text-center px-6 py-3.5 bg-emerald-500/15 border border-emerald-500/40 text-emerald-400 font-bold rounded-lg hover:bg-emerald-500/25 transition-all">
-                            <i class="fab fa-discord mr-2"></i>Join Discord Free
-                        </a>
-                    </div>
-
-                    <!-- Copy Trading -->
-                    <div class="card rounded-2xl p-8 border-gold/20 relative">
-                        <div class="absolute top-4 right-4 bg-gold text-navy-900 px-3 py-1 rounded-full text-xs font-bold uppercase">
-                            Automated
-                        </div>
-                        <div class="text-center mb-6">
-                            <div class="w-14 h-14 gradient-gold rounded-xl flex items-center justify-center mx-auto mb-4">
-                                <i class="fas fa-robot text-navy-900 text-2xl"></i>
-                            </div>
-                            <h3 class="text-white font-bold text-xl mb-1">Automated Copy Trading</h3>
-                            <p class="text-gold font-semibold text-sm">$149/mo + $15-20/mo software</p>
-                        </div>
-
-                        <ul class="space-y-3 mb-6">
-                            <li class="flex items-start gap-3 text-sm">
-                                <i class="fas fa-check text-gold/70 mt-0.5"></i>
-                                <span class="text-slate-400">Trades execute automatically in your brokerage account</span>
-                            </li>
-                            <li class="flex items-start gap-3 text-sm">
-                                <i class="fas fa-check text-gold/70 mt-0.5"></i>
-                                <span class="text-slate-400">Fully automated entries, exits, and stop-losses</span>
-                            </li>
-                            <li class="flex items-start gap-3 text-sm">
-                                <i class="fas fa-check text-gold/70 mt-0.5"></i>
-                                <span class="text-slate-400">Built-in risk controls enforced at broker level</span>
-                            </li>
-                            <li class="flex items-start gap-3 text-sm">
-                                <i class="fas fa-check text-gold/70 mt-0.5"></i>
-                                <span class="text-slate-400">ES ($50/point) and MES ($5/point) contracts for flexible sizing</span>
-                            </li>
-                        </ul>
-
-                        <a href="https://calendly.com/hd-ekantikcapital/30min" target="_blank" class="block text-center px-6 py-3.5 gradient-gold text-navy-900 font-bold rounded-lg hover:shadow-lg hover:shadow-gold/30 transition-all">
-                            <i class="fas fa-calendar mr-2"></i>Book Setup Call
-                        </a>
-                        <a href="https://www.genspark.ai/api/files/s/pPRjk4g0" target="_blank" class="block text-center mt-3 text-blue-400 hover:text-blue-300 text-xs font-semibold transition-colors">
-                            <i class="fas fa-download mr-1.5"></i>Download Setup Instructions (PDF)
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Performance Variance Note -->
-                <div class="bg-amber-900/10 border border-amber-500/15 rounded-xl p-5 max-w-3xl mx-auto">
-                    <p class="text-amber-200/60 text-sm leading-relaxed">
-                        <i class="fas fa-info-circle text-amber-500/50 mr-2"></i>
-                        <strong class="text-white/70">Performance variance:</strong> Results may differ between validation and live trading due to execution timing, slippage, and broker differences. The purpose of validation is to understand how the strategy makes decisions and manages risk — not to predict exact dollar results.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================ -->
-    <!-- FAQ                                          -->
-    <!-- ============================================ -->
-    <section id="faq" class="py-20 bg-navy-800">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-4xl mx-auto">
-                <div class="text-center mb-14">
-                    <h2 class="font-heading text-3xl sm:text-4xl text-white mb-4">
-                        Frequently Asked Questions
-                    </h2>
-                    <p class="text-lg text-slate-400">
-                        Strategy, pricing, risk management, and more
-                    </p>
-
-                    <!-- Category Pills -->
-                    <div class="flex flex-wrap justify-center gap-2 mt-8">
-                        <button onclick="filterFAQ('all')" class="faq-filter-btn active px-4 py-2 bg-gold text-navy-900 rounded-full text-xs font-bold hover:bg-gold-light transition-colors">
-                            All
-                        </button>
-                        <button onclick="filterFAQ('strategy')" class="faq-filter-btn px-4 py-2 bg-navy-900/60 border border-slate-700/40 text-slate-400 rounded-full text-xs font-semibold hover:border-slate-600 transition-colors">
-                            Strategy
-                        </button>
-                        <button onclick="filterFAQ('execution')" class="faq-filter-btn px-4 py-2 bg-navy-900/60 border border-slate-700/40 text-slate-400 rounded-full text-xs font-semibold hover:border-slate-600 transition-colors">
-                            Execution
-                        </button>
-                        <button onclick="filterFAQ('risk')" class="faq-filter-btn px-4 py-2 bg-navy-900/60 border border-slate-700/40 text-slate-400 rounded-full text-xs font-semibold hover:border-slate-600 transition-colors">
-                            Risk & Capital
-                        </button>
-                        <button onclick="filterFAQ('pricing')" class="faq-filter-btn px-4 py-2 bg-navy-900/60 border border-slate-700/40 text-slate-400 rounded-full text-xs font-semibold hover:border-slate-600 transition-colors">
-                            Pricing
-                        </button>
-                    </div>
-                </div>
-
-                <div class="space-y-3">
-                    <!-- FAQ 1: What is ECFS Predisposal? -->
-                    <div class="faq-item card rounded-xl overflow-hidden" data-category="strategy">
-                        <button class="faq-question w-full text-left p-5 flex items-center justify-between hover:bg-navy-700/30 transition-colors">
-                            <span class="text-base font-semibold text-white pr-4">What is ECFS Predisposal and how does it work?</span>
-                            <i class="fas fa-chevron-down text-gold text-sm transition-transform flex-shrink-0"></i>
-                        </button>
-                        <div class="faq-answer px-5">
-                            <div class="text-slate-400 text-sm leading-relaxed space-y-3">
-                                <p>ECFS Predisposal is a <strong class="text-white">systematic, rules-based trading strategy</strong> that exploits structural inefficiencies in futures markets — specifically ES (E-mini S&P 500) and MES (Micro E-mini S&P 500) contracts.</p>
-                                <p>The strategy is built on repeating patterns in market microstructure that persist because of how markets are organized. Every entry, exit, and position size follows predefined rules — there is no discretionary trading.</p>
-                                <p>It trades approximately <strong class="text-white">5-10 times per week</strong> during U.S. market hours, focusing on high-probability setups with favorable risk-reward ratios. Some positions may be held overnight.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- FAQ 2: Is the 2% guaranteed? -->
-                    <div class="faq-item card rounded-xl overflow-hidden" data-category="strategy">
-                        <button class="faq-question w-full text-left p-5 flex items-center justify-between hover:bg-navy-700/30 transition-colors">
-                            <span class="text-base font-semibold text-white pr-4">Is the ~2% average monthly yield guaranteed?</span>
-                            <i class="fas fa-chevron-down text-gold text-sm transition-transform flex-shrink-0"></i>
-                        </button>
-                        <div class="faq-answer px-5">
-                            <div class="text-slate-400 text-sm leading-relaxed space-y-3">
-                                <p><strong class="text-white">No — returns are never guaranteed in trading.</strong> Anyone who promises otherwise is being dishonest.</p>
-                                <p>The ~2% target is <strong class="text-gold">feasible and grounded in math</strong> — it's the result of exploiting validated structural market inefficiencies through years of research, backtesting, and live trading. But markets evolve, and past results do not guarantee future performance.</p>
-                                <p>What we <em>can</em> guarantee: transparent pricing ($149/mo + $15-20/mo software), hard-coded risk controls, real-time alerts on every trade, and free validation before you subscribe.</p>
-                                <p class="text-amber-200/60"><i class="fas fa-exclamation-triangle mr-1.5"></i><strong>Regulatory disclosure:</strong> All trading involves risk of loss. You can lose some or all of your capital. Past performance does not guarantee future results.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- FAQ 3: Will my results match? -->
-                    <div class="faq-item card rounded-xl overflow-hidden" data-category="strategy">
-                        <button class="faq-question w-full text-left p-5 flex items-center justify-between hover:bg-navy-700/30 transition-colors">
-                            <span class="text-base font-semibold text-white pr-4">Will my results match your advertised performance?</span>
-                            <i class="fas fa-chevron-down text-gold text-sm transition-transform flex-shrink-0"></i>
-                        </button>
-                        <div class="faq-answer px-5">
-                            <div class="text-slate-400 text-sm leading-relaxed space-y-3">
-                                <p><strong class="text-white">Your results may vary</strong> due to execution timing, slippage, broker differences, and market conditions.</p>
-                                <p>Results should be <strong class="text-white">directionally similar</strong> — similar win rates, risk-reward patterns, and overall performance trends — but don't expect identical dollar-for-dollar matching.</p>
-                                <p>This is why we encourage validation first: see the strategy in action with your own eyes before subscribing.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- FAQ 4: How do I execute trades? -->
-                    <div class="faq-item card rounded-xl overflow-hidden" data-category="execution">
-                        <button class="faq-question w-full text-left p-5 flex items-center justify-between hover:bg-navy-700/30 transition-colors">
-                            <span class="text-base font-semibold text-white pr-4">How do I execute the trades?</span>
-                            <i class="fas fa-chevron-down text-gold text-sm transition-transform flex-shrink-0"></i>
-                        </button>
-                        <div class="faq-answer px-5">
-                            <div class="text-slate-400 text-sm leading-relaxed space-y-3">
-                                <p><strong class="text-white">Two options — same strategy, same signals:</strong></p>
-                                <p><strong class="text-emerald-400">Discord Alerts (Free):</strong> Join Discord and receive real-time alerts with exact entry price, stop-loss, and target. Paper trade or execute manually at your own pace. Available immediately — no setup required.</p>
-                                <p><strong class="text-gold">Automated Copy Trading ($149/mo + $15-20/mo software):</strong> Trades execute automatically in your brokerage account via third-party copy trading software. Fully automated entries, exits, and stops with built-in risk controls.</p>
-                                <p>In both cases, <strong class="text-white">you maintain complete control</strong> of your funds in your own brokerage account. We never touch your money.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- FAQ 5: What contracts? -->
-                    <div class="faq-item card rounded-xl overflow-hidden" data-category="execution">
-                        <button class="faq-question w-full text-left p-5 flex items-center justify-between hover:bg-navy-700/30 transition-colors">
-                            <span class="text-base font-semibold text-white pr-4">What contracts does ECFS Predisposal trade?</span>
-                            <i class="fas fa-chevron-down text-gold text-sm transition-transform flex-shrink-0"></i>
-                        </button>
-                        <div class="faq-answer px-5">
-                            <div class="text-slate-400 text-sm leading-relaxed space-y-3">
-                                <p><strong class="text-white">ES (E-mini S&P 500)</strong> and <strong class="text-white">MES (Micro E-mini S&P 500) contracts</strong> — ES at $50 per point and MES at $5 per point. MES allows precise position sizing and risk management even for smaller accounts, while ES is suited for larger portfolios.</p>
-                                <p>These contracts were chosen because they track the S&P 500 index with deep liquidity and enable the strategy to enforce strict risk controls at every position size.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- FAQ 6: Risk controls -->
-                    <div class="faq-item card rounded-xl overflow-hidden" data-category="risk">
-                        <button class="faq-question w-full text-left p-5 flex items-center justify-between hover:bg-navy-700/30 transition-colors">
-                            <span class="text-base font-semibold text-white pr-4">What are the risk controls?</span>
-                            <i class="fas fa-chevron-down text-gold text-sm transition-transform flex-shrink-0"></i>
-                        </button>
-                        <div class="faq-answer px-5">
-                            <div class="text-slate-400 text-sm leading-relaxed space-y-3">
-                                <p>Two hard-coded limits protect your capital:</p>
-                                <p><strong class="text-white">2.5% Daily Loss Limit:</strong> If daily losses reach 2.5% of account value, all positions are closed and no new trades are taken until the next day.</p>
-                                <p><strong class="text-white">5% Weekly Loss Cap:</strong> If weekly losses reach 5%, trading stops for the remainder of the week.</p>
-                                <p>These limits are <strong class="text-gold">enforced at the broker level</strong> and cannot be overridden — by us or by you. They are designed to prevent catastrophic losses and preserve capital during difficult conditions.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- FAQ 7: Minimum account size -->
-                    <div class="faq-item card rounded-xl overflow-hidden" data-category="risk">
-                        <button class="faq-question w-full text-left p-5 flex items-center justify-between hover:bg-navy-700/30 transition-colors">
-                            <span class="text-base font-semibold text-white pr-4">What's the minimum account size?</span>
-                            <i class="fas fa-chevron-down text-gold text-sm transition-transform flex-shrink-0"></i>
-                        </button>
-                        <div class="faq-answer px-5">
-                            <div class="text-slate-400 text-sm leading-relaxed space-y-3">
-                                <p>We recommend <strong class="text-white">$20,000 minimum</strong> for proper position sizing and risk management.</p>
-                                <p><strong class="text-white">Position sizing:</strong> Smaller accounts can't scale positions appropriately. <strong class="text-white">Fee impact:</strong> At ~$169/mo (~$2,028/year), fees represent ~10% of a $20K account, ~4% of $50K, or ~2% of $100K.</p>
-                                <p>You can observe the strategy with any account size during the validation period — the $20K recommendation applies when you go live.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- FAQ 8: Pricing & cancellation -->
-                    <div class="faq-item card rounded-xl overflow-hidden" data-category="pricing">
-                        <button class="faq-question w-full text-left p-5 flex items-center justify-between hover:bg-navy-700/30 transition-colors">
-                            <span class="text-base font-semibold text-white pr-4">What does it cost and can I cancel?</span>
-                            <i class="fas fa-chevron-down text-gold text-sm transition-transform flex-shrink-0"></i>
-                        </button>
-                        <div class="faq-answer px-5">
-                            <div class="text-slate-400 text-sm leading-relaxed space-y-3">
-                                <p><strong class="text-emerald-400">Discord alerts: Free.</strong> Observe and follow trades at no cost.</p>
-                                <p><strong class="text-gold">Automated copy trading: $149/mo</strong> (ECFS subscription) <strong class="text-gold">+ $15-20/mo</strong> (third-party copy trading software). The software fee is separate and paid directly to the software provider.</p>
-                                <p><strong class="text-emerald-400">Virtual demo: Free</strong> during validation. No fees until you go live.</p>
-                                <p><strong class="text-white">Cancel anytime</strong> — month-to-month, no contracts, no penalties. We only want subscribers who find genuine value.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================ -->
-    <!-- FINAL CTA                                    -->
-    <!-- ============================================ -->
-    <section class="py-20 bg-gradient-to-b from-navy-800 to-navy-900 relative">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-3xl mx-auto text-center">
-                <h2 class="font-heading text-3xl sm:text-4xl text-white mb-4">
-                    Ready to See It in Action?
-                </h2>
-                <p class="text-lg text-slate-400 mb-8 max-w-xl mx-auto">
-                    Join Discord to observe the strategy free, or book a call to discuss setup and your goals.
-                </p>
-
-                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-                    <a href="https://discord.gg/GprT4S8Vrj" target="_blank" class="px-10 py-4 gradient-gold text-navy-900 font-bold text-base rounded-lg hover:shadow-xl hover:shadow-gold/30 transition-all inline-flex items-center">
-                        <i class="fab fa-discord mr-3"></i>Join Discord Free
-                    </a>
-                    <a href="https://calendly.com/hd-ekantikcapital/30min" target="_blank" class="px-10 py-4 bg-transparent border border-slate-600 text-slate-300 font-semibold text-base rounded-lg hover:border-slate-400 hover:text-white transition-all inline-flex items-center">
-                        <i class="fas fa-calendar mr-3"></i>Book a 30-Minute Call
-                    </a>
-                </div>
-
-                <p class="text-slate-600 text-sm">
-                    Or email us directly: <a href="mailto:info@ekantikcapital.com" class="text-gold hover:text-gold-light transition-colors">info@ekantikcapital.com</a>
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================ -->
-    <!-- FOOTER                                       -->
-    <!-- ============================================ -->
-    <footer class="bg-navy-900 border-t border-slate-800/60 py-12">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-4xl mx-auto">
-                <!-- Risk Disclosure -->
-                <div class="bg-red-950/20 border border-red-500/15 rounded-lg p-6 mb-8">
-                    <p class="text-red-300/70 text-xs font-semibold mb-2">
-                        <i class="fas fa-exclamation-triangle mr-1.5"></i>Risk Disclosure
-                    </p>
-                    <p class="text-red-200/50 text-xs leading-relaxed">
-                        <strong>TRADING INVOLVES SUBSTANTIAL RISK OF LOSS.</strong> Futures, options, and other leveraged instruments carry a high level of risk and may not be suitable for all investors. You can lose more than your initial investment. Past performance is not indicative of future results. The performance results presented on this website are hypothetical or simulated and have inherent limitations. No representation is being made that any account will or is likely to achieve profits or losses similar to those shown. All trading decisions are made at your own risk. Ekantik Capital Advisors LLC does not provide investment advice and is not a registered investment advisor or broker-dealer. This service provides educational trade alerts only. You are solely responsible for evaluating the merits and risks associated with the use of any content or information provided. Always consult with a licensed financial advisor before making investment decisions.
-                    </p>
-                </div>
-
-                <!-- Footer Info -->
-                <div class="text-center text-slate-500 text-sm">
-                    <p class="mb-2"><strong class="text-slate-300">Ekantik Capital Advisors LLC</strong></p>
-                    <p class="mb-4 text-xs">Professional Trading Education & Alert Services</p>
-                    <p class="text-xs text-slate-600">&copy; 2026 Ekantik Capital Advisors LLC. All rights reserved.</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- ============================================ -->
-    <!-- JAVASCRIPT                                   -->
-    <!-- ============================================ -->
-    <script>
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        mobileMenuBtn.addEventListener('click', function() {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        const mobileLinks = mobileMenu.querySelectorAll('a');
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                mobileMenu.classList.add('hidden');
-            });
-        });
-
-        // FAQ Toggle
-        const faqItems = document.querySelectorAll('.faq-item');
-        faqItems.forEach(item => {
-            const question = item.querySelector('.faq-question');
-            question.addEventListener('click', function() {
-                const isActive = item.classList.contains('active');
-                faqItems.forEach(otherItem => {
-                    if (otherItem !== item) otherItem.classList.remove('active');
-                });
-                item.classList.toggle('active', !isActive);
-            });
-        });
-
-        // FAQ Category Filter
-        function filterFAQ(category) {
-            const items = document.querySelectorAll('.faq-item');
-            const buttons = document.querySelectorAll('.faq-filter-btn');
-
-            buttons.forEach(btn => {
-                btn.classList.remove('active', 'bg-gold', 'text-navy-900');
-                btn.classList.add('bg-navy-900/60', 'text-slate-400');
-            });
-
-            event.target.classList.add('active', 'bg-gold', 'text-navy-900');
-            event.target.classList.remove('bg-navy-900/60', 'text-slate-400');
-
-            items.forEach(item => {
-                item.style.display = (category === 'all' || item.dataset.category === category) ? 'block' : 'none';
-            });
-        }
-
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                const href = this.getAttribute('href');
-                if (href !== '#' && href !== '') {
-                    e.preventDefault();
-                    const target = document.querySelector(href);
-                    if (target) {
-                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
-                }
-            });
-        });
-    </script>
+<script src="config.js?v=mwuyflic"></script>
+<script src="lib/size.js?v=mwuyflic"></script>
+<script src="app.js?v=mwuyflic"></script>
 </body>
 </html>

@@ -1,0 +1,15 @@
+{
+  "name": "cashflow-page",
+  "private": true,
+  "description": "Static Cash-Flow page. No framework, no dependencies.",
+  "scripts": {
+    "build": "node scripts/build.js",
+    "build:offline": "node scripts/build.js --offline",
+    "build:prod": "node scripts/build.js --prod",
+    "test": "node --test test/*.test.js",
+    "check:copy": "node scripts/check-copy.js",
+    "check:config": "node scripts/check-config.js --prod",
+    "check": "npm test && npm run check:copy && node scripts/check-config.js"
+  },
+  "engines": { "node": ">=20" }
+}
