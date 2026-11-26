@@ -11,7 +11,7 @@ function walk(obj, prefix, out) {
 
 function findNulls(cfg) {
   const out = [];
-  for (const k of ['FLAGS', 'SITE', 'PORTFOLIO', 'RULES_R', 'SIZING', 'PLANNING', 'FEEDS', 'ENGINES']) walk(cfg[k], k, out);
+  for (const k of Object.keys(cfg)) if (k !== 'OPTIONAL_NULLS') walk(cfg[k], k, out);
   const optional = new Set(cfg.OPTIONAL_NULLS || []);
   return out.filter(p => !optional.has(p));
 }
@@ -20,12 +20,11 @@ function sanity(cfg) {
   const errs = [];
   const { sleeves, totalUsd } = cfg.PORTFOLIO;
   if (sleeves.futures + sleeves.options !== totalUsd) errs.push('PORTFOLIO.sleeves do not add up to PORTFOLIO.totalUsd');
-  if (cfg.SIZING.sizes.some(s => s.multiple > cfg.SIZING.maxMultiple)) errs.push('SIZING.sizes lists a size above maxMultiple');
-  if (!cfg.SIZING.sizes.some(s => s.id === cfg.SIZING.default)) errs.push('SIZING.default is not one of SIZING.sizes');
-  for (const e of ['futures', 'options']) {
-    const l = cfg.ENGINES[e].record.label;
-    if (l != null && l !== 'DEMO' && l !== 'OWN MONEY') errs.push('ENGINES.' + e + '.record.label must be "DEMO" or "OWN MONEY"');
-  }
+  if (!/^\d{4}-Q[1-4]$/.test(cfg.CAMPAIGNS.firstQuarter)) errs.push('CAMPAIGNS.firstQuarter must look like 2027-Q1');
+  const T = cfg.TARGET;
+  if (!(T.quarterReturnPct > 0 && T.quarterReturnPct < 1)) errs.push('TARGET.quarterReturnPct must be a fraction, e.g. 0.10');
+  if (!(T.maxDrawdownPct > 0 && T.maxDrawdownPct < 1)) errs.push('TARGET.maxDrawdownPct must be a fraction, e.g. 0.10');
+  if (!/HYPOTHETICAL OR SIMULATED PERFORMANCE RESULTS/.test(cfg.HYPOTHETICAL || '')) errs.push('HYPOTHETICAL statement missing');
   return errs;
 }
 

@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>One Portfolio, Two Engines | Ekantik Capital Advisors</title>
+<title>Cash-Flow Strategy | Ekantik Capital Advisors</title>
 <meta name="robots" content="noindex, nofollow">
-<meta name="description" content="A $50,000 portfolio with two engines and two jobs: a futures engine for monthly cash, an options engine for growth. Every trade posted live.">
+<meta name="description" content="Cash-Flow Strategy: a 10% quarterly return target with a 10% drawdown limit on a $50,000 portfolio. Every quarter is a campaign, scored in public from a live Interactive Brokers account.">
 <link rel="preload" href="fonts/cormorant-garamond-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/dm-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="styles.css?v=mwuyflic">
+<link rel="stylesheet" href="styles.css?v=mwxpprl1">
 </head>
-<body data-build="dev">
+<body data-build="prod">
 
 <a class="skip" href="#main">Skip to content</a>
 
@@ -19,13 +19,11 @@
     <a class="wordmark" href="#top">Ekantik Capital Advisors</a>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
     <nav id="nav" class="nav" aria-label="Sections">
-      <a href="#idea">The Idea</a>
-      <a href="#split">The Split</a>
-      <a href="#size">Your Size</a>
-      <a href="#cash-rules">Cash Rules</a>
+      <a href="#live">This Quarter</a>
+      <a href="#campaigns">Scoreboard</a>
+      <a href="#reference">Where 10% Comes From</a>
+      <a href="#how">How It Works</a>
       <a href="#risk">Risk</a>
-      <a href="#record">The Record</a>
-      <a href="#stops">Stop Rules</a>
       <a href="#faq">FAQ</a>
     </nav>
     <a class="btn btn--gold btn--sm" href="#follow">Follow live</a>
@@ -34,304 +32,149 @@
 
 <main id="main">
 
-<!-- 5.2 HERO -->
+<!-- HERO -->
 <section id="top" class="sec sec--navy hero">
   <div class="wrap">
-    <p class="eyebrow eyebrow--gold">$50,000 · TWO ENGINES · EVERY TRADE POSTED LIVE</p>
-    <h1>One engine pays you. The other compounds.</h1>
-
-    <p class="lede">A $50,000 portfolio with two jobs, kept apart. A futures engine works for monthly cash. An options engine works for growth and is never touched. Futures alerts are sized to a daily loss limit of 1% of the portfolio. Run them as alerted or at double size, never more. Nothing comes out until three months of the cash target are banked.</p>
-    <div class="chips" role="radiogroup" aria-label="Choose your size">
-      <button type="button" class="chip" role="radio" aria-checked="true" data-size="1x">1x · 1% daily loss limit</button>
-      <button type="button" class="chip" role="radio" aria-checked="false" data-size="2x">2x · 2% daily loss limit</button>
-    </div>
-
-    <p class="note-gold"><em>2x is the limit.</em></p>
+    <p class="eyebrow eyebrow--gold">CASH-FLOW STRATEGY · $50,000 MINIMUM · SCORED EVERY QUARTER</p>
+    <h1>Target 10% a quarter. Keep drawdown under 10%.</h1>
+    <p class="lede">One $50,000 portfolio running two engines: S&amp;P 500 futures (ES / MES) and short-dated index options. Every calendar quarter is a campaign with two numbers to hit. Each campaign is scored in public from a live Interactive Brokers account, updated every trading day.</p>
+    <ul class="targets" aria-label="Campaign targets">
+      <li><span class="targets__k">Return target</span><span class="targets__v num">10%</span><span class="targets__s">per quarter</span></li>
+      <li><span class="targets__k">Drawdown limit</span><span class="targets__v num">&lt; 10%</span><span class="targets__s">per quarter</span></li>
+      <li><span class="targets__k">Minimum</span><span class="targets__v num">$50,000</span><span class="targets__s">portfolio</span></li>
+    </ul>
+    <p class="note-gold"><em>Targets, not forecasts. They were set from backtests and a demo record, which are hypothetical.</em></p>
     <div class="actions">
-      <a class="btn btn--gold" href="#follow">Follow both engines →</a>
+      <a class="btn btn--gold" href="#live">See this quarter’s campaign →</a>
       <a class="btn btn--outline" href="https://cal.com/ekantik" target="_blank" rel="noopener" data-evt="book_call_click">Book a 30-minute call</a>
     </div>
-    <ul class="proof" aria-label="Live record summary">
-      <li data-proof="futures" hidden></li>
-      <li data-proof="options" hidden></li>
-      <li>Your broker. Your accounts. We never have access.</li>
-    </ul>
     <p class="fine">Educational trade alerts. Not investment advice. Futures and options carry substantial risk of loss. Past performance is not indicative of future results.</p>
   </div>
 </section>
 
-<!-- 5.3 THE IDEA -->
-<section id="idea" class="sec sec--ivory reveal">
+<!-- LIVE CAMPAIGN -->
+<section id="live" class="sec reveal">
   <div class="wrap">
-    <p class="eyebrow">THE FLAW IN MOST PORTFOLIOS</p>
-    <h2>Most portfolios ask one engine to do two jobs.</h2>
-    <div class="prose">
-      <p>Cash flow and compounding pull in opposite directions. Withdraw from a compounding account and you cut the doubling short. Compound an income account and nothing reaches you this month.</p>
-      <p>So the work is split. One engine is built to be withdrawn from. The other is built never to be touched. Each keeps its own rules, its own record and its own stop.</p>
+    <p class="eyebrow">LIVE · Interactive Brokers ACCOUNT · UPDATED EVERY TRADING DAY</p>
+    <h2>This quarter’s campaign.</h2>
+    <div class="campaign card card--accent">
+      <div class="campaign__ring"><svg class="ring" viewBox="0 0 180 180" role="img" aria-label="+0.0% of a 10% target"><circle class="ring__track" cx="90" cy="90" r="74"/><circle class="ring__fill" cx="90" cy="90" r="74" stroke-dasharray="0.0 465.0" transform="rotate(-90 90 90)"/><text class="ring__val" x="90" y="88" text-anchor="middle">+0.0%</text><text class="ring__sub" x="90" y="112" text-anchor="middle">of 10% target</text></svg></div>
+      <div class="campaign__body"><h3>Campaign 1 · Q1 2027 starts January 1, 2027</h3><span class="pill pill--pending">Not started</span><p>The live account is scored from the first trading day of Q1 2027. Progress toward the 10% target and the drawdown so far appear here after that day’s close.</p><dl class="kv"><div><dt>Return target</dt><dd class="num">10%</dd></div><div><dt>Drawdown limit</dt><dd class="num">&lt; 10%</dd></div><div><dt>Quarter</dt><dd class="num">Jan 1 – Mar 31</dd></div></dl></div>
     </div>
-    <div class="table-scroll">
-      <table class="tbl">
-        <thead><tr><th scope="col"><span class="sr">Topic</span></th><th scope="col">The usual way</th><th scope="col">This portfolio</th></tr></thead>
-        <tbody>
-          <tr><th scope="row">Monthly cash</th><td>A 4% rule, or whatever dividends pay</td><td>A fixed target, paid from a banked buffer</td></tr>
-          <tr><th scope="row">Growth</th><td>The same account you withdraw from</td><td>A separate sleeve that is never withdrawn</td></tr>
-          <tr><th scope="row">Daily risk</th><td>Rarely stated</td><td>A published 1% daily loss limit at 1x</td></tr>
-          <tr><th scope="row">When something breaks</th><td>You hear at the quarterly review</td><td>Posted in Discord within one trading day</td></tr>
-          <tr><th scope="row">Who checks</th><td>The firm that runs it</td><td>A named independent witness</td></tr>
-          <tr><th scope="row">Custody</th><td>Their platform</td><td>Your broker, your accounts</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <blockquote class="pull">“Income and growth fight when they share an account. Here they don’t share one.”</blockquote>
   </div>
 </section>
 
-<!-- 5.4 THE SPLIT -->
-<section id="split" class="sec reveal">
+<!-- SCOREBOARD -->
+<section id="campaigns" class="sec sec--ivory reveal">
   <div class="wrap">
-    <p class="eyebrow">$50,000, SPLIT BY JOB</p>
-    <h2>Each dollar has one job.</h2>
-    <div class="split" style="--f: 80; --o: 20;">
-      <article class="card card--accent split__f">
-        <h3><span class="num">$40,000</span> · Cash-Flow Engine (futures)</h3>
-        <p class="job">Job: monthly cash.</p>
-        <p><em>Rules-based S&amp;P 500 futures (ES / MES). Hard loss limits by the day, week and month. Every withdrawal comes from this engine’s realized gains.</em></p>
-      </article>
-      <article class="card card--accent split__o">
-        <h3><span class="num">$10,000</span> · Compounding Engine (options)</h3>
-        <p class="job">Job: long-term growth.</p>
-        <p><em>Short-dated options. Size grows only after profits pay for the next step, and shrinks the moment they’re given back. Never withdrawn. Treat the full $10,000 as money that can go to zero.</em></p>
-      </article>
-    </div>
-    <p class="after"><em>Two engines, two records. We never add them together.</em></p>
+    <p class="eyebrow">EVERY QUARTER, PASS OR MISS</p>
+    <h2>The campaign scoreboard.</h2>
+    <p class="prose">A campaign is <strong>met</strong> when the quarter’s return reaches 10% and the deepest drawdown stays under 10%. Anything else is a <strong>miss</strong>, and it stays on the board.</p>
+    <p class="empty">No live campaign has been scored yet. Campaign 1 runs January 1, 2027 to March 31, 2027.</p>
   </div>
 </section>
 
-<!-- 5.5 YOUR SIZE -->
-<section id="size" class="sec sec--ivory reveal">
+<!-- REFERENCE -->
+<section id="reference" class="sec reveal">
   <div class="wrap">
-    <p class="eyebrow">ALERTED AT 1X. DOUBLE IS THE LIMIT.</p>
-    <h2>Run it as alerted, or at double. Never more.</h2>
+    <p class="eyebrow">HYPOTHETICAL · DEMO ACCOUNTS · NOT LIVE CAPITAL</p>
+    <h2>Where the 10% comes from.</h2>
     <div class="prose">
-      <p>Every futures alert is sized for a $50,000 portfolio at 1x: a daily loss limit of 1% of the portfolio. You may double it. Every rule is written in R, the dollars risked on one futures trade, so doubling your size doubles every limit and your cash target with it. Nothing else changes.</p>
+      <p>The 10% target was set from backtests of both engines and checked against their demo records. Below are the two demo records combined as if they ran in one $50,000 account, quarter by quarter. They are shown as reference, not as a track record.</p>
     </div>
-    <div class="seg" role="radiogroup" aria-label="Size">
-      <button type="button" class="seg__btn" role="radio" aria-checked="true" data-size="1x">1x · as alerted</button>
-      <button type="button" class="seg__btn" role="radio" aria-checked="false" data-size="2x">2x · double size</button>
-    </div>
-    <h3 class="tbl-title" id="rules-title">The rules at each size</h3>
-    <div class="table-scroll">
-      <table class="tbl tbl--rules" aria-labelledby="rules-title" aria-live="polite">
-        <thead><tr><th scope="col">Rule</th><th scope="col">In R</th><th scope="col" data-col="1x">1x</th><th scope="col" data-col="2x">2x</th></tr></thead>
-        <tbody>
-          <tr><th scope="row">Risk per futures trade</th><td class="num">1R</td><td data-col="1x" class="is-sel"><span class="num">$250</span><small>0.5% of $50,000</small></td><td data-col="2x" class=""><span class="num">$500</span><small>1% of $50,000</small></td></tr>
-          <tr><th scope="row">Daily loss limit</th><td class="num">2R</td><td data-col="1x" class="is-sel"><span class="num">$500</span><small>1% of $50,000</small></td><td data-col="2x" class=""><span class="num">$1,000</span><small>2% of $50,000</small></td></tr>
-          <tr><th scope="row">Weekly loss limit</th><td class="num">4R</td><td data-col="1x" class="is-sel"><span class="num">$1,000</span><small>2% of $50,000</small></td><td data-col="2x" class=""><span class="num">$2,000</span><small>4% of $50,000</small></td></tr>
-          <tr><th scope="row">Monthly loss limit</th><td class="num">8R</td><td data-col="1x" class="is-sel"><span class="num">$2,000</span><small>4% of $50,000</small></td><td data-col="2x" class=""><span class="num">$4,000</span><small>8% of $50,000</small></td></tr>
-          <tr><th scope="row">Monthly cash target</th><td class="num">2R</td><td data-col="1x" class="is-sel"><span class="num">2R</span></td><td data-col="2x" class=""><span class="num">2R</span></td></tr>
-          <tr><th scope="row">Banked before the first withdrawal</th><td class="num">6R (3 months)</td><td data-col="1x" class="is-sel"><span class="num">6R</span></td><td data-col="2x" class=""><span class="num">6R</span></td></tr>
-          <tr><th scope="row">Withdrawals pause if the buffer falls below</th><td class="num">2R (1 month)</td><td data-col="1x" class="is-sel"><span class="num">2R</span></td><td data-col="2x" class=""><span class="num">2R</span></td></tr>
-          <tr><th scope="row">Withdrawals resume when the buffer is back to</th><td class="num">6R (3 months)</td><td data-col="1x" class="is-sel"><span class="num">6R</span></td><td data-col="2x" class=""><span class="num">6R</span></td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <p class="after"><em>Smaller or larger account? The rules are in R, so they scale. Book a call to see them at your size.</em> <a class="btn btn--outline btn--sm" href="https://cal.com/ekantik" target="_blank" rel="noopener" data-evt="book_call_click">Book a 30-minute call</a></p>
-    <aside class="callout" aria-labelledby="why2x">
-      <p class="eyebrow eyebrow--gold-text">CAUTION</p>
-      <h3 id="why2x">Why 2x is the limit:</h3>
-      <p>At 2x, each futures trade risks <span class="num">1.25%</span> of the futures account. That is the same share the published record was run at. Above 2x, you would be trading a size the record has never been tested at.</p>
-      <p>At 2x, the monthly loss limit is already <span class="num">8%</span> of the portfolio, and futures can gap past any limit.</p>
-      <p>If you would not sit through a full monthly loss limit at 2x, stay at 1x.</p>
+    <div class="table-scroll"><table class="tbl tbl--score"><thead><tr><th scope="col">Quarter</th><th scope="col">Return</th><th scope="col">Deepest drawdown</th><th scope="col">10% target</th><th scope="col">Drawdown under 10%</th><th scope="col">Result</th></tr></thead><tbody><tr><th scope="row">Q1 2026 <small>from Feb 4</small></th><td class="num pos">+9.7%</td><td class="num">2.2%</td><td>—</td><td>—</td><td><span class="pill pill--pending">Partial quarter</span></td></tr><tr><th scope="row">Q2 2026</th><td class="num pos">+11.5%</td><td class="num">1.9%</td><td><span class="tick">Yes</span></td><td><span class="tick">Yes</span></td><td><span class="pill pill--met">Met</span></td></tr><tr><th scope="row">Q3 2026</th><td class="num pos">+4.6%</td><td class="num">1.6%</td><td><span class="cross">No</span></td><td><span class="tick">Yes</span></td><td><span class="pill pill--missed">Missed</span></td></tr><tr><th scope="row">Q4 2026</th><td class="num pos">+3.8%</td><td class="num">0.5%</td><td>—</td><td>—</td><td><span class="pill pill--pending">In progress</span></td></tr></tbody></table></div>
+    <p class="after"><em>Complete demo quarters that met the 10% target: 1 of 2. Deepest drawdown in any demo quarter: 2.2%. Assumes the futures and options demo trades ran in one $50,000 account at the dollar sizes recorded, before subscription fees. 9 undated trades are left out. Demo results are hypothetical.</em></p>
+    <aside class="callout callout--hypo" aria-label="Hypothetical performance statement">
+      <p class="eyebrow eyebrow--gold-text">HYPOTHETICAL PERFORMANCE</p>
+      <p class="hypo">HYPOTHETICAL OR SIMULATED PERFORMANCE RESULTS HAVE CERTAIN LIMITATIONS. UNLIKE AN ACTUAL PERFORMANCE RECORD, SIMULATED RESULTS DO NOT REPRESENT ACTUAL TRADING. ALSO, SINCE THE TRADES HAVE NOT BEEN EXECUTED, THE RESULTS MAY HAVE UNDER-OR-OVER COMPENSATED FOR THE IMPACT, IF ANY, OF CERTAIN MARKET FACTORS, SUCH AS LACK OF LIQUIDITY. SIMULATED TRADING PROGRAMS IN GENERAL ARE ALSO SUBJECT TO THE FACT THAT THEY ARE DESIGNED WITH THE BENEFIT OF HINDSIGHT. NO REPRESENTATION IS BEING MADE THAT ANY ACCOUNT WILL OR IS LIKELY TO ACHIEVE PROFIT OR LOSSES SIMILAR TO THOSE SHOWN.</p>
     </aside>
-    <p class="after"><em>The 2x choice applies to the Cash-Flow Engine only. The Compounding Engine sizes itself: it grows only on earned profit, by its own ladder.</em></p>
+    <div class="actions">
+      <a class="btn btn--outline btn--sm" href="https://accelerator.ekantikcapital.com/experiment.html" target="_blank" rel="noopener" data-evt="dashboard_click" data-engine-evt="futures">Futures demo dashboard ↗</a>
+      <a class="btn btn--outline btn--sm" href="https://accelerator.ekantikcapital.com/options-dashboard.html" target="_blank" rel="noopener" data-evt="dashboard_click" data-engine-evt="options">Options demo dashboard ↗</a>
+    </div>
   </div>
 </section>
 
-<!-- 5.6 CASH RULES -->
-<section id="cash-rules" class="sec sec--navy reveal">
+<!-- HOW IT WORKS -->
+<section id="how" class="sec sec--navy reveal">
   <div class="wrap">
-    <p class="eyebrow eyebrow--gold">BUFFER FIRST</p>
-    <h2>Bank three months. Then withdraw.</h2>
-    <ol class="ladder">
-      <li class="ladder__step">
-        <span class="ladder__zero">$0 out</span>
-        <h3>1 · Build</h3>
-        <p><em>Realized futures gains fill the buffer: <span class="num" data-fig="6">6R</span>, three months of the target. Nothing comes out. About two to three months at the conservative planning rate. Markets set the real pace.</em></p>
-      </li>
-      <li class="ladder__step">
-        <h3>2 · Withdraw</h3>
-        <p><em>Each month, <span class="num" data-fig="2">2R</span> comes out. Months above target refill the buffer first. Gains beyond a full buffer stay in the futures account.</em></p>
-      </li>
-      <li class="ladder__step">
-        <h3>3 · Pause</h3>
-        <p><em>If the buffer falls below one month of target (<span class="num" data-fig="2">2R</span>), withdrawals pause. They restart when the buffer is back to three months (<span class="num" data-fig="6">6R</span>).</em></p>
-      </li>
-    </ol>
-    <p class="after"><em>The Compounding Engine is never part of this. It compounds on its own.</em></p>
+    <p class="eyebrow eyebrow--gold">HOW IT WORKS</p>
+    <h2>One portfolio. Two engines. One score.</h2>
+    <div class="cards3">
+      <article class="card card--dark">
+        <h3>The portfolio</h3>
+        <p><span class="num">$40,000</span> runs the futures engine: rules-based S&amp;P 500 futures (ES / MES), with hard loss limits by the day, week and month.</p>
+        <p><span class="num">$10,000</span> runs the options engine: Short-dated index options, sized up only after profits pay for it.</p>
+      </article>
+      <article class="card card--dark">
+        <h3>The campaign</h3>
+        <p>Each calendar quarter starts fresh. The score is the whole portfolio’s return for the quarter and its deepest drawdown.</p>
+        <p>Returns are time-weighted from the daily account value, after commissions, with deposits and withdrawals taken out.</p>
+      </article>
+      <article class="card card--dark">
+        <h3>Your account</h3>
+        <p>Alerts post in Discord as they happen. You place every trade yourself, in your own account.</p>
+        <p>Your money stays at your broker. We never have access.</p>
+      </article>
+    </div>
   </div>
 </section>
 
-
-<!-- 5.8 RISK -->
+<!-- RISK -->
 <section id="risk" class="sec sec--ivory reveal">
   <div class="wrap">
-    <p class="eyebrow">READ THIS BEFORE THE RESULTS</p>
+    <p class="eyebrow">READ THIS BEFORE YOU FOLLOW</p>
     <h2>The downside comes first.</h2>
-    <aside class="callout" aria-labelledby="arith">
-      <h3 id="arith">The arithmetic you should run:</h3>
-      <p>At your size, the monthly loss limit is <span class="num" data-limit="8">$2,000 · 4% of $50,000 · 8R</span>. The monthly cash target is <span class="num" data-fig="2">2R</span>. The limit is four times the target. That is deliberate: the limit is a circuit breaker for a bad month, not a forecast of one.</p>
-      <p data-dd-text><span data-dd-sentence>The deepest futures drawdown in the record so far is 3.25R (as of Nov 24, 2026).</span> The buffer is 6R. A repeat of that stretch would use most or all of the buffer. That is why withdrawals pause at 2R instead of running the buffer to zero.</p>
-    </aside>
     <ul class="facts">
-      <li><svg aria-hidden="true" viewBox="0 0 24 24" class="ico"><path d="M12 3 2 21h20L12 3z"/><path d="M12 10v5M12 18v.01"/></svg><em>Loss limits stop new trades. They are not floors. Futures can gap, and a loss can run past the limit.</em></li>
-      <li><svg aria-hidden="true" viewBox="0 0 24 24" class="ico"><path d="M12 3 2 21h20L12 3z"/><path d="M12 10v5M12 18v.01"/></svg><em>The options sleeve can go to zero. Treat the full $10,000 as at risk.</em></li>
+      <li><svg aria-hidden="true" viewBox="0 0 24 24" class="ico"><path d="M12 3 2 21h20L12 3z"/><path d="M12 10v5M12 18v.01"/></svg><em>10% a quarter is an aggressive target. Expect quarters that miss it, including losing quarters.</em></li>
+      <li><svg aria-hidden="true" viewBox="0 0 24 24" class="ico"><path d="M12 3 2 21h20L12 3z"/><path d="M12 10v5M12 18v.01"/></svg><em>The 10% drawdown limit is what the rules aim to stay inside. It is not a floor. Futures can gap, and a loss can run past it.</em></li>
       <li><svg aria-hidden="true" viewBox="0 0 24 24" class="ico"><path d="M12 3 2 21h20L12 3z"/><path d="M12 10v5M12 18v.01"/></svg><em>Futures are leveraged. Losses can exceed the amount deposited.</em></li>
+      <li><svg aria-hidden="true" viewBox="0 0 24 24" class="ico"><path d="M12 3 2 21h20L12 3z"/><path d="M12 10v5M12 18v.01"/></svg><em>The options sleeve can go to zero. Treat the full $10,000 as at risk.</em></li>
+      <li><svg aria-hidden="true" viewBox="0 0 24 24" class="ico"><path d="M12 3 2 21h20L12 3z"/><path d="M12 10v5M12 18v.01"/></svg><em>Backtests and demo records are hypothetical. The live campaigns are the record that counts, and that record starts January 1, 2027.</em></li>
     </ul>
-    <h3 class="tbl-title" id="opt-rules">Compounding Engine rules (always 1x)</h3>
-    <div class="table-scroll">
-      <table class="tbl" aria-labelledby="opt-rules">
-        <thead><tr><th scope="col">Rule</th><th scope="col">Level</th><th scope="col">What happens</th></tr></thead>
-        <tbody>
-          <tr><th scope="row">Starting size</th><td>1 contract</td><td>The full sleeve is treated as at risk</td></tr>
-          <tr><th scope="row">Step up</th><td>6 profitable, unrelated trades at the current size</td><td>Size doubles: 1 → 2 → 4 → 8 → 16</td></tr>
-          <tr><th scope="row">Step down</th><td>Profits fall back to the last step</td><td>Size drops one level at once</td></tr>
-          <tr><th scope="row">Daily</th><td>1 realized loss</td><td>Done for the day</td></tr>
-          <tr><th scope="row">Weekly premium-loss limit</th><td><span class="flag" title="Fill in config.js before the production deploy">[DATA REQUIRED]</span></td><td>Done for the week</td></tr>
-          <tr><th scope="row">Monthly</th><td>2 losing weeks in a row</td><td>Done for the month</td></tr>
-        </tbody>
-      </table>
-    </div>
   </div>
 </section>
 
-<!-- 5.9 THE RECORD -->
-<section id="record" class="sec reveal">
+<!-- FOLLOW -->
+<section id="follow" class="sec reveal">
   <div class="wrap">
-    <p class="eyebrow">ONE PORTFOLIO · TWO RECORDS · NEVER BLENDED</p>
-    <h2>Every trade, posted before the result is known.</h2>
-    <div class="prose">
-      <p>The portfolio combines two engines. The proof does not. Each engine keeps its own record, its own start date and its own dashboard. Adding them together would create a history that never happened.</p>
-    </div>
-    <div class="panels">
-      <article class="panel card" data-engine="futures" aria-labelledby="pf-h">
-        <header class="panel__head">
-          <h3 id="pf-h">Cash-Flow Engine</h3>
-          <div class="panel__meta"><span class="flag" title="Fill in config.js before the production deploy">[DATA REQUIRED]</span> <span>Since <span class="flag" title="Fill in config.js before the production deploy">[DATA REQUIRED]</span></span> <span class="status" data-status="futures" hidden></span> <span class="asof" data-asof></span></div>
-        </header>
-        <div class="panel__body" data-body>
-          <p class="empty">Live numbers are on the dashboard while the feed connects.</p>
-        </div>
-        <p class="panel__note"><em>Shown in R, the unit every rule above is written in. It reads the same at 1x or 2x.</em></p>
-        <div class="panel__btns">
-          <a class="btn btn--gold btn--sm" href="https://accelerator.ekantikcapital.com/experiment.html" target="_blank" rel="noopener" data-evt="dashboard_click" data-engine-evt="futures">Open the full dashboard ↗</a>
-          <a class="btn btn--outline btn--sm" href="https://discord.gg/GprT4S8Vrj" target="_blank" rel="noopener" data-evt="discord_click" data-engine-evt="futures">Join the Discord ↗</a>
-        </div>
-        <div class="sample" data-sample hidden></div>
-      </article>
-      <article class="panel card" data-engine="options" aria-labelledby="po-h">
-        <header class="panel__head">
-          <h3 id="po-h">Compounding Engine</h3>
-          <div class="panel__meta"><span class="flag" title="Fill in config.js before the production deploy">[DATA REQUIRED]</span> <span>Since Jun 30, 2026</span> <span class="status" data-status="options" hidden></span> <span class="asof" data-asof></span></div>
-        </header>
-        <div class="panel__body" data-body>
-          <p class="empty">Live numbers are on the dashboard while the feed connects.</p>
-        </div>
-        <div class="panel__btns">
-          <a class="btn btn--gold btn--sm" href="https://accelerator.ekantikcapital.com/options-dashboard.html" target="_blank" rel="noopener" data-evt="dashboard_click" data-engine-evt="options">Open the full dashboard ↗</a>
-          <a class="btn btn--outline btn--sm" href="https://discord.gg/GawjC6ef7t" target="_blank" rel="noopener" data-evt="discord_click" data-engine-evt="options">Join the Discord ↗</a>
-        </div>
-        <div class="sample" data-sample hidden></div>
-      </article>
-    </div>
-    <p class="after"><em><span class="flag" title="Fill in config.js before the production deploy">[DATA REQUIRED]</span> records. Past performance is not indicative of future results. Each record is shown on its own and never combined.</em></p>
-  </div>
-</section>
-
-<!-- 5.10 STOP RULES -->
-<section id="stops" class="sec sec--navy reveal">
-  <div class="wrap">
-    <p class="eyebrow eyebrow--gold">PUBLISHED IN ADVANCE</p>
-    <h2>If an engine fails, you see it first.</h2>
-    <p class="mono tiers"><span>T0 Normal</span> · <span>T1 Elevated scrutiny, trading continues</span> · <span>T2 Stood down, research only</span></p>
-    <div class="stops">
-      <article class="card card--dark">
-        <h3>Cash-Flow Engine <span class="status" data-status="futures" hidden></span></h3>
-        <p>If the last 100 trades average $0 or less, trading stops. A restart needs a 50-trade test, a written cause analysis, a 48-hour cool-off and witness sign-off.</p>
-        <p><em>While trading is stopped, the buffer keeps paying the target down to the pause line.</em></p>
-      </article>
-      <article class="card card--dark">
-        <h3>Compounding Engine <span class="status" data-status="options" hidden></span></h3>
-        <p>If the last 100 trades average $0 or less, the engine goes to review. Two step-downs within 14 days pause it until the witness signs a restart.</p>
-      </article>
-    </div>
-    <div class="witness">
-      <p>Independent witness <strong>Manish Dharod</strong> holds binding authority over rule changes and breach calls. Rule changes post before they take effect. Stops post in Discord within one trading day. Losing trades stay on the record.</p>
-      <p><a class="link-gold" href="https://accelerator.ekantikcapital.com/falsifiability-protocol-v2.html" target="_blank" rel="noopener">Read the full falsifiability protocol →</a></p>
-    </div>
-  </div>
-</section>
-
-
-<!-- 5.12 FOLLOW LIVE -->
-<section id="follow" class="sec sec--ivory reveal">
-  <div class="wrap">
-    <h2>Watch first. Decide later.</h2>
+    <h2>Watch a campaign first. Decide later.</h2>
     <ol class="steps">
-      <li><span class="steps__n">1</span><div><strong>Observe.</strong> <em>Join both Discords. Every entry, exit, stand-down and rule change posts there. Free.</em></div></li>
-      <li><span class="steps__n">2</span><div><strong>Validate.</strong> <em>Watch for 30 to 60 days. See a bad week, not only a good one.</em></div></li>
-      <li><span class="steps__n">3</span><div><strong>Decide.</strong> <em>If you go ahead, you place the trades yourself, in your own accounts at your own broker. We never have access.</em></div></li>
+      <li><span class="steps__n">1</span><div><strong>Observe.</strong> <em>Join both Discords. Every entry, exit and rule change posts there. Free.</em></div></li>
+      <li><span class="steps__n">2</span><div><strong>Validate.</strong> <em>Watch this page through a full quarter. See a bad week, not only a good one.</em></div></li>
+      <li><span class="steps__n">3</span><div><strong>Decide.</strong> <em>If you go ahead, you place the trades yourself, in your own account at your own broker. Accounts start at $50,000.</em></div></li>
     </ol>
-    <p class="howsize"><strong>How alerts state size:</strong> <em>Every futures alert gives contracts at 1x for a $50,000 portfolio. At 2x, double the contracts. Never go past 2x. Options alerts give contracts for the $10,000 sleeve; follow them as alerted.</em></p>
     <div class="actions">
-      <a class="btn btn--gold" href="https://discord.gg/GprT4S8Vrj" target="_blank" rel="noopener" data-evt="discord_click" data-engine-evt="futures">Cash-Flow Engine Discord ↗</a>
-      <a class="btn btn--gold" href="https://discord.gg/GawjC6ef7t" target="_blank" rel="noopener" data-evt="discord_click" data-engine-evt="options">Compounding Engine Discord ↗</a>
+      <a class="btn btn--gold" href="https://discord.gg/GprT4S8Vrj" target="_blank" rel="noopener" data-evt="discord_click" data-engine-evt="futures">Futures engine Discord ↗</a>
+      <a class="btn btn--gold" href="https://discord.gg/GawjC6ef7t" target="_blank" rel="noopener" data-evt="discord_click" data-engine-evt="options">Options engine Discord ↗</a>
       <a class="btn btn--outline" href="https://cal.com/ekantik" target="_blank" rel="noopener" data-evt="book_call_click">Book a 30-minute call</a>
     </div>
     <p class="fine">Accounts start at $50,000. Phase 1 has no management fee.</p>
   </div>
 </section>
 
-<!-- 5.13 FAQ -->
-<section id="faq" class="sec reveal">
+<!-- FAQ -->
+<section id="faq" class="sec sec--ivory reveal">
   <div class="wrap wrap--narrow">
     <h2>Questions</h2>
     <div class="faq">
-      <details><summary>Why two engines instead of one?</summary><p><em>Because cash flow and compounding pull against each other. Taking cash out of a compounding account cuts its doublings short. So one engine is built to pay you and the other is built to be left alone.</em></p></details>
-      <details><summary>Should I run 1x or 2x?</summary><p><em>We can’t tell you what suits you. Here is the difference: 2x doubles every loss limit and, with it, the monthly cash target. Same rules, twice the risk.</em></p></details>
-      <details><summary>Can I go above 2x?</summary><p><em>Please don’t. 2x is the size the published record was run at. Above it, the size is untested and every loss limit grows past what this page describes.</em></p></details>
-      <details><summary>Why does nothing come out at first?</summary><p><em>Three months of the target are banked first. That buffer is what keeps the withdrawal level through soft months.</em></p></details>
-      <details><summary>What happens in a bad month?</summary><p><em>The buffer pays the target. If the buffer falls below one month of target, withdrawals pause until it is back to three months.</em></p></details>
-      <details><summary>What if an engine stops working?</summary><p><em>Its stop rule fires, the stand-down posts in Discord within one trading day, and new trades stop. The other engine keeps its own rules.</em></p></details>
-      <details><summary>Is the target realistic?</summary><p><em>It is a target, not a record. It is set at 2R a month, below the conservative planning rate of 30R a year. The record is young. Judge it trade by trade in Discord.</em></p></details>
-      <details><summary>Can I take money from the Compounding Engine?</summary><p><em>The design never does. Withdrawing from it cuts the doubling short.</em></p></details>
-      <details><summary>Do I need $50,000?</summary><p><em>Alerts are sized for $50,000 at 1x. The rules are written in R, so they scale. Book a call to see them at your account size.</em></p></details>
+      <details><summary>What does “10% a quarter” mean?</summary><p><em>It is the target for each calendar quarter: the whole portfolio’s return from the first trading day to the last, after commissions. It is a target, not a forecast. Some quarters will miss it.</em></p></details>
+      <details><summary>How is drawdown measured?</summary><p><em>From the highest account value reached during the quarter (the quarter’s starting value counts) to the lowest point after it, using daily closing values. The campaign aims to keep that under 10%.</em></p></details>
+      <details><summary>Where do the live numbers come from?</summary><p><em>From a live Interactive Brokers account, read every trading day through the broker’s own reporting. Only percentages are published. The account number and balance are not.</em></p></details>
+      <details><summary>Why show backtests and demo records at all?</summary><p><em>They are how the 10% target was set. They are hypothetical, so they sit in their own section, labeled, with the required statement. The live campaigns are the real record.</em></p></details>
+      <details><summary>When does the first live campaign start?</summary><p><em>January 1, 2027. It runs to the end of Q1 2027 and is scored the next trading day.</em></p></details>
+      <details><summary>What happens in a losing quarter?</summary><p><em>It is marked as a miss on the scoreboard and stays there. The next quarter starts a new campaign.</em></p></details>
+      <details><summary>What do I trade?</summary><p><em>S&amp;P 500 futures (ES and MES contracts) and short-dated index options, from alerts posted in Discord. You place the trades in your own account.</em></p></details>
+      <details><summary>Do I need $50,000?</summary><p><em>Alerts are sized for a $50,000 portfolio. Book a call to talk through a different account size.</em></p></details>
     </div>
   </div>
 </section>
 
-<!-- 5.14 WHERE THIS SITS -->
-<section class="sec sec--ivory sec--tight reveal" aria-labelledby="where">
-  <div class="wrap wrap--narrow">
-    <h2 id="where" class="h-small">Where this sits</h2>
-    <div class="table-scroll">
-      <table class="tbl tbl--small">
-        <tbody>
-          <tr><th scope="row">The Doctrine</th><td>Why doublings dominate wealth outcomes. Free.</td><td><a href="https://doubles.ekantikcapital.com" target="_blank" rel="noopener">doubles.ekantikcapital.com</a></td></tr>
-          <tr><th scope="row">The Machine</th><td>How leverage, cash flow and compounding fit together.</td><td><a href="https://accelerator.ekantikcapital.com" target="_blank" rel="noopener">accelerator.ekantikcapital.com</a></td></tr>
-          <tr><th scope="row">The Research</th><td>Research for applying it yourself.</td><td><a href="https://alpha.ekantikcapital.com" target="_blank" rel="noopener">alpha.ekantikcapital.com</a></td></tr>
-          <tr><th scope="row">This page</th><td>One portfolio, two engines, every trade posted live.</td><td>—</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</section>
-
-<!-- 5.15 CLOSING -->
+<!-- CLOSING -->
 <section class="sec sec--navy reveal">
   <div class="wrap wrap--narrow center">
-    <h2>Cash you can plan around. Growth you leave alone.</h2>
-    <p><em>Watch both engines before you commit a dollar. Every trade posts as it happens, the losing ones too.</em></p>
+    <h2>Two numbers. Every quarter. In public.</h2>
+    <p><em>Watch a full campaign before you commit a dollar. Misses stay on the board.</em></p>
     <div class="actions actions--center">
       <a class="btn btn--gold" href="#follow">Follow live</a>
       <a class="btn btn--outline" href="https://cal.com/ekantik" target="_blank" rel="noopener" data-evt="book_call_click">Book a 30-minute call</a>
@@ -342,16 +185,14 @@
 
 </main>
 
-<!-- 5.16 FOOTER -->
 <footer class="footer">
   <div class="wrap">
-    <p class="disclosure">Ekantik Capital Advisors LLC is a financial publisher. This page is educational, of general circulation and not personalized to anyone. It is not investment advice and not an offer to sell, or a solicitation of an offer to buy, any security or advisory service. Monthly cash targets are targets, not forecasts; they may be reduced, paused or never reached. Each engine’s record is labeled as a demo (paper) account or an own-money account; demo results are hypothetical and real results would differ. Figures assume every alert is followed without deviation; real results vary with timing, slippage and adherence. Alerts are sized at 1x for a $50,000 portfolio; sizes above 2x are outside the published rules. Futures are leveraged and losses can exceed the amount deposited. Options can lose the full premium paid. Loss limits stop new trades; they are not floors. Past performance is not indicative of future results.</p>
+    <p class="disclosure">Ekantik Capital Advisors LLC is a financial publisher. This page is educational, of general circulation and not personalized to anyone. It is not investment advice and not an offer to sell, or a solicitation of an offer to buy, any security or advisory service. The 10% quarterly return and 10% drawdown figures are targets, not forecasts or promises; many quarters may miss them, and losses can exceed the drawdown limit. The targets were derived from backtests and a demo record, which are hypothetical. Live campaign figures come from a single Interactive Brokers account, are time-weighted, exclude deposits and withdrawals, and are after commissions but before any subscription fees; your results will differ with timing, slippage, sizing and adherence. Futures are leveraged and losses can exceed the amount deposited. Options can lose the full premium paid. Past performance is not indicative of future results.</p>
+    <p class="disclosure">HYPOTHETICAL OR SIMULATED PERFORMANCE RESULTS HAVE CERTAIN LIMITATIONS. UNLIKE AN ACTUAL PERFORMANCE RECORD, SIMULATED RESULTS DO NOT REPRESENT ACTUAL TRADING. ALSO, SINCE THE TRADES HAVE NOT BEEN EXECUTED, THE RESULTS MAY HAVE UNDER-OR-OVER COMPENSATED FOR THE IMPACT, IF ANY, OF CERTAIN MARKET FACTORS, SUCH AS LACK OF LIQUIDITY. SIMULATED TRADING PROGRAMS IN GENERAL ARE ALSO SUBJECT TO THE FACT THAT THEY ARE DESIGNED WITH THE BENEFIT OF HINDSIGHT. NO REPRESENTATION IS BEING MADE THAT ANY ACCOUNT WILL OR IS LIKELY TO ACHIEVE PROFIT OR LOSSES SIMILAR TO THOSE SHOWN.</p>
     <p class="copy">© <span data-year>2026</span> Ekantik Capital Advisors LLC · <a href="https://ekantikcapital.com">ekantikcapital.com</a></p>
   </div>
 </footer>
 
-<script src="config.js?v=mwuyflic"></script>
-<script src="lib/size.js?v=mwuyflic"></script>
-<script src="app.js?v=mwuyflic"></script>
+<script src="app.js?v=mwxpprl1"></script>
 </body>
 </html>

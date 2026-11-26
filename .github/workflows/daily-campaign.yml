@@ -1,0 +1,51 @@
+# Pulls the live IBKR account (Flex Web Service), re-scores the quarterly campaign,
+# rebuilds index.html and commits it. GitHub Pages then republishes from the branch.
+# Needs repository secrets IBKR_FLEX_TOKEN and IBKR_FLEX_QUERY_ID (see scripts/ibkr-flex.js).
+name: Daily campaign update
+
+on:
+  schedule:
+    - cron: '30 11 * * 2-6' # 11:30 UTC Tue–Sat, after each US trading day's statement is ready
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-campaign
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Tests
+        run: node --test test/*.test.js
+      - name: Pull IBKR account (percentages only)
+        id: ibkr
+        continue-on-error: true
+        env:
+          IBKR_FLEX_TOKEN: ${{ secrets.IBKR_FLEX_TOKEN }}
+          IBKR_FLEX_QUERY_ID: ${{ secrets.IBKR_FLEX_QUERY_ID }}
+        run: node scripts/ibkr-flex.js
+      - name: Build
+        run: node scripts/build.js --prod
+      - name: Copy and data checks
+        run: node scripts/check-copy.js
+      - name: Commit if changed
+        run: |
+          git config user.name "campaign-bot"
+          git config user.email "campaign-bot@users.noreply.github.com"
+          git add index.html feeds/
+          if git diff --cached --quiet; then echo "No changes."; exit 0; fi
+          git commit -m "Daily campaign update $(date -u +%Y-%m-%d)"
+          git push
+      - name: Flag a failed IBKR pull
+        if: steps.ibkr.outcome == 'failure'
+        run: |
+          echo "::error::IBKR Flex pull failed. The page kept the previous snapshot; its as-of date shows the staleness."
+          exit 1
