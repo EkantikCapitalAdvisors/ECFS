@@ -78,7 +78,7 @@ module.exports = { parseStatement, buildLive };
 
 if (require.main === module) {
   (async () => {
-    const token = process.env.IBKR_FLEX_TOKEN, q = process.env.IBKR_FLEX_QUERY_ID;
+    const token = (process.env.IBKR_FLEX_TOKEN || '').trim(), q = (process.env.IBKR_FLEX_QUERY_ID || '').trim();
     if (!token || !q) { console.log('IBKR Flex secrets not set; feeds/live.json left unchanged.'); return; }
     try {
       const xml = await getStatement(token, q);
