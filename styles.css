@@ -157,6 +157,12 @@ html:not(.js) .menu-btn { display: none; }
 .pill--met, .pill--target-reached, .pill--on-pace { background: var(--up); color: var(--white); }
 .pill--missed, .pill--dd-limit { background: var(--down); color: var(--navy-ink); }
 .pill--behind { background: var(--amber-bg); color: var(--amber); }
+.pill--sat-out { background: var(--white); color: var(--navy); border: 1px solid var(--navy); }
+.muted { color: var(--slate); font-style: italic; font-size: 14px; }
+.tbl--score .col-learn { min-width: 240px; }
+.tbl--score { min-width: 860px; }
+.three-q { margin: 0 0 1em; padding-left: 22px; }
+.three-q li { margin: 4px 0; }
 .pill--pending { background: var(--ivory); color: var(--slate); border: 1px solid var(--line); }
 .tbl--score .pill { margin: 0; }
 .tbl--score small { color: var(--slate); font-size: 13px; }

@@ -110,12 +110,30 @@ function paceChart(c) {
 
 const pill = (status, text) => '<span class="pill pill--' + status + '">' + esc(text || CAMP.STATUS_TEXT[status]) + '</span>';
 
+// ---------- Per-quarter notes (sat out, learnings) ----------
+function withNotes(c, notes) {
+  const n = (notes || {})[c.id] || {};
+  const out = Object.assign({}, c, { learnings: n.learnings || '' });
+  if (n.satOut) { out.satOut = true; out.status = 'sat-out'; }
+  return out;
+}
+const learningsCell = r => r.learnings ? esc(r.learnings)
+  : (r.complete || r.satOut ? '<span class="muted">Posted after review</span>' : '<span class="muted">After the quarter closes</span>');
+
 // ---------- Sections ----------
 function liveSection(live) {
   const first = CAMP.quarterBounds(CFG.CAMPAIGNS.firstQuarter);
   const curId = CAMP.quarterOf(TODAY);
-  const campaigns = live && live.ok && Array.isArray(live.campaigns) ? live.campaigns : [];
+  const campaigns = (live && live.ok && Array.isArray(live.campaigns) ? live.campaigns : []).map(c => withNotes(c, CFG.CAMPAIGNS.notes));
   const cur = campaigns.find(c => c.id === curId);
+  const curNote = (CFG.CAMPAIGNS.notes || {})[curId] || {};
+  if (curNote.satOut && TODAY >= first.start) {
+    return '    <div class="campaign card card--accent">\n' +
+      '      <div class="campaign__ring">' + ring(cur ? cur.returnPct : 0) + '</div>\n' +
+      '      <div class="campaign__body"><h3>' + esc(CAMP.quarterLabel(curId)) + ' · sitting out</h3>' + pill('sat-out', 'Sat out') +
+      '<p>No campaign is being traded this quarter. When conditions don’t fit the rules, not trading is the plan. This quarter is not scored as met or missed.</p>' +
+      (curNote.learnings ? '<p><strong>Why:</strong> ' + esc(curNote.learnings) + '</p>' : '') + '</div>\n    </div>';
+  }
 
   if (!cur) {
     const before = TODAY < first.start;
@@ -151,13 +169,15 @@ function liveSection(live) {
 }
 
 function scoreTable(rows, opts) {
-  const head = '<thead><tr><th scope="col">' + (opts.first || 'Campaign') + '</th><th scope="col">Return</th><th scope="col">Deepest drawdown</th><th scope="col">' + pct0(T.quarterReturnPct) + ' target</th><th scope="col">Drawdown under ' + pct0(T.maxDrawdownPct) + '</th><th scope="col">Result</th></tr></thead>';
+  const head = '<thead><tr><th scope="col">' + (opts.first || 'Campaign') + '</th><th scope="col">Hit ' + pct0(T.quarterReturnPct) + '?</th><th scope="col">Drawdown under ' + pct0(T.maxDrawdownPct) + '?</th><th scope="col">Result</th><th scope="col">Return</th><th scope="col">Deepest drawdown</th><th scope="col" class="col-learn">Learnings</th></tr></thead>';
   const yes = ok => ok ? '<span class="tick">Yes</span>' : '<span class="cross">No</span>';
+  const scored = r => r.complete && !r.satOut;
   const body = rows.map(r => '<tr><th scope="row">' + r.name + '</th>' +
+    '<td>' + (scored(r) ? yes(r.hitTarget) : '—') + '</td><td>' + (scored(r) ? yes(r.heldDD) : '—') + '</td>' +
+    '<td>' + r.result + '</td>' +
     '<td class="num ' + (r.returnPct >= 0 ? 'pos' : 'neg') + '">' + sPct(r.returnPct) + '</td>' +
     '<td class="num">' + pct1(r.maxDrawdownPct) + '</td>' +
-    '<td>' + (r.complete ? yes(r.hitTarget) : '—') + '</td><td>' + (r.complete ? yes(r.heldDD) : '—') + '</td>' +
-    '<td>' + r.result + '</td></tr>').join('');
+    '<td class="col-learn">' + learningsCell(r) + '</td></tr>').join('');
   return '    <div class="table-scroll"><table class="tbl tbl--score">' + head + '<tbody>' + body + '</tbody></table></div>';
 }
 
@@ -167,13 +187,18 @@ function scoreboard(live) {
     const b = CAMP.quarterBounds(CFG.CAMPAIGNS.firstQuarter);
     return '    <p class="empty">No live campaign has been scored yet. Campaign 1 runs ' + esc(longDate(b.start)) + ' to ' + esc(longDate(b.end)) + '.</p>';
   }
-  const rows = campaigns.slice().reverse().map((c, i, arr) => Object.assign({}, c, {
-    name: 'Campaign ' + (arr.length - i) + ' · ' + esc(c.label),
-    result: c.complete ? pill(c.status) : pill(c.status) + ' <small>in progress</small>',
+  const list = campaigns.map(c => withNotes(c, CFG.CAMPAIGNS.notes));
+  const rows = list.slice().reverse().map(c => Object.assign({}, c, {
+    name: esc(c.label),
+    result: c.satOut ? pill('sat-out', 'Sat out') : c.complete ? pill(c.status) : pill(c.status) + ' <small>in progress</small>',
   }));
-  const done = campaigns.filter(c => c.complete);
+  const done = list.filter(c => c.complete && !c.satOut);
+  const sat = list.filter(c => c.satOut).length;
   const met = done.filter(c => c.status === 'met').length;
-  return scoreTable(rows, {}) + (done.length ? '\n    <p class="after"><em>Met ' + met + ' of ' + done.length + ' completed campaign' + (done.length === 1 ? '' : 's') + '.</em></p>' : '');
+  const tally = done.length || sat
+    ? '\n    <p class="after"><em>Met ' + met + ' of ' + done.length + ' traded campaign' + (done.length === 1 ? '' : 's') + '.' + (sat ? ' Sat out: ' + sat + '.' : '') + ' Each quarter is judged on its own; the returns are not added together.</em></p>'
+    : '';
+  return scoreTable(rows, { first: 'Quarter' }) + tally;
 }
 
 function demoSection(demo) {
@@ -184,7 +209,7 @@ function demoSection(demo) {
     e.partial = (Date.parse(q.firstDate) - Date.parse(q.start)) > 14 * DAY;
     return e;
   });
-  const rows = qs.map(q => Object.assign({}, q, {
+  const rows = qs.map(q => withNotes(q, CFG.DEMO.notes)).map(q => Object.assign({}, q, {
     name: esc(q.label) + (q.partial ? ' <small>from ' + esc(shortDate(q.firstDate)) + '</small>' : ''),
     complete: q.complete && !q.partial,
     result: q.partial ? pill('pending', 'Partial quarter') : q.complete ? pill(q.status) : pill('pending', 'In progress'),

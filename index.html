@@ -8,7 +8,7 @@
 <meta name="description" content="Cash-Flow Strategy: a 10% quarterly return target with a 10% drawdown limit on a $50,000 portfolio. Every quarter is a campaign, scored in public from a live Interactive Brokers account.">
 <link rel="preload" href="fonts/cormorant-garamond-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/dm-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="styles.css?v=999dec9b">
+<link rel="stylesheet" href="styles.css?v=b756be8d">
 </head>
 <body data-build="prod">
 
@@ -43,7 +43,7 @@
       <li><span class="targets__k">Drawdown limit</span><span class="targets__v num">&lt; 10%</span><span class="targets__s">per quarter</span></li>
       <li><span class="targets__k">Minimum</span><span class="targets__v num">$50,000</span><span class="targets__s">portfolio</span></li>
     </ul>
-    <p class="note-gold"><em>Targets, not forecasts. They were set from backtests and a demo record, which are hypothetical.</em></p>
+    <p class="note-gold"><em>Each quarter stands alone. This is not a compounding strategy, and some quarters may not be traded at all. Targets, not forecasts: they were set from backtests and a demo record, which are hypothetical.</em></p>
     <div class="actions">
       <a class="btn btn--gold" href="#live">See this quarter’s campaign →</a>
       <a class="btn btn--outline" href="https://cal.com/ekantik" target="_blank" rel="noopener" data-evt="book_call_click">Book a 30-minute call</a>
@@ -69,7 +69,17 @@
   <div class="wrap">
     <p class="eyebrow">EVERY QUARTER, PASS OR MISS</p>
     <h2>The campaign scoreboard.</h2>
-    <p class="prose">A campaign is <strong>met</strong> when the quarter’s return reaches 10% and the deepest drawdown stays under 10%. Anything else is a <strong>miss</strong>, and it stays on the board.</p>
+    <aside class="callout" aria-labelledby="read-board">
+      <h3 id="read-board">How to read this board</h3>
+      <p>Every quarter answers three questions, and only three:</p>
+      <ol class="three-q">
+        <li><strong>Did it reach 10%?</strong></li>
+        <li><strong>Did the drawdown stay under 10%?</strong></li>
+        <li><strong>What did the quarter teach?</strong></li>
+      </ol>
+      <p>A quarter is <strong>met</strong> only when the first two are both yes. Anything else is a <strong>miss</strong>, and it stays on the board.</p>
+      <p><strong>Don’t add the quarters up.</strong> This is not a compounding strategy. Each quarter starts fresh, and some quarters will not be traded at all when conditions don’t fit the rules. Those are marked <strong>sat out</strong>, not met or missed. Adding quarterly returns together, or turning them into a yearly number, gives a figure this strategy does not aim for.</p>
+    </aside>
     <p class="empty">No live campaign has been scored yet. Campaign 1 runs January 1, 2027 to March 31, 2027.</p>
   </div>
 </section>
@@ -82,7 +92,7 @@
     <div class="prose">
       <p>The 10% target was set from backtests of both engines and checked against their demo records. Below are the two demo records combined as if they ran in one $50,000 account, quarter by quarter. They are shown as reference, not as a track record.</p>
     </div>
-    <div class="table-scroll"><table class="tbl tbl--score"><thead><tr><th scope="col">Quarter</th><th scope="col">Return</th><th scope="col">Deepest drawdown</th><th scope="col">10% target</th><th scope="col">Drawdown under 10%</th><th scope="col">Result</th></tr></thead><tbody><tr><th scope="row">Q1 2026 <small>from Feb 4</small></th><td class="num pos">+9.7%</td><td class="num">2.2%</td><td>—</td><td>—</td><td><span class="pill pill--pending">Partial quarter</span></td></tr><tr><th scope="row">Q2 2026</th><td class="num pos">+10.8%</td><td class="num">1.9%</td><td><span class="tick">Yes</span></td><td><span class="tick">Yes</span></td><td><span class="pill pill--met">Met</span></td></tr><tr><th scope="row">Q3 2026</th><td class="num pos">+4.7%</td><td class="num">1.6%</td><td><span class="cross">No</span></td><td><span class="tick">Yes</span></td><td><span class="pill pill--missed">Missed</span></td></tr><tr><th scope="row">Q4 2026</th><td class="num pos">+3.9%</td><td class="num">0.5%</td><td>—</td><td>—</td><td><span class="pill pill--pending">In progress</span></td></tr></tbody></table></div>
+    <div class="table-scroll"><table class="tbl tbl--score"><thead><tr><th scope="col">Quarter</th><th scope="col">Hit 10%?</th><th scope="col">Drawdown under 10%?</th><th scope="col">Result</th><th scope="col">Return</th><th scope="col">Deepest drawdown</th><th scope="col" class="col-learn">Learnings</th></tr></thead><tbody><tr><th scope="row">Q1 2026 <small>from Feb 4</small></th><td>—</td><td>—</td><td><span class="pill pill--pending">Partial quarter</span></td><td class="num pos">+9.7%</td><td class="num">2.2%</td><td class="col-learn"><span class="muted">After the quarter closes</span></td></tr><tr><th scope="row">Q2 2026</th><td><span class="tick">Yes</span></td><td><span class="tick">Yes</span></td><td><span class="pill pill--met">Met</span></td><td class="num pos">+10.8%</td><td class="num">1.9%</td><td class="col-learn"><span class="muted">Posted after review</span></td></tr><tr><th scope="row">Q3 2026</th><td><span class="cross">No</span></td><td><span class="tick">Yes</span></td><td><span class="pill pill--missed">Missed</span></td><td class="num pos">+4.7%</td><td class="num">1.6%</td><td class="col-learn"><span class="muted">Posted after review</span></td></tr><tr><th scope="row">Q4 2026</th><td>—</td><td>—</td><td><span class="pill pill--pending">In progress</span></td><td class="num pos">+3.9%</td><td class="num">0.5%</td><td class="col-learn"><span class="muted">After the quarter closes</span></td></tr></tbody></table></div>
     <p class="after"><em>Complete demo quarters that met the 10% target: 1 of 2. Deepest drawdown in any demo quarter: 2.2%. Assumes the futures and options demo trades ran in one $50,000 account at the dollar sizes recorded, before subscription fees. 1 undated trades are left out. Demo results are hypothetical.</em></p>
     <aside class="callout callout--hypo" aria-label="Hypothetical performance statement">
       <p class="eyebrow eyebrow--gold-text">HYPOTHETICAL PERFORMANCE</p>
@@ -108,7 +118,7 @@
       </article>
       <article class="card card--dark">
         <h3>The campaign</h3>
-        <p>Each calendar quarter starts fresh. The score is the whole portfolio’s return for the quarter and its deepest drawdown.</p>
+        <p>Each calendar quarter starts fresh and is judged on its own: did it reach the target without breaking the drawdown limit, and what did it teach? Some quarters are sat out on purpose.</p>
         <p>Returns are time-weighted from the daily account value, after commissions, with deposits and withdrawals taken out.</p>
       </article>
       <article class="card card--dark">
@@ -158,6 +168,8 @@
   <div class="wrap wrap--narrow">
     <h2>Questions</h2>
     <div class="faq">
+      <details><summary>Is this a compounding strategy?</summary><p><em>No. Each quarter is a separate campaign with its own target and drawdown limit. Gains are not stacked into a yearly figure, and some quarters will not be traded. Judge it quarter by quarter: target reached or not, drawdown held or not, and what was learned.</em></p></details>
+      <details><summary>Why would a quarter not be traded?</summary><p><em>When conditions don’t fit the rules, not trading is the plan. A quarter sat out is shown as “Sat out” on the scoreboard. It is not counted as met or missed.</em></p></details>
       <details><summary>What does “10% a quarter” mean?</summary><p><em>It is the target for each calendar quarter: the whole portfolio’s return from the first trading day to the last, after commissions. It is a target, not a forecast. Some quarters will miss it.</em></p></details>
       <details><summary>How is drawdown measured?</summary><p><em>From the highest account value reached during the quarter (the quarter’s starting value counts) to the lowest point after it, using daily closing values. The campaign aims to keep that under 10%.</em></p></details>
       <details><summary>Where do the live numbers come from?</summary><p><em>From a live Interactive Brokers account, read every trading day through the broker’s own reporting. Only percentages are published. The account number and balance are not.</em></p></details>
@@ -173,8 +185,8 @@
 <!-- CLOSING -->
 <section class="sec sec--navy reveal">
   <div class="wrap wrap--narrow center">
-    <h2>Two numbers. Every quarter. In public.</h2>
-    <p><em>Watch a full campaign before you commit a dollar. Misses stay on the board.</em></p>
+    <h2>Two numbers and a lesson. Every quarter. In public.</h2>
+    <p><em>Watch a full campaign before you commit a dollar. Misses stay on the board, and so do the learnings.</em></p>
     <div class="actions actions--center">
       <a class="btn btn--gold" href="#follow">Follow live</a>
       <a class="btn btn--outline" href="https://cal.com/ekantik" target="_blank" rel="noopener" data-evt="book_call_click">Book a 30-minute call</a>
@@ -187,12 +199,12 @@
 
 <footer class="footer">
   <div class="wrap">
-    <p class="disclosure">Ekantik Capital Advisors LLC is a financial publisher. This page is educational, of general circulation and not personalized to anyone. It is not investment advice and not an offer to sell, or a solicitation of an offer to buy, any security or advisory service. The 10% quarterly return and 10% drawdown figures are targets, not forecasts or promises; many quarters may miss them, and losses can exceed the drawdown limit. The targets were derived from backtests and a demo record, which are hypothetical. Live campaign figures come from a single Interactive Brokers account, are time-weighted, exclude deposits and withdrawals, and are after commissions but before any subscription fees; your results will differ with timing, slippage, sizing and adherence. Futures are leveraged and losses can exceed the amount deposited. Options can lose the full premium paid. Past performance is not indicative of future results.</p>
+    <p class="disclosure">Ekantik Capital Advisors LLC is a financial publisher. This page is educational, of general circulation and not personalized to anyone. It is not investment advice and not an offer to sell, or a solicitation of an offer to buy, any security or advisory service. The 10% quarterly return and 10% drawdown figures are targets, not forecasts or promises; many quarters may miss them, and losses can exceed the drawdown limit. The targets were derived from backtests and a demo record, which are hypothetical. Each quarter is a separate campaign: this is not a compounding strategy, some quarters may not be traded, and quarterly results should not be added together or converted to an annual figure. Live campaign figures come from a single Interactive Brokers account, are time-weighted, exclude deposits and withdrawals, and are after commissions but before any subscription fees; your results will differ with timing, slippage, sizing and adherence. Futures are leveraged and losses can exceed the amount deposited. Options can lose the full premium paid. Past performance is not indicative of future results.</p>
     <p class="disclosure">HYPOTHETICAL OR SIMULATED PERFORMANCE RESULTS HAVE CERTAIN LIMITATIONS. UNLIKE AN ACTUAL PERFORMANCE RECORD, SIMULATED RESULTS DO NOT REPRESENT ACTUAL TRADING. ALSO, SINCE THE TRADES HAVE NOT BEEN EXECUTED, THE RESULTS MAY HAVE UNDER-OR-OVER COMPENSATED FOR THE IMPACT, IF ANY, OF CERTAIN MARKET FACTORS, SUCH AS LACK OF LIQUIDITY. SIMULATED TRADING PROGRAMS IN GENERAL ARE ALSO SUBJECT TO THE FACT THAT THEY ARE DESIGNED WITH THE BENEFIT OF HINDSIGHT. NO REPRESENTATION IS BEING MADE THAT ANY ACCOUNT WILL OR IS LIKELY TO ACHIEVE PROFIT OR LOSSES SIMILAR TO THOSE SHOWN.</p>
     <p class="copy">© <span data-year>2026</span> Ekantik Capital Advisors LLC · <a href="https://ekantikcapital.com">ekantikcapital.com</a></p>
   </div>
 </footer>
 
-<script src="app.js?v=999dec9b"></script>
+<script src="app.js?v=b756be8d"></script>
 </body>
 </html>

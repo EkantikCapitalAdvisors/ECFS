@@ -7,6 +7,9 @@ on:
   schedule:
     - cron: '30 11 * * 2-6' # 11:30 UTC Tue–Sat, after each US trading day's statement is ready
   workflow_dispatch:
+  push: # rebuild when copy, notes or code change (bot commits don't retrigger)
+    branches: [main]
+    paths: ['config.js', 'src/**', 'lib/**', 'scripts/**', 'styles.css', 'app.js']
 
 permissions:
   contents: write

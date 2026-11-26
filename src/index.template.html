@@ -43,7 +43,7 @@
       <li><span class="targets__k">Drawdown limit</span><span class="targets__v num">&lt; {{ddLimit}}</span><span class="targets__s">per quarter</span></li>
       <li><span class="targets__k">Minimum</span><span class="targets__v num">{{minAccount}}</span><span class="targets__s">portfolio</span></li>
     </ul>
-    <p class="note-gold"><em>Targets, not forecasts. They were set from backtests and a demo record, which are hypothetical.</em></p>
+    <p class="note-gold"><em>Each quarter stands alone. This is not a compounding strategy, and some quarters may not be traded at all. Targets, not forecasts: they were set from backtests and a demo record, which are hypothetical.</em></p>
     <div class="actions">
       <a class="btn btn--gold" href="#live">See this quarter’s campaign →</a>
       <a class="btn btn--outline" href="{{site.bookCallUrl}}" target="_blank" rel="noopener" data-evt="book_call_click">Book a 30-minute call</a>
@@ -66,7 +66,17 @@
   <div class="wrap">
     <p class="eyebrow">EVERY QUARTER, PASS OR MISS</p>
     <h2>The campaign scoreboard.</h2>
-    <p class="prose">A campaign is <strong>met</strong> when the quarter’s return reaches {{target}} and the deepest drawdown stays under {{ddLimit}}. Anything else is a <strong>miss</strong>, and it stays on the board.</p>
+    <aside class="callout" aria-labelledby="read-board">
+      <h3 id="read-board">How to read this board</h3>
+      <p>Every quarter answers three questions, and only three:</p>
+      <ol class="three-q">
+        <li><strong>Did it reach {{target}}?</strong></li>
+        <li><strong>Did the drawdown stay under {{ddLimit}}?</strong></li>
+        <li><strong>What did the quarter teach?</strong></li>
+      </ol>
+      <p>A quarter is <strong>met</strong> only when the first two are both yes. Anything else is a <strong>miss</strong>, and it stays on the board.</p>
+      <p><strong>Don’t add the quarters up.</strong> This is not a compounding strategy. Each quarter starts fresh, and some quarters will not be traded at all when conditions don’t fit the rules. Those are marked <strong>sat out</strong>, not met or missed. Adding quarterly returns together, or turning them into a yearly number, gives a figure this strategy does not aim for.</p>
+    </aside>
 {{scoreboard}}
   </div>
 </section>
@@ -105,7 +115,7 @@
       </article>
       <article class="card card--dark">
         <h3>The campaign</h3>
-        <p>Each calendar quarter starts fresh. The score is the whole portfolio’s return for the quarter and its deepest drawdown.</p>
+        <p>Each calendar quarter starts fresh and is judged on its own: did it reach the target without breaking the drawdown limit, and what did it teach? Some quarters are sat out on purpose.</p>
         <p>Returns are time-weighted from the daily account value, after commissions, with deposits and withdrawals taken out.</p>
       </article>
       <article class="card card--dark">
@@ -155,6 +165,8 @@
   <div class="wrap wrap--narrow">
     <h2>Questions</h2>
     <div class="faq">
+      <details><summary>Is this a compounding strategy?</summary><p><em>No. Each quarter is a separate campaign with its own target and drawdown limit. Gains are not stacked into a yearly figure, and some quarters will not be traded. Judge it quarter by quarter: target reached or not, drawdown held or not, and what was learned.</em></p></details>
+      <details><summary>Why would a quarter not be traded?</summary><p><em>When conditions don’t fit the rules, not trading is the plan. A quarter sat out is shown as “Sat out” on the scoreboard. It is not counted as met or missed.</em></p></details>
       <details><summary>What does “{{target}} a quarter” mean?</summary><p><em>It is the target for each calendar quarter: the whole portfolio’s return from the first trading day to the last, after commissions. It is a target, not a forecast. Some quarters will miss it.</em></p></details>
       <details><summary>How is drawdown measured?</summary><p><em>From the highest account value reached during the quarter (the quarter’s starting value counts) to the lowest point after it, using daily closing values. The campaign aims to keep that under {{ddLimit}}.</em></p></details>
       <details><summary>Where do the live numbers come from?</summary><p><em>From a live {{live.broker}} account, read every trading day through the broker’s own reporting. Only percentages are published. The account number and balance are not.</em></p></details>
@@ -170,8 +182,8 @@
 <!-- CLOSING -->
 <section class="sec sec--navy reveal">
   <div class="wrap wrap--narrow center">
-    <h2>Two numbers. Every quarter. In public.</h2>
-    <p><em>Watch a full campaign before you commit a dollar. Misses stay on the board.</em></p>
+    <h2>Two numbers and a lesson. Every quarter. In public.</h2>
+    <p><em>Watch a full campaign before you commit a dollar. Misses stay on the board, and so do the learnings.</em></p>
     <div class="actions actions--center">
       <a class="btn btn--gold" href="#follow">Follow live</a>
       <a class="btn btn--outline" href="{{site.bookCallUrl}}" target="_blank" rel="noopener" data-evt="book_call_click">Book a 30-minute call</a>

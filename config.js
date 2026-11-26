@@ -30,8 +30,15 @@
   };
 
   // Live campaigns are scored from the IBKR account (scripts/ibkr-flex.js -> feeds/live.json).
+  // Each quarter stands alone. Notes are keyed by quarter id ('2027-Q1').
+  //   satOut:    true when the quarter was deliberately not traded. Shown as "Sat out",
+  //              left out of the met/missed tally, never counted as a miss.
+  //   learnings: one or two sentences posted after the quarter closes.
   const CAMPAIGNS = {
     firstQuarter: '2027-Q1',
+    notes: {
+      // '2027-Q1': { satOut: false, learnings: '' },
+    },
   };
   const LIVE = {
     broker: 'Interactive Brokers',
@@ -43,6 +50,9 @@
     futuresUrl: 'https://raw.githubusercontent.com/EkantikCapitalAdvisors/Accelerator/main/data/tenx_trades.json',
     optionsUrl: 'https://raw.githubusercontent.com/EkantikCapitalAdvisors/Accelerator/main/data/options_trades.json',
     startUsd: 50000,
+    notes: {
+      // '2026-Q3': { learnings: '' },
+    },
   };
 
   const ENGINES = {
@@ -64,7 +74,7 @@
   const OPTIONAL_NULLS = [];
 
   const DISCLOSURE =
-    'Ekantik Capital Advisors LLC is a financial publisher. This page is educational, of general circulation and not personalized to anyone. It is not investment advice and not an offer to sell, or a solicitation of an offer to buy, any security or advisory service. The 10% quarterly return and 10% drawdown figures are targets, not forecasts or promises; many quarters may miss them, and losses can exceed the drawdown limit. The targets were derived from backtests and a demo record, which are hypothetical. Live campaign figures come from a single Interactive Brokers account, are time-weighted, exclude deposits and withdrawals, and are after commissions but before any subscription fees; your results will differ with timing, slippage, sizing and adherence. Futures are leveraged and losses can exceed the amount deposited. Options can lose the full premium paid. Past performance is not indicative of future results.';
+    'Ekantik Capital Advisors LLC is a financial publisher. This page is educational, of general circulation and not personalized to anyone. It is not investment advice and not an offer to sell, or a solicitation of an offer to buy, any security or advisory service. The 10% quarterly return and 10% drawdown figures are targets, not forecasts or promises; many quarters may miss them, and losses can exceed the drawdown limit. The targets were derived from backtests and a demo record, which are hypothetical. Each quarter is a separate campaign: this is not a compounding strategy, some quarters may not be traded, and quarterly results should not be added together or converted to an annual figure. Live campaign figures come from a single Interactive Brokers account, are time-weighted, exclude deposits and withdrawals, and are after commissions but before any subscription fees; your results will differ with timing, slippage, sizing and adherence. Futures are leveraged and losses can exceed the amount deposited. Options can lose the full premium paid. Past performance is not indicative of future results.';
 
   // CFTC Rule 4.41(b)(1) statement for hypothetical or simulated results.
   const HYPOTHETICAL =
