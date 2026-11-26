@@ -62,14 +62,14 @@ function buildLive(rows, today) {
 async function getStatement(token, queryId) {
   const v = '&v=3';
   const send = await (await fetch(BASE + '/SendRequest?t=' + encodeURIComponent(token) + '&q=' + encodeURIComponent(queryId) + v)).text();
-  if (tagText(send, 'Status') !== 'Success') throw new Error('SendRequest failed: ' + (tagText(send, 'ErrorMessage') || send.slice(0, 200)));
+  if (tagText(send, 'Status') !== 'Success') throw new Error('SendRequest failed (IBKR code ' + tagText(send, 'ErrorCode') + '): ' + (tagText(send, 'ErrorMessage') || send.replace(/\s+/g, ' ').slice(0, 200)));
   const ref = tagText(send, 'ReferenceCode');
   for (let i = 0; i < 10; i++) {
     await new Promise(r => setTimeout(r, 5000 + i * 3000));
     const res = await (await fetch(BASE + '/GetStatement?t=' + encodeURIComponent(token) + '&q=' + encodeURIComponent(ref) + v)).text();
     if (res.includes('<FlexQueryResponse')) return res;
     const code = tagText(res, 'ErrorCode');
-    if (code !== '1019' && code !== '1018') throw new Error('GetStatement failed: ' + (tagText(res, 'ErrorMessage') || res.slice(0, 200)));
+    if (code !== '1019' && code !== '1018') throw new Error('GetStatement failed (IBKR code ' + code + '): ' + (tagText(res, 'ErrorMessage') || res.replace(/\s+/g, ' ').slice(0, 200)));
   }
   throw new Error('Statement not ready after retries');
 }
@@ -90,7 +90,9 @@ if (require.main === module) {
       console.log('feeds/live.json written: ' + rows.length + ' days, last ' + rows[rows.length - 1].date);
     } catch (e) {
       // Keep the previous snapshot; the page shows its as-of date, so staleness is visible.
-      console.error('IBKR Flex pull failed: ' + e.message);
+      // IBKR's own error text never contains the token. As an annotation it is readable on the run page.
+      const msg = String(e.message + (e.cause ? ' (' + (e.cause.code || e.cause.message) + ')' : '')).replace(/[\r\n]+/g, ' ').slice(0, 300);
+      console.error((process.env.GITHUB_ACTIONS ? '::error title=IBKR Flex::' : '') + 'IBKR Flex pull failed: ' + msg);
       process.exitCode = 1;
     }
   })();
