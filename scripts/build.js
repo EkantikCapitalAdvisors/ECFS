@@ -53,7 +53,8 @@ async function demoSnapshot() {
       const [f, o] = await Promise.all([fetchJSON(CFG.DEMO.futuresUrl), fetchJSON(CFG.DEMO.optionsUrl)]);
       const { trades, undated } = demoTrades(f, o);
       const quarters = CAMP.fromTrades(trades, CFG.DEMO.startUsd).map(q => { delete q.series; return q; });
-      const snap = { ok: quarters.length > 0, fetchedAt: new Date().toISOString(), startUsd: CFG.DEMO.startUsd, trades: trades.length, undated, quarters };
+      // No fetch timestamp: the file only changes when the demo records do, so the daily job doesn't commit noise.
+      const snap = { ok: quarters.length > 0, startUsd: CFG.DEMO.startUsd, trades: trades.length, undated, quarters };
       fs.mkdirSync(path.dirname(file), { recursive: true });
       fs.writeFileSync(file, JSON.stringify(snap) + '\n');
     } catch (e) {
@@ -214,7 +215,7 @@ function context(live, demo) {
     'eng.futures.discordUrl': f.discordUrl, 'eng.options.discordUrl': o.discordUrl,
     'eng.futures.dashboardUrl': f.dashboardUrl, 'eng.options.dashboardUrl': o.dashboardUrl,
     disclosure: CFG.DISCLOSURE, hypothetical: CFG.HYPOTHETICAL,
-    year: TODAY.slice(0, 4), buildId: Date.now().toString(36), buildMode: PROD ? 'prod' : 'dev',
+    year: TODAY.slice(0, 4), buildId: require('crypto').createHash('sha1').update(fs.readFileSync(path.join(ROOT, 'styles.css')) + fs.readFileSync(path.join(ROOT, 'app.js'))).digest('hex').slice(0, 8), buildMode: PROD ? 'prod' : 'dev',
   };
   const html = { liveCampaign: liveSection(live), scoreboard: scoreboard(live), demoTable: d.table };
   return { t, html };
